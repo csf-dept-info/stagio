@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Stagio.Web.ViewModels.Student.Index>
+
+    <div class="table-responsive">
+        <table id="offers-table" class="display dataTable table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Identifier)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="@item.Id">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Identifier, new { id = "Identifier" + item.Id })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName, new { id = "FirstName" + item.Id })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName, new { id = "LastName" + item.Id })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber, new { id = "PhoneNumber" + item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+

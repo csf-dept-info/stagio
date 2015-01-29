@@ -1,0 +1,222 @@
+﻿@using Stagio.Web.Automation.PageObjects.InternshipOfferPages
+@model Stagio.Web.ViewModels.InternshipOffer.Create
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 id="internshipoffer-create-page">Création d'une offre de stage</h2>
+
+@using (Html.BeginForm("Create", "InternshipOffer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    {
+        HtmlHelper.ClientValidationEnabled = false;
+    }
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal col-md-10">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CompanyId)
+        @Html.HiddenFor(model => model.EmployeeId)
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                Informations sur le stage
+            </div>
+
+            <div class="panel-body">
+
+                <div class="panel-info"><p class="text-muted">Les champs obligatoires sont marqués d'un astérisque. (*)</p></div>
+                <div><br /></div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Company, new { @class = "control-label col-md-4" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.Company.Name, new { @class = "form-control", @readonly = "readonly" })
+                        <div class="text-info">
+                            <i class="fa fa-info"></i> Les informations complètes de l'entreprise seront affichées dans l'offre de stage.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Contact, new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OtherContact, new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.OtherContact, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @rows = "6" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Details.SpecificHardwareAndSoftware, new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Details.SpecificHardwareAndSoftware, new { @class = "form-control", @rows = "4" })
+                        @Html.ValidationMessageFor(model => model.Details.SpecificHardwareAndSoftware, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Details.WorkingHours, new { @class = "control-label col-md-4" })
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.EditorFor(model => model.Details.WorkingHours, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Details.WorkingHours, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Details.HoursPerWeek, new { @class = "control-label col-md-4" })
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.EditorFor(model => model.Details.HoursPerWeek, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Details.HoursPerWeek, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Details.HourlyWage, new { @class = "control-label col-md-4" })
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.EditorFor(model => model.Details.HourlyWage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Details.HourlyWage, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumberOfTrainees, new { @class = "control-label col-md-4" })
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        @Html.EditorFor(model => model.NumberOfTrainees, new { htmlAttributes = new { @class = "form-control", min = "1", max = "50" } })
+                        @Html.ValidationMessageFor(model => model.NumberOfTrainees, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PersonInCharge, new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.PersonInCharge, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PersonInCharge, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Deadline, new { @class = "control-label col-md-4" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.Deadline, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                        @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExtraFile, new { @class = "control-label col-md-4" })
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.TextBoxFor(model => model.ExtraFile, new { type = "file" })
+                        @Html.ValidationMessageFor(model => model.ExtraFile)
+                        <div class="text-info">
+                            <i class="fa fa-info"></i> Vous pouvez téléverser un fichier informatif supplémentaire concernant le stage. (10 Mo. maximum)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-10">
+
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="text-info">
+                    <p><i class="fa fa-info"></i> Votre offre de stage devra être validée par le coordonnateur avant d'être publiée sur le site.</p>
+                    <p><i class="fa fa-info"></i> Afin de retirer une offre de stage, veuillez contacter le responsable des stages.</p>
+                </div>
+                <p class="col-md-offset-2">
+                    <br />
+                    <input type="submit" id="@CreateInternshipOfferPage.SUBMIT_BUTTON_ID" value="Publier l'offre de stage" class="btn btn-primary" name="action:Create" />
+                    <input type="submit" id="@CreateInternshipOfferPage.SAVE_DRAFT_BUTTON_ID" value="Enregistrer le brouillon" class="btn btn-warning" name="action:SaveDraft" />
+
+
+                    @Html.ActionLink("Annuler", MVC.InternshipOffer.EmployeeIndex(), new { @class = "btn btn-default" })
+
+
+                    @if (Model.Id != 0)
+                    {
+                        <button type="button" class="btn btn-outline btn-danger pull-right" id="delete-draft-button" data-toggle="modal" data-target="#myModal">
+                            <i class="fa fa-lg fa-trash-o"></i>
+                        </button>
+
+
+                    <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">Supprimer le brouillon</h4>
+                                    </div>
+                                    <div class="modal-body">
+
+
+                                        <i class="fa fa-lg fa-warning text-danger"> </i>
+                                        @WebMessage.InternshipOfferMessage.DRAFT_DELETE_VALIDATION_MESSAGE
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                        <button class="btn btn-danger" id="delete-draft-validation-button" name="action:DeleteDraft">Supprimer</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    <!-- /.modal -->
+                    }
+            </div>
+        </div>
+    </div>
+}
+
+<!-- DatePicker Content -->
+<link href="~/Content/css/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+<script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.fr.js"></script>
+
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+        format: "yyyy-mm-dd",
+        startDate: "today",
+        language: "fr",
+        todayHighlight: true,
+        autoclose: true
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(
+    function () {
+        $(".field-validation-error").addClass("text-danger");
+    });
+</script>

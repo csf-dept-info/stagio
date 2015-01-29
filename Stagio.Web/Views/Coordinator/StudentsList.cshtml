@@ -1,0 +1,62 @@
+﻿@model Stagio.Web.ViewModels.Coordinator.StudentsList
+
+<h2 id=@Stagio.Web.Automation.PageObjects.CoordinatorPages.StudentsListCoordinatorPage.PAGE_ID>Liste des étudiants</h2>
+<hr />
+@{
+    var totalStudent = Model.subscribedStudents.Count() + Model.notSubscribedStudents.Count();
+}
+<!-- Nav tabs -->
+<div class="panel-primary">
+    <div class="panel-heading" id="student">@totalStudent étudiant(s) au total</div>
+    <div class="panel-body">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <input type="hidden" name="subscribed-count" value="@Model.subscribedStudents.Count()">
+                <a href="#subscribed-pills" data-toggle="tab" id="subscribed-count" aria-expanded="true">@Model.subscribedStudents.Count() inscrit(s)</a>
+            </li>
+            <li class="">
+                <input type="hidden" name="notSubscribed-count" value="@Model.notSubscribedStudents.Count()">
+                <a href="#notSubscribed-pills" data-toggle="tab" id="notSubscribed-count" aria-expanded="false">@Model.notSubscribedStudents.Count() non-inscrit(s)</a>
+            </li>
+        </ul>
+        <br />
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="subscribed-pills">
+                @Html.Partial("_StudentIndexTablePartial", @Model.subscribedStudents)
+            </div>
+            <div class="tab-pane fade" id="notSubscribed-pills">
+                @Html.Partial("_StudentIndexTablePartial", @Model.notSubscribedStudents)
+            </div>
+        </div>
+    </div>
+</div>
+<!-- DataTables Scripts -->
+<script src="~/Content/js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="~/Content/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="~/Content/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="~/Content/js/sb-admin-2.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('table.display').DataTable({
+            "info": false,
+            "language": {
+                "search": "<i class=\"fa fa-search\"></i> Rechercher un étudiant ",
+                "lengthMenu": "_MENU_ enregistrements par page",
+                "zeroRecords": "Rien n'a été trouvé",
+                "info": "Page _PAGE_ de _PAGES_",
+                "infoFiltered": "(_MAX_ enregistrements filtrés)",
+                "paginate": {
+                    first: "Premier",
+                    previous: "Précédent",
+                    next: "Suivant",
+                    last: "Dernier"
+                }
+            },
+            "columnDefs": [{ orderable: false, "targets": -1 }],
+            "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-right"ip>>>'
+        });
+    })
+</script>

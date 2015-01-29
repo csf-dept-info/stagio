@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stagio</title>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- MetisMenu CSS -->
+    <link href="~/Content/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="~/Content/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/font-awesome-4.1.0/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom DropDownList -->
+    <link href="~/Content/css/dropdownlist.css" rel="stylesheet" />
+    <script src="~/Content/js/dropdownlist.js"></script>
+
+    <!-- DataTables -->
+    <!--<link rel="stylesheet" type="text/css" href="/DataTables-1.10.4/media/css/jquery.dataTables.css">-->
+
+    <script type="text/javascript" charset="utf8" src="~/Content/DataTables-1.10.4/media/js/jquery.js"></script>
+    <script type="text/javascript" charset="utf8" src="~/Content/DataTables-1.10.4/media/js/jquery.dataTables.js"></script>
+
+    <!-- FlashMessage -->
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/jQuery.flashMessage.js"></script>
+
+</head>
+
+<body>
+    <div id="wrapper" class="wrap">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            @Html.Partial("_Header")
+            <div class="collapse navbar-collapse" id="collapse">
+            @Html.Partial("_LoginPartial")
+            @if (Request.IsAuthenticated)
+            {
+                @Html.Action("NotificationIndex", "Notification")
+            }
+            </div>
+        </nav>
+
+        <div class="container main">
+            <br />
+            @Html.Partial("_Flash")
+            @RenderBody()
+        </div>
+    </div>
+
+
+    <footer class="footer container">
+        <hr />
+        <p>Stagio - <a href="https://github.com/PS-A14/Le-Cartel-de-Progue">Le Cartel De Progue</a></p>
+        <p>
+            <a href="https://github.com/maferland">Marc-Antoine Ferland</a> -
+            <a href="https://github.com/marcantoinefortier">Marc-Antoine Fortier</a> -
+            <a href="https://github.com/oroy">Olivier Roy</a> -
+            <a href="https://github.com/reobin">Robin Gagnon</a> -
+            <a href="https://github.com/chandonnet">Francis Chandonnet</a>
+        </p>
+    </footer>
+</body>
+</html>

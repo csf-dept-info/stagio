@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{51E8DF23-3081-4304-9EC6-932C8A3F69C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Stagio.Web.Automation</RootNamespace>
+    <AssemblyName>Stagio.Web.Automation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver">
+      <HintPath>..\packages\Selenium.WebDriver.2.44.0\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Navigation\MenuSelector.cs" />
+    <Compile Include="Navigation\PageNavigator.cs" />
+    <Compile Include="PageObjects\CompanyPages\CreateCompanyPage.cs" />
+    <Compile Include="PageObjects\CompanyPages\EditCompanyPage.cs" />
+    <Compile Include="PageObjects\CoordinatorPages\ChoosePeriodCoordinatorPage.cs" />
+    <Compile Include="PageObjects\CoordinatorPages\CleanDatabasePage.cs" />
+    <Compile Include="PageObjects\CoordinatorPages\InviteCompaniesPage.cs" />
+    <Compile Include="PageObjects\CoordinatorPages\StudentsListCoordinatorPage.cs" />
+    <Compile Include="PageObjects\EmployeePages\CreateEmployeePage.cs" />
+    <Compile Include="PageObjects\EmployeePages\EditEmployeePage.cs" />
+    <Compile Include="PageObjects\EmployeePages\IndexEmployeePage.cs" />
+    <Compile Include="PageObjects\HomePage.cs" />
+    <Compile Include="PageObjects\InternshipApplicationPages\CoordinatorIndexInternshipApplicationPage.cs" />
+    <Compile Include="PageObjects\InternshipApplicationPages\CoordinatorProgressionIndexInternshipApplicationPage.cs" />
+    <Compile Include="PageObjects\InternshipApplicationPages\CreateInternshipApplicationPage.cs" />
+    <Compile Include="PageObjects\InternshipApplicationPages\EmployeeIndexInternshipApplicationPage.cs" />
+    <Compile Include="PageObjects\InternshipApplicationPages\StudentIndexInternshipApplicationPage.cs" />
+    <Compile Include="PageObjects\InternshipOfferPages\CoordinatorIndexInternshipOfferPage.cs" />
+    <Compile Include="PageObjects\InternshipOfferPages\CreateInternshipOfferPage.cs" />
+    <Compile Include="PageObjects\InternshipOfferPages\EmployeeIndexInternshipOfferPage.cs" />
+    <Compile Include="PageObjects\InternshipOfferPages\EmployeePublicatedOffersPage.cs" />
+    <Compile Include="PageObjects\InternshipOfferPages\StudentIndexInternshipOfferPage.cs" />
+    <Compile Include="PageObjects\LoginPage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Selenium\Driver.cs" />
+    <Compile Include="Selenium\StudentPages\CreateStudentProfilePage.cs" />
+    <Compile Include="Selenium\StudentPages\EditStudentProfilePage.cs" />
+    <Compile Include="Selenium\StudentPages\SubscribeStudentPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stagio.Domain\Stagio.Domain.csproj">
+      <Project>{45ae93bd-525b-47cb-8d09-06b747cdfc1b}</Project>
+      <Name>Stagio.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Stagio.TestUtilities\Stagio.TestUtilities.csproj">
+      <Project>{31c84fc9-f135-43ad-8ed1-9b3e5d5c719e}</Project>
+      <Name>Stagio.TestUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Activez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est le suivant : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

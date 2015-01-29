@@ -1,0 +1,104 @@
+﻿@using Stagio.Domain.Application
+@using Stagio.Web.Automation.PageObjects.CoordinatorPages
+
+@{
+    var accountIndexLink = MVC.Home.Index();
+    var editProfileLink = MVC.Home.Index();
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole(RoleNames.Employee))
+    {
+        accountIndexLink = MVC.Employee.Index();
+        editProfileLink = MVC.Employee.Edit();
+    }
+    else if (User.IsInRole(RoleNames.Student))
+    {
+        accountIndexLink = MVC.Student.Index();
+        editProfileLink = MVC.Student.Edit();
+    }
+    else if (User.IsInRole(RoleNames.Coordinator))
+    {
+        accountIndexLink = MVC.Coordinator.Index();
+    }
+}
+
+<ul class="nav navbar-top-links navbar-right">
+    @if (Request.IsAuthenticated)
+    {
+
+        if (@User.IsInRole(RoleNames.Employee))
+        {
+            <!-- CompanyOptions -->
+            <li class="dropdown">
+                <a id="company-dropdown" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-lg fa-briefcase fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-company">
+                    <li>
+                        <a id="edit-company-link" href="@Url.Action(MVC.Company.Edit())"><i class="fa fa-edit fa-fw"> </i>Modifier mon entreprise</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- /.CompanyOptions -->
+        }
+        else if (@User.IsInRole(RoleNames.Coordinator))
+        {
+            <!-- ManagingOptions -->
+            <li class="dropdown">
+                <a id="managing-dropdown" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-lg fa-dashboard fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-managing">
+                    <li>
+                        <a id="edit-company-link" href="@Url.Action(MVC.Coordinator.ImportStudent())"> <span class="fa fa-upload fa-fw"> </span>Importer une liste d'étudiants</a>
+                    </li>
+                    <li>
+                        <a id="students-list-link" href="@Url.Action(MVC.Coordinator.StudentsList())"> <span class="fa fa-th-list fa-fw"> </span>Liste des étudiants</a>
+                    </li>  
+                    <li>
+                        <a id="@InviteCompaniesPage.PAGE_ID" href="@Url.Action(MVC.InviteCompanies.InviteCompanies())"> <span class="fa fa-send"> </span> Inviter les entreprises</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a id="choose-period-link" href="@Url.Action(MVC.Coordinator.ChooseInternshipPeriod())"> <span class="fa fa-calendar fa-fw"> </span>Choisir la période d'ouverture</a>
+                    </li>
+                    <li>
+                        <a id="@CleanDatabasePage.PAGE_ID" href="@Url.Action(MVC.Coordinator.CleanDatabase())"> <span class="fa fa-refresh fa-fw"> </span>Réinitialiser le système</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- /.ManagingOptions -->
+        }
+
+        <!-- ProfileOptions -->
+        <li class="dropdown">
+            <a id="user-dropdown" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-lg fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li>
+                    <a id="index-link" href="@Url.Action(@accountIndexLink)"><i class="fa fa-user fa-fw"> </i>@User.Identity.Name</a>
+                </li>
+
+                @if (!@User.IsInRole(RoleNames.Coordinator))
+                {
+                    <li class="divider"></li>
+                    <li>
+                        <a id="edit-profile-link" href="@Url.Action(@editProfileLink)"><i class="fa fa-edit fa-fw"> </i>Modifier mon profil</a>
+                    </li>
+                }
+                <li class="divider"></li>
+                <li>
+                    <a id="logout-link" href="@Url.Action(MVC.Account.Logout())"><i class="fa fa-sign-out fa-fw"> </i>Se déconnecter</a>
+                </li>
+            </ul>
+        </li>
+        <!-- /.ProfileOptions -->
+    }
+    else
+    {
+        <li>@Html.ActionLink("Se connecter", MVC.Account.Login(), new { id = "login-link" }) </li>
+    }
+</ul>

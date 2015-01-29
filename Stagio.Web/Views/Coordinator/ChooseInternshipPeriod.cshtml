@@ -1,0 +1,64 @@
+﻿@model Stagio.Web.ViewModels.Coordinator.ChoosePeriod
+
+
+@{
+    ViewBag.Title = "ChooseInternshipPeriod";
+}
+
+<h2 id=@Stagio.Web.Automation.PageObjects.CoordinatorPages.ChoosePeriodCoordinatorPage.PAGE_ID>Choisir la période d'ouverture du système</h2>
+<p>Choisir une période d'ouverture du système permettera de bloquer l'accès au système par les employés et les étudiants</p>
+
+@Html.AntiForgeryToken()
+
+@using (Html.BeginForm("ChooseInternshipPeriod", "Coordinator", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <hr />
+        <div class="col-md-offset-2 col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="panel-header">
+                    Choisir les dates d'ouverture et de fermeture du système
+                </div>
+                <div class="panel-body">
+                    <p>Dernière période d'ouverture du système choisie: Du @Model.StartDate.ToShortDateString() au @Model.EndDate.ToShortDateString()</p>
+                    @Html.ValidationMessage("dateError", "", new { @class = "text-danger col-md-offset-1" })
+                    <br /><br />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(m => m.StartDate, new { htmlAttributes = new { @class = "datepicker", id = "start-date-picker" }})
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EndDate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(m => m.EndDate, new { htmlAttributes = new { @class = "datepicker", id = "end-date-picker" }})
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <p>
+                        <input type="submit" value="Sauvegarder" id="choose-period-button" class="btn btn-primary" />
+                        @Html.ActionLink("Retour", MVC.Coordinator.Index(), new { @class = "btn btn-default" })
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- DatePicker Content -->
+<link href="~/Content/css/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+<script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.fr.js"></script>
+
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+        format: "yyyy-mm-dd",
+        startDate: "today",
+        language: "fr",
+        todayHighlight: true,
+        autoclose: true
+    });
+</script>

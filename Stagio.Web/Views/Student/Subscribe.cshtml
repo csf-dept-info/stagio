@@ -1,0 +1,59 @@
+﻿@using Stagio.Domain.Application
+@model Stagio.Web.ViewModels.Student.Subscribe
+
+@{
+    ViewBag.Title = "Inscription";
+}
+
+<h2 id="student-subscribe-page">S'inscrire à Stagio</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Inscription en tant qu'étudiant</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StudentId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.StudentId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+                        <br />
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Suivant" class="btn btn-primary" id="create-student-button" />
+                    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole(RoleNames.Student))
+    {
+        Response.Redirect(Url.Action(MVC.Student.Index(), MVC.Student.Name));
+    }
+
+    if (User.IsInRole(RoleNames.Employee))
+    {
+        Response.Redirect(Url.Action(MVC.Employee.Index(), MVC.Employee.Name));
+    }
+    if (User.IsInRole(RoleNames.Coordinator))
+    {
+        Response.Redirect(Url.Action(MVC.Coordinator.Index(), MVC.Coordinator.Name));
+    }
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

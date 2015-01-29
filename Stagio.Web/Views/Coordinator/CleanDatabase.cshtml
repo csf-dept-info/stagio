@@ -1,0 +1,64 @@
+﻿@model Stagio.Web.ViewModels.Coordinator.CleanDatabase
+
+@{
+    ViewBag.Title = "Ré-initialisation de la base de donnée";
+}
+
+@Html.AntiForgeryToken()
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-md-offset-3 col-md-6">
+            <div class="panel panel-red">
+                <div class="panel-heading">Réinitialiser le système</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <p class="text-center text-danger"> <i class="fa fa-warning"></i> @WebMessage.CoordinatorMessage.CLEAN_DATABASE_VALIDATION</p>
+                        <div class="col-md-offset-4 col-md-6">
+                            <input type="button" value="Réinitialiser" class="btn btn-danger btn-outline" id="submit-clean-database-button" data-toggle="modal" data-target="#myModal" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+                </div>
+                <div class="modal-body">
+
+                    <p>
+                        <i class="fa fa-lg fa-warning text-danger"> </i>
+                        @WebMessage.CoordinatorMessage.CONFIRM_PASSWORD_MESSAGE
+                    </p>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control  form-control-static" } })
+@*                           <!-- @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" }) *@
+                        </div>
+                        <br />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <button class="btn btn-danger" id="delete-draft-validation-button" name="action:DeleteDraft">Confirmer</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+                    <!-- /.modal -->
+}
+

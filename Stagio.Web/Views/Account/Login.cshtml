@@ -1,0 +1,89 @@
+﻿@using Stagio.Domain.Application
+@model Stagio.Web.ViewModels.Account.Login
+
+
+@using (Html.BeginForm())
+{
+    <h2 id="login-page"></h2>
+    @Html.AntiForgeryToken()
+    <div class="row" style="margin-top:40px">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Connectez-vous à votre compte Stagio</strong>
+                </div>
+                <div class="panel-body">
+                    <form role="form" method="POST">
+                        <fieldset>
+                            <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-user"></i>
+                                            </span>
+                                            @Html.TextBoxFor(model => model.Identifier, new { @class = "form-control", @id = "Identifier", placeholder = "Courriel", type = "identifier" })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Identifier, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-lock"></i>
+                                            </span>
+                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @id = "Password", placeholder = "Mot de passe", type = "password" })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.ValidationMessage("loginError", "", new { @class = "text-danger" })
+                                        <button class="btn btn-primary btn-block btn-lg" type="submit" id="login-submit">Se connecter</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="panel-footer ">
+                    Vous n'avez pas de compte? <a href="@Url.Action(MVC.Home.Index())"> Inscrivez-vous ici </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole(RoleNames.Student))
+    {
+        Response.Redirect(Url.Action(MVC.Student.Index(), MVC.Student.Name));
+    }
+    if (User.IsInRole(RoleNames.Employee))
+    {
+        Response.Redirect(Url.Action(MVC.Employee.Index(), MVC.Employee.Name));
+    }
+    if (User.IsInRole(RoleNames.Coordinator))
+    {
+        Response.Redirect(Url.Action(MVC.Coordinator.Index(), MVC.Coordinator.Name));
+    }
+}
+
+<script src="http://java2s.com/style/jquery-1.8.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document.getElementById("login-student")).click(function () {
+            $(document.getElementById("Identifier")).val("@Stagio.TestUtilities.Database.TestData.SubscribedStudent2.Identifier");
+            $(document.getElementById("Password")).val("@Stagio.TestUtilities.Database.TestData.SubscribedStudent2.Password");
+        });
+        $(document.getElementById("login-employee")).click(function () {
+            $(document.getElementById("Identifier")).val("@Stagio.TestUtilities.Database.TestData.Employee1.Identifier");
+            $(document.getElementById("Password")).val("@Stagio.TestUtilities.Database.TestData.Employee1.Password");
+        });
+        $(document.getElementById("login-coordinator")).click(function () {
+            $(document.getElementById("Identifier")).val("@Stagio.TestUtilities.Database.TestData.Coordinator1.Identifier");
+            $(document.getElementById("Password")).val("@Stagio.TestUtilities.Database.TestData.Coordinator1.Password");
+        });
+    });
+</script>

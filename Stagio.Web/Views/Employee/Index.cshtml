@@ -1,0 +1,109 @@
+﻿@using Stagio.Web.Automation.Navigation
+@using Stagio.Web.Automation.PageObjects
+
+@model Stagio.Web.ViewModels.Employee.Index
+
+
+<h2 id=@HomePage.EMPLOYEE_LOGGED_IN_ID>@HomePage.HOME_PAGE_MESSAGE</h2>
+<hr />
+
+<div class="row">
+
+    <!-- Candidatures -->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-ticket fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Html.DisplayFor(model => model.TotalApplicationsCount)</div>
+                        <div>@Html.DisplayNameFor(model => model.TotalApplicationsCount)</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action(MVC.InternshipOffer.EmployeePublicatedOffersIndex())">
+                <div class="panel-footer">
+                    <span class="pull-left">Voir toutes les candidatures</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Offres publiées -->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-plus fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Html.DisplayFor(model => model.PublishedOffersCount)</div>
+                        <div>@Html.DisplayNameFor(model => model.PublishedOffersCount)</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action(MVC.InternshipOffer.Create())" id="intershipoffer-create-button">
+                <div class="panel-footer">
+                    <span class="pull-left">Créer une offre de stage</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Offres refusées-->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-ban fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Html.DisplayFor(model => model.RefusedOffersCount)</div>
+                        <div>@Html.DisplayNameFor(model => model.RefusedOffersCount)</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action(MVC.InternshipOffer.EmployeeIndex())">
+                <div class="panel-footer">
+                    <span class="pull-left">Voir toutes les offres de stage</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Offres en validation -->
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-check fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Html.DisplayFor(model => model.OnValidationOffersCount)</div>
+                        <div>Offres en validation</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action(MVC.InternshipOffer.EmployeeIndex())">
+                <div class="panel-footer">
+                    <span class="pull-left">Voir toutes les offres de stage</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    
+</div>

@@ -1,0 +1,118 @@
+﻿@using Stagio.Domain.Application
+@model Stagio.Web.ViewModels.Employee.Create
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 id=@Stagio.Web.Automation.PageObjects.EmployeePages.CreateEmployeePage.PAGE_ID>@Stagio.Web.Automation.PageObjects.EmployeePages.CreateEmployeePage.PAGE_TITLE</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.CompanyId)
+    
+    <div class="form-horizontal">
+        <hr />
+        <div class="panel panel-primary">
+            <div class="panel-heading">Informations personelles</div>
+            <div class="panel-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Coordonnées</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } }) <i style="color:grey">@WebMessage.DataFormat.PHONE_NUMBER_FORMAT</i>
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExtensionNumber, new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @Html.EditorFor(model => model.ExtensionNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ExtensionNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Identifier, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Identifier, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Identifier, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Mot de passe</div>
+            <div class="panel-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } }) 
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <p>
+                    <input type="submit" value="Créer le compte" id="create-btn" class="btn btn-primary" />
+                    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </div>
+
+    </div>
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole(RoleNames.Student))
+    {
+        Response.Redirect(Url.Action(MVC.Student.Index(), MVC.Student.Name));
+    }
+
+    if (User.IsInRole(RoleNames.Employee))
+    {
+        Response.Redirect(Url.Action(MVC.Employee.Index(), MVC.Employee.Name));
+    }
+    if (User.IsInRole(RoleNames.Coordinator))
+    {
+        Response.Redirect(Url.Action(MVC.Coordinator.Index(), MVC.Coordinator.Name));
+    }
+}

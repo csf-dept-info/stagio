@@ -1,0 +1,105 @@
+﻿@using Stagio.Domain.Application
+@model Stagio.Web.ViewModels.Company.Create
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Créer son entreprise</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                Informations générales
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Description, new { id = "Description", @class = "form-control", @rows = "6" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        <i class="text-muted">@WebMessage.DataFormat.PHONE_NUMBER_FORMAT</i>
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WebSite, new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.WebSite, new { htmlAttributes = new { @class = "form-control" } })
+                        <i class="text-muted">@WebMessage.DataFormat.WEBSITE_URL_FORMAT</i>
+                        @Html.ValidationMessageFor(model => model.WebSite, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <p class="col-md-offset-2">
+                    <input type="submit" id="next-btn" value="Créer l'entreprise" class="btn btn-primary" />
+                    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-default" })
+                </p>
+            </div>
+
+        </div>
+    </div>
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole(RoleNames.Student))
+    {
+        Response.Redirect(Url.Action(MVC.Student.Index(), MVC.Student.Name));
+    }
+
+    if (User.IsInRole(RoleNames.Employee))
+    {
+        Response.Redirect(Url.Action(MVC.Employee.Index(), MVC.Employee.Name));
+    }
+    if (User.IsInRole(RoleNames.Coordinator))
+    {
+        Response.Redirect(Url.Action(MVC.Coordinator.Index(), MVC.Coordinator.Name));
+    }
+}
+
+

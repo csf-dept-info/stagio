@@ -1,0 +1,55 @@
+﻿@model List<Stagio.Web.ViewModels.Coordinator.ImportStudentViewModel>
+@{
+    ViewBag.Title = "Valider l'import";
+}
+<h2>Valider l'importation</h2>
+
+@using (Html.BeginForm("ValidateImport", "Coordinator", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                Données à importer
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Matricule</th>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (var i = 0; i < Model.Count(); i++)
+                            {
+                                <tr>
+                                    <td hidden="hidden">@Html.EditorFor(x => x[i].Identifier)</td>
+                                    <td hidden="hidden">@Html.EditorFor(x => x[i].FirstName)</td>
+                                    <td hidden="hidden">@Html.EditorFor(x => x[i].LastName)</td>
+
+                                    <td>@Html.DisplayFor(x => x[i].Identifier)</td>
+                                    <td>@Html.DisplayFor(x => x[i].FirstName)</td>
+                                    <td>@Html.DisplayFor(x => x[i].LastName)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <p class="col-md-offset-2">
+                    <input type="submit" value="Importer les comptes étudiants" id="create-btn" class="btn btn btn-primary" />
+                    @Html.ActionLink("Annuler", MVC.Coordinator.Index(), new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </div>
+
+    </div>
+}

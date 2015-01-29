@@ -1,0 +1,49 @@
+﻿@model Stagio.Web.ViewModels.InternshipApplication.Create
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2 id="application-create-page">Postuler pour un stage</h2>
+
+@using (Html.BeginForm("Create", "InternshipApplication", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>@Html.Label(Model.InternshipOffer.Company.Name)</h4>
+        <hr />        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.InternshipOfferId)
+        @Html.HiddenFor(model => model.StudentId)
+        <div class="panel panel-primary">
+            
+            <div class="panel-heading">
+                Téléversez vos fichiers
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Resume, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Resume, new { type = "file" })
+                        @Html.ValidationMessageFor(model => model.Resume)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CoverLetter, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.CoverLetter, new { type = "file" })
+                        @Html.ValidationMessageFor(model => model.CoverLetter)
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <p class="col-md-offset-2">
+                    <input type="submit" id="confirm-button" value="Postuler" class="btn btn-primary" />
+                    @Html.ActionLink("Annuler", MVC.InternshipOffer.StudentIndex(), new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </div>
+    </div>
+}

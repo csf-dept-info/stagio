@@ -1,0 +1,141 @@
+﻿@model IEnumerable<Stagio.Web.ViewModels.InternshipApplication.CoordinatorProgressionIndex>
+
+    <h2 id="application-coordinator-index-page">Suivi des candidatures</h2>
+    <hr />
+    <div class="panel-primary">
+        <div class="panel-heading" id="application-count">
+            @Model.Count() étudiant(s)
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table id="offers-table" class="display dataTable table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                            <th>@Html.DisplayNameFor(model => model.BestProgression.InternshipOfferTitle)</th>
+                            <th>@Html.DisplayNameFor(model => model.BestProgression.CompanyName)</th>
+                            <th>@Html.DisplayNameFor(model => model.BestProgression.ProgressionPercentage)</th>
+                            <th>@Html.DisplayNameFor(model => model.BestProgression.LastProgressionUpdateDate)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @{var progressionID = 1;}
+
+                        @foreach (var item in Model)
+                        {
+                            <tr id="@item.Id">
+                                @{
+                                var internshipOfferId = item.BestProgression.Id;
+                                var internshipOfferTitle = item.BestProgression.InternshipOfferTitle;
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                </td>
+                                    <td>
+                                        @if (item.BestProgression.ProgressionPercentage != 0)
+                                        {
+                                            @Html.ActionLink(@internshipOfferTitle, MVC.InternshipOffer.Details(internshipOfferId), new {id = "internship-offer-details" + progressionID})
+                                        }
+                                        else
+                                        {
+                                            <p>
+                                                @WebMessage.GlobalMessage.NOT_APPLICABLE
+                                            </p>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.BestProgression.ProgressionPercentage != 0)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.BestProgression.CompanyName)
+                                        }
+                                        else
+                                        {
+                                            <p>
+                                                @WebMessage.GlobalMessage.NOT_APPLICABLE
+                                            </p>
+                                        }
+                                    </td>
+                                <td>
+                                    <div>
+                                        @{
+                                            var percentage = Html.DisplayFor(modelItem => item.BestProgression.ProgressionPercentage);
+                                            var progressBarDivStyle = "progress progress-striped active";
+                                            var progressBarStyle = "progress-bar progress-bar-striped";
+
+                                            if (percentage.ToString() == "100")
+                                            {
+                                                progressBarDivStyle = "progress progress-striped";
+                                                progressBarStyle = "progress-bar progress-bar-success";
+                                            }
+                                        }
+                                        <p>
+                                            <strong>@Html.DisplayFor(modelItem => item.BestProgression.ProgressionDescription)</strong>
+                                        </p>
+
+                                        <div class="@progressBarDivStyle">
+                                            <div class="@progressBarStyle" role="progressbar" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100" style="width: @percentage%">
+                                                <span class="sr-only">@percentage% complété (success)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                    <td>
+                                        @if (item.BestProgression.ProgressionPercentage != 0)
+                                        {
+                                            <p class="text-center">
+                                                Vous avez postulé le  <br />
+                                                <strong>@Html.DisplayFor(modelItem => item.BestProgression.LastProgressionUpdateDate)</strong>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p>
+                                                @WebMessage.GlobalMessage.NOT_APPLICABLE
+                                            </p>
+                                        }
+                                    </td>
+                                }
+                                <td>
+                                     @Html.ActionLink("Voir toutes les candidatures", MVC.InternshipApplication.GetApplicationsForSpecificStudent(item.StudentId), new { id = "student-application-" + progressionID, @class = "btn btn-primary" })
+                                </td>
+                            </tr>
+                                progressionID++;
+                        }
+                        </tbody>
+                        </table>
+                    </div>
+        </div>
+    </div>
+    <!-- DataTables Scripts -->
+    <script src="~/Content/js/plugins/metisMenu/metisMenu.min.js"></script>
+    <script src="~/Content/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="~/Content/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="~/Content/js/sb-admin-2.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('table.display').DataTable({
+                "info": false,
+                "language": {
+                    "search": "<i class=\"fa fa-search\"></i> Rechercher une candidature ",
+                    "lengthMenu": "_MENU_ enregistrements par page",
+                    "zeroRecords": "Rien n'a été trouvé",
+                    "info": "Page _PAGE_ de _PAGES_",
+                    "infoFiltered": "(_MAX_ enregistrements filtrés)",
+                    "paginate": {
+                        first: "Premier",
+                        previous: "Précédent",
+                        next: "Suivant",
+                        last: "Dernier"
+                    }
+                },
+                "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-right"ip>>>'
+            });
+        })
+    </script>

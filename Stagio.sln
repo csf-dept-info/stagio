@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagio.Web", "Stagio.Web\Stagio.Web.csproj", "{E6BC1DBC-A8A0-4E62-AAB5-A9A0145B704C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagio.Web.UnitTests", "Stagio.Web.UnitTests\Stagio.Web.UnitTests.csproj", "{DFC4396B-EEC4-4AA2-8501-F87117B53754}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagio.DataLayer", "Stagio.DataLayer\Stagio.DataLayer.csproj", "{BF50FE44-4FF2-4E9E-B7A0-A7523B2E374A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagio.Domain", "Stagio.Domain\Stagio.Domain.csproj", "{45AE93BD-525B-47CB-8D09-06B747CDFC1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagio.TestUtilities", "Stagio.TestUtilities\Stagio.TestUtilities.csproj", "{31C84FC9-F135-43AD-8ED1-9B3E5D5C719E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagio.Web.Automation", "Stagio.Web.Automation\Stagio.Web.Automation.csproj", "{51E8DF23-3081-4304-9EC6-932C8A3F69C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stagio.Web.AcceptanceTests", "Stagio.Web.AcceptanceTests\Stagio.Web.AcceptanceTests.csproj", "{B43A2DA6-3172-4070-BF8F-FDED3B83EFC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{39BD8E88-9631-40B2-A078-585B925B36D3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6BC1DBC-A8A0-4E62-AAB5-A9A0145B704C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6BC1DBC-A8A0-4E62-AAB5-A9A0145B704C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6BC1DBC-A8A0-4E62-AAB5-A9A0145B704C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6BC1DBC-A8A0-4E62-AAB5-A9A0145B704C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC4396B-EEC4-4AA2-8501-F87117B53754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC4396B-EEC4-4AA2-8501-F87117B53754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC4396B-EEC4-4AA2-8501-F87117B53754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC4396B-EEC4-4AA2-8501-F87117B53754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF50FE44-4FF2-4E9E-B7A0-A7523B2E374A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF50FE44-4FF2-4E9E-B7A0-A7523B2E374A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF50FE44-4FF2-4E9E-B7A0-A7523B2E374A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF50FE44-4FF2-4E9E-B7A0-A7523B2E374A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45AE93BD-525B-47CB-8D09-06B747CDFC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45AE93BD-525B-47CB-8D09-06B747CDFC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45AE93BD-525B-47CB-8D09-06B747CDFC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45AE93BD-525B-47CB-8D09-06B747CDFC1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31C84FC9-F135-43AD-8ED1-9B3E5D5C719E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31C84FC9-F135-43AD-8ED1-9B3E5D5C719E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31C84FC9-F135-43AD-8ED1-9B3E5D5C719E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31C84FC9-F135-43AD-8ED1-9B3E5D5C719E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E8DF23-3081-4304-9EC6-932C8A3F69C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E8DF23-3081-4304-9EC6-932C8A3F69C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E8DF23-3081-4304-9EC6-932C8A3F69C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E8DF23-3081-4304-9EC6-932C8A3F69C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B43A2DA6-3172-4070-BF8F-FDED3B83EFC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43A2DA6-3172-4070-BF8F-FDED3B83EFC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B43A2DA6-3172-4070-BF8F-FDED3B83EFC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B43A2DA6-3172-4070-BF8F-FDED3B83EFC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

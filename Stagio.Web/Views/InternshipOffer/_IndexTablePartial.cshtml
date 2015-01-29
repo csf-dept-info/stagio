@@ -1,0 +1,68 @@
+﻿@using Stagio.Domain.Application
+@model IEnumerable<Stagio.Web.ViewModels.InternshipOffer.Index>
+
+    <div class="table-responsive">
+        <table id="offers-table" class="display dataTable table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Company.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PublicationDate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{var offerID = 1;}
+
+                @foreach (var item in Model)
+                {
+                    <tr id="@item.Id">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Company.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShortTitle, new { id = "Title" + item.Id })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShortDescription, new { id = "Description" + item.Id })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PublicationDate, new { id = "PublicationDate" + item.Id })
+                        </td>
+                        <td align="center">
+                            @if (User.IsInRole(RoleNames.Employee) && (item.Status == Stagio.Domain.Entities.InternshipOffer.OfferStatus.Draft || item.Status == Stagio.Domain.Entities.InternshipOffer.OfferStatus.Refused))
+                            {
+                                @Html.ActionLink("Éditer", MVC.InternshipOffer.Edit(item.Id), new { id = "internship-offer-edit-" + offerID, @class = "btn btn-warning" })
+                            }
+                            else if ((User.IsInRole(RoleNames.Coordinator) || User.IsInRole(RoleNames.Employee)) && item.Status == Stagio.Domain.Entities.InternshipOffer.OfferStatus.Publicated)
+                            {
+                                <div style="padding: 5px">
+                                    @Html.ActionLink("Voir l'offre complète", MVC.InternshipOffer.Details(item.Id), new { id = "internship-offer-details-" + offerID, @class = "btn btn-primary" })
+                                </div>
+                                <div style="padding: 5px">
+                                    @Html.ActionLink("Voir les candidatures", MVC.InternshipApplication.EmployeeApplicationIndex(item.Id), new { id = "internship-offer-applications-" + offerID, @class = "btn btn-primary" })
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Voir l'offre complète", MVC.InternshipOffer.Details(item.Id), new { id = "internship-offer-details-" + offerID, @class = "btn btn-primary" })
+                            }
+                        </td>
+                    </tr>
+
+                            offerID++;
+                }
+            </tbody>
+        </table>
+    </div>
+

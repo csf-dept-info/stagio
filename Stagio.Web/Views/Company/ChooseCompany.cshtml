@@ -1,0 +1,68 @@
+﻿@using Stagio.Domain.Application
+@model Stagio.Web.ViewModels.Company.ChooseCompany
+
+@{
+    ViewBag.Title = "ChooseCompany";
+}
+<link href="~/Content/css/dropdownlist.css" rel="stylesheet" />
+<script src="~/Content/js/dropdownlist.js"></script>
+<h2 id="choose-company-page">Choisir son entreprise</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                Informations générales
+            </div>
+
+            <div class="panel-body">
+                <br/>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SelectedCompanyId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.SelectedCompanyId, new SelectList(Model.CompaniesList, "Id", "Name"),"Sélectionnez votre entreprise", new { @class = "turnintodropdown_demo2"})
+                        @Html.ValidationMessageFor(model => model.SelectedCompanyId)
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="text-info">
+                    <p>
+                        <i class="fa fa-info"></i>
+                        Si votre entreprise ne se trouve pas dans la liste, veuillez sélectionner "Nouvelle entreprise" afin de la créer.
+                    </p>
+                </div>
+                <p class="col-md-offset-2">
+                    <input type="submit" id="continue-employee-subscribe-process-button" value="Suivant" class="btn btn-primary" />
+                    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole(RoleNames.Student))
+    {
+        Response.Redirect(Url.Action(MVC.Student.Index(), MVC.Student.Name));
+    }
+
+    if (User.IsInRole(RoleNames.Employee))
+    {
+        Response.Redirect(Url.Action(MVC.Employee.Index(), MVC.Employee.Name));
+    }
+    if (User.IsInRole(RoleNames.Coordinator))
+    {
+        Response.Redirect(Url.Action(MVC.Coordinator.Index(), MVC.Coordinator.Name));
+    }
+}

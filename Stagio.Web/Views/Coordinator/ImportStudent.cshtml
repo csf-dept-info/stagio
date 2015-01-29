@@ -1,0 +1,37 @@
+﻿@model Stagio.Web.ViewModels.Coordinator.ImportStudent
+
+@{
+    ViewBag.Title = "Importation des étudiants";
+}
+
+<h2>Importer une liste d'étudiants</h2>
+
+@Html.AntiForgeryToken()
+
+@using (Html.BeginForm("ImportStudent", "Coordinator", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <hr />
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Sélectionner un fichier
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.File, new { type = "file" })
+                        @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <p>
+                    <input type="submit" value="Importer" id="create-btn" class="btn btn-primary" />
+                    @Html.ActionLink("Annuler", MVC.Coordinator.Index(), new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,125 @@
+@using Stagio.Domain.Application
+@using Stagio.Web.Automation.Navigation
+@model IEnumerable<Stagio.Web.ViewModels.Notification.Notification>
+
+@{
+    var internshipOffersLink = MVC.Home.Index();
+    var internshipApplicationsLink = MVC.Home.Index();
+    string internshipApplicationsButtonId = "#";
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole(RoleNames.Employee))
+    {
+        internshipOffersLink = MVC.InternshipOffer.EmployeeIndex();
+        
+        internshipApplicationsLink = MVC.InternshipOffer.EmployeePublicatedOffersIndex();
+        internshipApplicationsButtonId = PageNavigator.InternshipApplication.EmployeeIndex.BUTTON_ID;
+    }
+    else if (User.IsInRole(RoleNames.Student))
+    {
+        internshipOffersLink = MVC.InternshipOffer.StudentIndex();
+        
+        internshipApplicationsLink = MVC.InternshipApplication.StudentApplicationIndex();
+        internshipApplicationsButtonId = PageNavigator.InternshipApplication.StudentIndex.BUTTON_ID;
+    }
+    else if (User.IsInRole(RoleNames.Coordinator))
+    {
+        internshipOffersLink = MVC.InternshipOffer.CoordinatorIndex();
+
+        internshipApplicationsLink = MVC.InternshipOffer.CoordinatorPublicatedOffersIndex();
+        internshipApplicationsButtonId = "coordinator-internship-applications-button";
+    }
+    
+    <ul class="nav navbar-top-links navbar-left">
+        <li class="nav-divider"></li>
+        <li class="nav">
+            <a href="@Url.Action(internshipOffersLink)" id=@PageNavigator.InternshipOffer.Index.BUTTON_ID><i class="fa fa-lg fa-plus fa-fw"></i>Offres de stage</a>
+        </li>
+        <li class="nav">
+            <a href="@Url.Action(internshipApplicationsLink)" id=@internshipApplicationsButtonId><i class="fa fa-lg fa-ticket fa-fw"></i>Candidatures</a>
+        </li>
+        @if (User.IsInRole(RoleNames.Coordinator))
+        {
+        <li class="nav">
+            <a href="@Url.Action(@MVC.InternshipApplication.CoordinatorApplicationIndex())" id="progression-btn"><i class="fa fa-lg fa-tasks fa-fw"></i>Suivi des candidatures</a>
+        </li>
+        }
+    </ul>
+
+    <ul class="nav navbar-top-links navbar-right">
+        <!-- Notifications -->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="notification-button">
+                @if (Model.Any(x => x.Unseen))
+                {
+                    <i class="fa fa-lg fa-bell fa-fw noti_Container"></i>
+                    <div class="noti_bubble">@Model.Count(x => x.Unseen)</div>
+                    <i class="fa fa-caret-down"></i>
+                }
+                else
+                {
+                    <i class="fa fa-lg fa-bell fa-fw"></i>
+                    <i class="fa fa-caret-down"></i>
+                }
+            </a>
+
+            <ul class="dropdown-menu dropdown-alerts">
+                @if (!Model.Any())
+                {
+                    <li>
+                        <div>
+                            <i class="fa fa-ban fa-fw"></i> @WebMessage.NotificationMessage.NO_NOTIFICATION_MESSAGE
+                            <span class="pull-right text-muted small"></span>
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a>
+                            <div>
+                                <strong>Notifications</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                        
+                    foreach (var notif in Model)
+                    {
+                        if (notif.Unseen)
+                        {
+                            <li class="new-notif">
+                                <a id=@notif.Id href=@Url.Action(MVC.Notification.RedirectToNotificationPage(notif.Id))>
+                                    <div>
+                                        <i class="fa fa-plus fa-fw"></i> @notif.Object
+                                        <span class="pull-right text-muted small">@notif.FormatTime()</span>
+                                        <i style="color:#ffa433" class="fa fa-star fa-fw"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a id=@notif.Id href=@Url.Action(MVC.Notification.RedirectToNotificationPage(notif.Id))>
+                                    <div>
+                                        <i class="fa fa-plus fa-fw"></i> @notif.Object
+                                        <span class="pull-right text-muted small">@notif.FormatTime()</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                        }
+                    }
+                }
+            </ul>
+            <!-- /.dropdown-alerts -->
+        </li>
+        <!-- /.Notifications -->
+    </ul>
+}
+
+

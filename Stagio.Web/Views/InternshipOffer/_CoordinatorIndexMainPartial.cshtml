@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Stagio.Web.ViewModels.InternshipOffer.Index>
+
+@{
+    List<Stagio.Web.ViewModels.InternshipOffer.Index> refusedList = new List<Stagio.Web.ViewModels.InternshipOffer.Index>();
+    List<Stagio.Web.ViewModels.InternshipOffer.Index> toValidateList = new List<Stagio.Web.ViewModels.InternshipOffer.Index>();
+    List<Stagio.Web.ViewModels.InternshipOffer.Index> publicatedList = new List<Stagio.Web.ViewModels.InternshipOffer.Index>();
+}
+
+@foreach (var offer in Model)
+{
+    switch (offer.Status)
+    {
+        case Stagio.Domain.Entities.InternshipOffer.OfferStatus.Refused:
+            refusedList.Add(offer);
+            break;
+        case Stagio.Domain.Entities.InternshipOffer.OfferStatus.OnValidation:
+            toValidateList.Add(offer);
+            break;
+        case Stagio.Domain.Entities.InternshipOffer.OfferStatus.Publicated:
+            publicatedList.Add(offer);
+            break;
+        default:
+            break;
+    }
+}
+
+<!-- Nav tabs -->
+@*TODO Change the css so each tab as a specific/meaningful color*@
+<ul class="nav nav-tabs">
+    <li class="">
+        <input type="hidden" name="refused-count" value="@refusedList.Count()">
+        <a href="#refused-pills" data-toggle="tab" aria-expanded="true">Refusées (@refusedList.Count())</a>
+    </li>
+    <li class="active">
+        <input type="hidden" name="onvalidation-count" value="@toValidateList.Count()">
+        <a href="#to-validate-pills" data-toggle="tab" aria-expanded="false">À valider (@toValidateList.Count())</a>
+    </li>
+    <li class="">
+        <input type="hidden" name="publicated-count" value="@publicatedList.Count()">
+        <a href="#publicated-pills" data-toggle="tab" aria-expanded="false">Publiées (@publicatedList.Count())</a>
+    </li>
+</ul>
+
+<br />
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane fade" id="refused-pills">
+        @Html.Partial("_IndexTablePartial", refusedList)
+    </div>
+    <div class="tab-pane fade active in" id="to-validate-pills">
+        @Html.Partial("_IndexTablePartial", toValidateList)
+    </div>
+    <div class="tab-pane fade" id="publicated-pills">
+        @Html.Partial("_IndexTablePartial", publicatedList)
+    </div>
+</div>

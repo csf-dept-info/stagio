@@ -1,0 +1,43 @@
+﻿@using Stagio.Web.Automation.PageObjects
+
+@model Stagio.Web.ViewModels.Student.Index
+
+@{
+    ViewBag.Title = "Accueil";
+}
+
+<h2 id=@HomePage.STUDENT_LOGGED_IN_ID>@HomePage.HOME_PAGE_MESSAGE</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identifier)
+        </th>
+        <th></th>
+    </tr>
+    
+    <tr>
+        <td id="LastName">
+            @Html.DisplayFor(model => model.LastName, new { id = "LastName" })
+        </td>
+        <td id="FirstName">
+            @Html.DisplayFor(model => model.FirstName, new { id = "FirstName" })
+        </td>
+        <td id="PhoneNumber">
+            @Html.DisplayFor(model => model.PhoneNumber, new { id = "PhoneNumber" })
+        </td>
+        <td id="Identifier">
+            @Html.DisplayFor(model => model.Identifier, new { id = "Identifier" })
+        </td>
+    </tr>
+
+</table>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Stagio.Web.ViewModels.InternshipOffer.Index>
+
+@{
+    var refusedList = new List<Stagio.Web.ViewModels.InternshipOffer.Index>();
+    var draftList = new List<Stagio.Web.ViewModels.InternshipOffer.Index>();
+    var onvalidationList = new List<Stagio.Web.ViewModels.InternshipOffer.Index>();
+    var publicatedList = new List<Stagio.Web.ViewModels.InternshipOffer.Index>();
+}
+
+@foreach (var offer in Model)
+{
+    switch (offer.Status)
+    {
+        case Stagio.Domain.Entities.InternshipOffer.OfferStatus.Refused:
+            refusedList.Add(offer);
+            break;
+        case Stagio.Domain.Entities.InternshipOffer.OfferStatus.Draft:
+            draftList.Add(offer);
+            break;
+        case Stagio.Domain.Entities.InternshipOffer.OfferStatus.OnValidation:
+            onvalidationList.Add(offer);
+            break;
+            case Stagio.Domain.Entities.InternshipOffer.OfferStatus.Publicated:
+            publicatedList.Add(offer);
+            break;
+        default:
+            break;
+    }
+}
+
+<!-- Nav tabs -->
+@*TODO Change the css so each tab as a specific/meaningful color*@
+<ul class="nav nav-tabs">
+    <li class="active">
+        <input type="hidden" name="refused-count" value="@refusedList.Count()">
+        <a href="#refused-pills" data-toggle="tab" aria-expanded="true">Refusées (@refusedList.Count())</a>
+    </li>
+    <li class="">
+        <input type="hidden" name="draft-count" value="@draftList.Count()">
+        <a id="draft-tab" href="#draft-pills" data-toggle="tab" aria-expanded="false">Brouillons (@draftList.Count())</a>
+    </li>
+    <li class="">
+        <input type="hidden" name="onvalidation-count" value="@onvalidationList.Count()">
+        <a href="#onvalidation-pills" data-toggle="tab" aria-expanded="false">En validation (@onvalidationList.Count())</a>
+    </li>
+    <li class="">
+        <input type="hidden" name="publicated-count" value="@publicatedList.Count()">
+        <a href="#publicated-pills" data-toggle="tab" aria-expanded="false">Publiées (@publicatedList.Count())</a>
+    </li>
+</ul>
+
+<br />
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="refused-pills">
+        @Html.Partial("_IndexTablePartial", refusedList)
+    </div>
+    <div class="tab-pane fade" id="draft-pills">
+        @Html.Partial("_IndexTablePartial", draftList)
+    </div>
+    <div class="tab-pane fade" id="onvalidation-pills">
+        @Html.Partial("_IndexTablePartial", onvalidationList)
+    </div>
+    <div class="tab-pane fade" id="publicated-pills">
+        @Html.Partial("_IndexTablePartial", publicatedList)
+    </div>
+</div>

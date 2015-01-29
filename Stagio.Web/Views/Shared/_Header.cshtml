@@ -1,0 +1,36 @@
+﻿@using Stagio.Domain.Application
+
+@{
+    var accountIndexLink = MVC.Home.Index();
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole(RoleNames.Employee))
+    {
+        accountIndexLink = MVC.Employee.Index();
+    }
+    else if (User.IsInRole(RoleNames.Student))
+    {
+        accountIndexLink = MVC.Student.Index();
+    }
+    else if (User.IsInRole(RoleNames.Coordinator))
+    {
+        accountIndexLink = MVC.Coordinator.Index();
+    }
+}
+
+<div class="navbar-header">
+
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+
+    <a class="nav" href="@Url.Action(@accountIndexLink)">
+        <img src="~/Ressources/Logo_2(990x430).png" alt="Stagio" height="50" width="115" />
+    </a>
+
+</div>
