@@ -149,6 +149,9 @@ namespace Stagio.Web.Controllers
 
             _internshipOfferRepository.Update(internshipOffer);
 
+            _notificationService.GroupNotification(RoleNames.Student,
+                WebMessage.NotificationMessage.NEW_INTERNSHIP_OFFER_PUBLICATED, "InternshipOffer", "StudentIndex");
+
             const string feedbackMessage = WebMessage.InternshipOfferMessage.OFFER_ACCEPTED_SUCCESS;
 
             return RedirectToAction(MVC.InternshipOffer.CoordinatorIndex().Success(feedbackMessage));

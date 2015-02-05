@@ -22,6 +22,8 @@ namespace Stagio.Web.UnitTests.Services
         private IEntityRepository<Coordinator> _coordinatorRepository;
         private IEntityRepository<Employee> _employeeRepository;
         private IEntityRepository<Notification> _notificationRepository;
+        private IEntityRepository<ApplicationUser> _applicationUserRepository;
+        private IHttpContextService _httpContext;
 
         [TestInitialize]
         public void Initialize()
@@ -32,7 +34,9 @@ namespace Stagio.Web.UnitTests.Services
 
             _notificationService = new NotificationService(_notificationRepository, 
                                                         _coordinatorRepository,
-                                                        _employeeRepository);
+                                                        _employeeRepository,
+                                                        _applicationUserRepository,
+                                                        _httpContext);
         }
 
         [Ignore]

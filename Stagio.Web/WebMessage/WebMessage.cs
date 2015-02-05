@@ -159,6 +159,8 @@ namespace Stagio.Web
 
         public static class NotificationMessage
         {
+            public static string NEW_INTERNSHIP_OFFER_PUBLICATED = "Une nouvelle offre de stage est maintenant disponible.";
+
             public static string NewInternshipOfferCreatedMessage(string company, string employee)
             {
                 return employee + " de " + company + "  a ajouté une nouvelle offre de stage.";
