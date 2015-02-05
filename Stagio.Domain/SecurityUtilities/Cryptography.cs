@@ -12,5 +12,14 @@ namespace Stagio.Domain.SecurityUtilities
 
             return BitConverter.ToString(key);
         }
+
+        public static string GenerateUnique()      
+        {
+            Guid g = Guid.NewGuid();
+            string guidString = Convert.ToBase64String(g.ToByteArray());
+            guidString = guidString.Replace("=", "");
+            guidString = guidString.Replace("+", "");
+            return guidString;
+        }
     }
 }
