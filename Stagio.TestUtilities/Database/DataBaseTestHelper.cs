@@ -15,6 +15,7 @@ namespace Stagio.TestUtilities.Database
         private readonly IEntityRepository<InternshipOffer> _internshipOfferRepository;
         private readonly IEntityRepository<InternshipPeriod> _internshipPeriodRepository; 
         private readonly IEntityRepository<Notification> _notificationRepository;
+        private readonly IEntityRepository<DepartmentalArchives> _departementalArchivesRepository; 
 
         private int _companyId1;
         private int _companyId2;
@@ -51,6 +52,7 @@ namespace Stagio.TestUtilities.Database
             _internshipOfferRepository = new EfEntityRepository<InternshipOffer>();
             _internshipPeriodRepository = new EfEntityRepository<InternshipPeriod>();
             _notificationRepository = new EfEntityRepository<Notification>();
+            _departementalArchivesRepository = new EfEntityRepository<DepartmentalArchives>();
         }
 
         public void SeedTables()
@@ -63,6 +65,7 @@ namespace Stagio.TestUtilities.Database
             AddInternshipApplications();
             AddNotifications();
             AddInternshipPeriod();
+            AddDepartmentalArchives();
         }
 
         private void AddNotifications()
@@ -298,6 +301,15 @@ namespace Stagio.TestUtilities.Database
             var internshipPeriod1 = TestData.ValidInternshipPeriod;
             
             _internshipPeriodRepository.Add(internshipPeriod1);
+        }
+
+        public void AddDepartmentalArchives()
+        {
+            var departmentalArchive1 = TestData.Archive1;
+            var departmentalArchive2 = TestData.Archive2;
+
+            _departementalArchivesRepository.Add(departmentalArchive1);
+            _departementalArchivesRepository.Add(departmentalArchive2);
         }
 
         private static void EncryptPasswordBeforeAddingToDataBase(ApplicationUser user)

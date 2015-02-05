@@ -2,7 +2,7 @@
 
 namespace Stagio.Domain.Entities
 {
-    class DepartmentalArchives : Entity
+    public class DepartmentalArchives : Entity
     {
         public int StudentsCount { get; set; }
 

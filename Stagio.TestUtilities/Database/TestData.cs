@@ -1021,5 +1021,53 @@ namespace Stagio.TestUtilities.Database
             }
         }
         #endregion
+
+        #region Archives
+
+        static public DepartmentalArchives Archive1
+        {
+            get
+            {
+                var archive = new DepartmentalArchives
+                {
+                    StudentsCount = 20,
+                    StudentsWithInternship = 18,
+                    StudentsWithoutInternship = 2,
+                    EmployeesCount = 25,
+                    CompaniesCount = 17,
+                    InternshipOffersCount = 19,
+                    PeriodStartDate = DateTime.Today.AddMonths(-3),
+                    PeriodEndDate = DateTime.Today.AddMonths(-1),
+                    InterviewsCount = 22,
+                    InternshipApplicationsCount = 31,
+                    CompanyOffersCount = 19
+                };
+                return archive;
+            }
+        }
+
+        static public DepartmentalArchives Archive2
+        {
+            get
+            {
+                var archive = new DepartmentalArchives
+                {
+                    StudentsCount = 35,
+                    StudentsWithInternship = 32,
+                    StudentsWithoutInternship = 3,
+                    EmployeesCount = 18,
+                    CompaniesCount = 14,
+                    InternshipOffersCount = 15,
+                    PeriodStartDate = DateTime.Today.AddMonths(-12),
+                    PeriodEndDate = DateTime.Today.AddMonths(-10),
+                    InterviewsCount = 48,
+                    InternshipApplicationsCount = 37,
+                    CompanyOffersCount = 34
+                };
+                return archive;
+            }
+        }
+
+        #endregion
     }
 }
