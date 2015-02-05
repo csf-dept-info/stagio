@@ -85,6 +85,7 @@ namespace Stagio.Web
             kernel.Bind<IInternshipPeriodService>().To<InternshipPeriodService>().InRequestScope();
             kernel.Bind<INotificationService>().To<NotificationService>().InRequestScope();
             kernel.Bind<IEmployeeService>().To<EmployeeService>().InRequestScope();
+            kernel.Bind<IArchiveService>().To<ArchiveService>().InRequestScope();
 
             //database
             kernel.Bind<IDatabaseHelper>().To<EfDatabaseHelper>().InRequestScope();

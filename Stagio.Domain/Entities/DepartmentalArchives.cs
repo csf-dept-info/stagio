@@ -8,17 +8,13 @@ namespace Stagio.Domain.Entities
 
         public int StudentsWithInternship { get; set; }
 
-        public int StudentsWithoutInternship { get; set; }
-
         public int EmployeesCount { get; set; }
 
         public int CompaniesCount { get; set; }
 
         public int InternshipOffersCount { get; set; }
 
-        public DateTime PeriodStartDate { get; set; }
-
-        public DateTime PeriodEndDate { get; set; }
+        public InternshipPeriod InternshipPeriod { get; set; }
 
         public int InterviewsCount { get; set; }
 

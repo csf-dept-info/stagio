@@ -1032,12 +1032,10 @@ namespace Stagio.TestUtilities.Database
                 {
                     StudentsCount = 20,
                     StudentsWithInternship = 18,
-                    StudentsWithoutInternship = 2,
                     EmployeesCount = 25,
                     CompaniesCount = 17,
                     InternshipOffersCount = 19,
-                    PeriodStartDate = DateTime.Today.AddMonths(-3),
-                    PeriodEndDate = DateTime.Today.AddMonths(-1),
+                    InternshipPeriod = new InternshipPeriod{EndDate = DateTime.Today.AddMonths(-3), StartDate = DateTime.Today.AddMonths(-1)},
                     InterviewsCount = 22,
                     InternshipApplicationsCount = 31,
                     CompanyOffersCount = 19
@@ -1054,12 +1052,10 @@ namespace Stagio.TestUtilities.Database
                 {
                     StudentsCount = 35,
                     StudentsWithInternship = 32,
-                    StudentsWithoutInternship = 3,
                     EmployeesCount = 18,
                     CompaniesCount = 14,
                     InternshipOffersCount = 15,
-                    PeriodStartDate = DateTime.Today.AddMonths(-12),
-                    PeriodEndDate = DateTime.Today.AddMonths(-10),
+                    InternshipPeriod = new InternshipPeriod { EndDate = DateTime.Today.AddMonths(-12), StartDate = DateTime.Today.AddMonths(-10) },
                     InterviewsCount = 48,
                     InternshipApplicationsCount = 37,
                     CompanyOffersCount = 34

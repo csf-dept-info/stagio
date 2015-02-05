@@ -23,7 +23,7 @@ namespace Stagio.Web.Controllers
         private readonly IEntityRepository<Student> _studentRepository;
         private readonly IFileImportService _fileService;
         private readonly IInternshipPeriodService _internshipPeriodService;
-
+        private readonly IArchiveService _archiveService; 
 
         public CoordinatorController(
             IEntityRepository<Coordinator> coordinatorRepository,
@@ -31,9 +31,10 @@ namespace Stagio.Web.Controllers
             IAccountService accountService,
             IFileImportService fileService,
             IHttpContextService httpContextService,
-            IInternshipPeriodService internshipPeriodService)
+            IInternshipPeriodService internshipPeriodService,
+            IArchiveService archiveService)
         {
-            DependencyService.VerifyDependencies(coordinatorRepository, studentRepository, accountService, fileService, httpContextService, internshipPeriodService);
+            DependencyService.VerifyDependencies(coordinatorRepository, studentRepository, accountService, fileService, httpContextService, internshipPeriodService, archiveService);
 
             _coordinatorRepository = coordinatorRepository;
             _studentRepository = studentRepository;
@@ -41,6 +42,7 @@ namespace Stagio.Web.Controllers
             _httpContextService = httpContextService;
             _fileService = fileService;
             _internshipPeriodService = internshipPeriodService;
+            _archiveService = archiveService;
         }
 
         public virtual ActionResult Index()
