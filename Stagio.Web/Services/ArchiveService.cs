@@ -9,7 +9,6 @@ namespace Stagio.Web.Services
     {
         private readonly IEntityRepository<Student> _studentRepository;
         private readonly IEntityRepository<Employee> _employeeRepository;
-        private readonly IEntityRepository<InternshipApplication> _internshipApplicationRepository;
         private readonly IEntityRepository<Company> _companyRepository;
         private readonly IEntityRepository<InternshipOffer> _internshipOfferRepository;
         private readonly IEntityRepository<InternshipPeriod> _internshipPeriodRepository;
@@ -26,11 +25,10 @@ namespace Stagio.Web.Services
         {
             _studentRepository = studentRepository;
             _employeeRepository = employeeRepository;
-            _internshipApplicationRepository = intershipApplicationRepository;
             _companyRepository = companyRepository;
             _internshipOfferRepository = internshipOfferRepository;
             _internshipPeriodRepository = internshipPeriodRepository;
-            _internshipApplicationsList = _internshipApplicationRepository.GetAll().ToList();
+            _internshipApplicationsList = intershipApplicationRepository.GetAll().ToList();
             studentAcceptedOfferCount = _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer);
             companyAcceptedStudentCount = _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.CompanyAcceptedStudent);
         }
@@ -57,7 +55,7 @@ namespace Stagio.Web.Services
 
         public int GetInterviewsCount()
         {
-            
+            return _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentHadInterview) + GetCompanyOffersCount();
         }
 
         public int GetEmployeesCount()
