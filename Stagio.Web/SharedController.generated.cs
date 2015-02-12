@@ -4,7 +4,8 @@
 // to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 
 // Make sure the compiler doesn't complain about missing Xml comments and CLS compliance
-#pragma warning disable 1591, 3008, 3009
+// 0108: suppress "Foo hides inherited member Foo. Use the new keyword if hiding was intended." when a controller and its abstract parent are both processed
+#pragma warning disable 1591, 3008, 3009, 0108
 #region T4MVC
 
 using System;
@@ -41,18 +42,16 @@ namespace T4MVC
                 public readonly string _Layout = "_Layout";
                 public readonly string _LoginPartial = "_LoginPartial";
                 public readonly string _MenuPartial = "_MenuPartial";
-                public readonly string Error = "Error";
             }
             public readonly string _Flash = "~/Views/Shared/_Flash.cshtml";
             public readonly string _Header = "~/Views/Shared/_Header.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LoginPartial = "~/Views/Shared/_LoginPartial.cshtml";
             public readonly string _MenuPartial = "~/Views/Shared/_MenuPartial.cshtml";
-            public readonly string Error = "~/Views/Shared/Error.cshtml";
         }
     }
 
 }
 
 #endregion T4MVC
-#pragma warning restore 1591, 3008, 3009
+#pragma warning restore 1591, 3008, 3009, 0108

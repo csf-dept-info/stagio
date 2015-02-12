@@ -4,7 +4,8 @@
 // to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 
 // Make sure the compiler doesn't complain about missing Xml comments and CLS compliance
-#pragma warning disable 1591, 3008, 3009
+// 0108: suppress "Foo hides inherited member Foo. Use the new keyword if hiding was intended." when a controller and its abstract parent are both processed
+#pragma warning disable 1591, 3008, 3009, 0108
 #region T4MVC
 
 using System;
@@ -90,12 +91,8 @@ namespace Stagio.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string About = "About";
-                public readonly string Contact = "Contact";
                 public readonly string Index = "Index";
             }
-            public readonly string About = "~/Views/Home/About.cshtml";
-            public readonly string Contact = "~/Views/Home/Contact.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
         }
     }
@@ -120,4 +117,4 @@ namespace Stagio.Web.Controllers
 }
 
 #endregion T4MVC
-#pragma warning restore 1591, 3008, 3009
+#pragma warning restore 1591, 3008, 3009, 0108
