@@ -1,4 +1,5 @@
 ﻿using System;
+using Stagio.Domain.Entities;
 
 namespace Stagio.Web
 {
@@ -161,6 +162,7 @@ namespace Stagio.Web
         {
             public static string NEW_INTERNSHIP_OFFER_PUBLICATED = "Une nouvelle offre de stage est maintenant disponible.";
             public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED = "L'une de vos offres de stage a été publiée.";
+            public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED_HAS_BEEN_DENIED = "L'une de vos offres de stage a été refusée.";
 
             public static string NewInternshipOfferCreatedMessage(string company, string employee)
             {

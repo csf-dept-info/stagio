@@ -377,6 +377,7 @@ namespace Stagio.Web.Controllers
                 var mail = _emailService.BuildMail(internshipOffer.Contact.Email, coordinator.Identifier,
                            WebMessage.InternshipOfferMessage.DENY_OFFER_MAIL_SUBJECT, BuildDenyMailBody(offerVm));
                 UpdateInternshipOfferToRefusedStatus(internshipOffer);
+                _notificationService.CompanyNotification(internshipOffer.Company, WebMessage.NotificationMessage.ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED_HAS_BEEN_DENIED, "InternshipOffer", "EmployeeIndex");
                 _emailService.SendEmail(mail);
             }
             catch (Exception)
