@@ -10,6 +10,7 @@ namespace Stagio.Web
             public const string PASSWORD = "Mot de passe";
             public const string EMAIL = "Courriel";
             public const string GENERAL_INFORMATIONS = "Informations générales";
+            public const string CANCEL = "Annuler";
         }
         public static class HomeMessage
         {
@@ -54,7 +55,8 @@ namespace Stagio.Web
             public const string CHOOSE_COMPANY = "Choisir son entreprise";
             public const string NAME_ALREADY_USED = "Cette entreprise existe déjà";
             public const string NEW_COMPANY = "Nouvelle entreprise...";
-
+            public const string SELECT_YOUR_COMPANY = "Sélectionnez votre entreprise";
+            public const string INFO_CREATE_NEW_COMPANY = "Si votre entreprise ne se trouve pas dans la liste, veuillez sélectionner \"Nouvelle entreprise\" afin de la créer.";
         }
 
         public static class InternshipOfferMessage

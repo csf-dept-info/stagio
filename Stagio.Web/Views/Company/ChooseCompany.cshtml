@@ -6,7 +6,7 @@
 }
 <link href="~/Content/css/dropdownlist.css" rel="stylesheet" />
 <script src="~/Content/js/dropdownlist.js"></script>
-<h2 id="choose-company-page">Choisir son entreprise</h2>
+<h2 id="choose-company-page">@WebMessage.CompanyMessage.CHOOSE_COMPANY</h2>
 
 
 @using (Html.BeginForm()) 
@@ -20,7 +20,7 @@
         <div class="panel panel-primary">
 
             <div class="panel-heading">
-                Informations générales
+                @WebMessage.GeneralMessage.GENERAL_INFORMATIONS
             </div>
 
             <div class="panel-body">
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.SelectedCompanyId, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(x => x.SelectedCompanyId, new SelectList(Model.CompaniesList, "Id", "Name"),"Sélectionnez votre entreprise", new { @class = "turnintodropdown_demo2"})
+                        @Html.DropDownListFor(x => x.SelectedCompanyId, new SelectList(Model.CompaniesList, "Id", "Name"),@WebMessage.CompanyMessage.SELECT_YOUR_COMPANY, new { @class = "turnintodropdown_demo2"})
                         @Html.ValidationMessageFor(model => model.SelectedCompanyId)
                     </div>
                 </div>
@@ -38,12 +38,12 @@
                 <div class="text-info">
                     <p>
                         <i class="fa fa-info"></i>
-                        Si votre entreprise ne se trouve pas dans la liste, veuillez sélectionner "Nouvelle entreprise" afin de la créer.
+                        @WebMessage.CompanyMessage.INFO_CREATE_NEW_COMPANY
                     </p>
                 </div>
                 <p class="col-md-offset-2">
                     <input type="submit" id="continue-employee-subscribe-process-button" value="Suivant" class="btn btn-primary" />
-                    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-default" })
+                    @Html.ActionLink(@WebMessage.GeneralMessage.CANCEL, MVC.Home.Index(), new { @class = "btn btn-default" })
                 </p>
             </div>
         </div>
