@@ -50,7 +50,7 @@ namespace Stagio.Web.Services
             }
         }
 
-        public void GroupNotification(string roleName, string message, string linkControllerName, string linkMethodName)
+        public void RoleGroupNotification(string roleName, string message, string linkControllerName, string linkMethodName)
         {
             var selectedUsers = _applicationUserRepository.GetAll().Where(x => x.Roles.FirstOrDefault().RoleName == roleName).AsEnumerable();
 
@@ -61,6 +61,27 @@ namespace Stagio.Web.Services
                     Object = message,
                     SenderId = _httpContext.GetUserId(),
                     ReceiverId = user.Id,
+                    Unseen = true,
+                    Time = DateTime.Today,
+                    LinkAction = linkMethodName,
+                    LinkController = linkControllerName
+                };
+
+                _notificationRepository.Add(notification);
+            }
+        }
+
+        public void CompanyNotification(Company company, string message, string linkControllerName, string linkMethodName)
+        {
+            var employees = company.Employees;
+
+            foreach (var employee in employees)
+            {
+                var notification = new Notification()
+                {
+                    Object = message,
+                    SenderId = _httpContext.GetUserId(),
+                    ReceiverId = employee.Id,
                     Unseen = true,
                     Time = DateTime.Today,
                     LinkAction = linkMethodName,

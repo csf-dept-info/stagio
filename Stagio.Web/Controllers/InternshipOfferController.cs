@@ -144,13 +144,13 @@ namespace Stagio.Web.Controllers
             {
                 return HttpNotFound();
             }
-
+            
             internshipOffer.Status = InternshipOffer.OfferStatus.Publicated;
 
             _internshipOfferRepository.Update(internshipOffer);
 
-            _notificationService.GroupNotification(RoleNames.Student,
-                WebMessage.NotificationMessage.NEW_INTERNSHIP_OFFER_PUBLICATED, "InternshipOffer", "StudentIndex");
+            _notificationService.RoleGroupNotification(RoleNames.Student, WebMessage.NotificationMessage.NEW_INTERNSHIP_OFFER_PUBLICATED, "InternshipOffer", "StudentIndex");
+            _notificationService.CompanyNotification(internshipOffer.Company, WebMessage.NotificationMessage.ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED, "InternshipOffer", "EmployeePublicatedOffersIndex");
 
             const string feedbackMessage = WebMessage.InternshipOfferMessage.OFFER_ACCEPTED_SUCCESS;
 

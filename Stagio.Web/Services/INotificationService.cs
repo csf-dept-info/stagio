@@ -7,6 +7,7 @@ namespace Stagio.Web.Services
     public interface INotificationService
     {
         void NotifyNewInternshipOfferCreated(int internshipOfferAuthorId);
-        void GroupNotification(string roleName, string message, string linkControllerName, string linkMethodName);
+        void RoleGroupNotification(string roleName, string message, string linkControllerName, string linkMethodName);
+        void CompanyNotification(Company company, string message, string linkControllerName, string linkMethodName);
     }
 }
