@@ -33,13 +33,13 @@
                                             <span class="input-group-addon">
                                                 <i class="glyphicon glyphicon-lock"></i>
                                             </span>
-                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @id = "Password", placeholder = @WebMessage.AccountMessage.PASSWORD, type = "password" })
+                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @id = "Password", placeholder = @WebMessage.GeneralMessage.PASSWORD, type = "password" })
                                         </div>
                                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group">
                                         @Html.ValidationMessage("loginError", "", new { @class = "text-danger" })
-                                        <button class="btn btn-primary btn-block btn-lg" type="submit" id="login-submit">@WebMessage.AccountMessage.CONNECT</button>
+                                        <button class="btn btn-primary btn-block btn-lg" type="submit" id="login-submit">@WebMessage.GeneralMessage.SIGN_IN</button>
                                     </div>
                                 </div>
                             </div>

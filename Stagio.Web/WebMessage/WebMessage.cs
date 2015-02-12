@@ -4,6 +4,13 @@ namespace Stagio.Web
 {
     public static class WebMessage
     {
+        public static class GeneralMessage
+        {
+            public const string SIGN_IN = "Se connecter";
+            public const string PASSWORD = "Mot de passe";
+            public const string EMAIL = "Courriel";
+            public const string GENERAL_INFORMATIONS = "Informations générales";
+        }
         public static class HomeMessage
         {
             public const string SYSTEM_IS_NOT_OPEN = "Le système est présentement fermé. Il sera ouvert à la prochaine période de stage.";
@@ -14,9 +21,6 @@ namespace Stagio.Web
             public const string INVALID_USERNAME_OR_PASSWORD = "Utilisateur ou mot de passe inexistant";
             public const string SYSTEM_IS_NOT_OPEN = "Le système est présentement fermé.";
             public const string CONNECT_TO_STAGIO = "Connectez-vous à votre compte Stagio";
-            public const string CONNECT = "Se connecter";
-            public const string PASSWORD = "Mot de passe";
-            public const string EMAIL = "Courriel";
             public const string HAVE_NO_ACCOUNT = "Vous n'avez pas de compte?";
             public const string SIGN_UP_HERE = "Inscrivez-vous ici";
         }
@@ -47,8 +51,10 @@ namespace Stagio.Web
 
         public class CompanyMessage
         {
-            public static string NAME_ALREADY_USED = "Cette entreprise existe déjà";
+            public const string CHOOSE_COMPANY = "Choisir son entreprise";
+            public const string NAME_ALREADY_USED = "Cette entreprise existe déjà";
             public const string NEW_COMPANY = "Nouvelle entreprise...";
+
         }
 
         public static class InternshipOfferMessage
