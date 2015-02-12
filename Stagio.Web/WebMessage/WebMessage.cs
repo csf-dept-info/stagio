@@ -50,7 +50,7 @@ namespace Stagio.Web
             public const string INVALID_START_DATE = "La date de début ne peut pas être après la date de fin.";
         }
 
-        public class CompanyMessage
+        public static class CompanyMessage
         {
             public const string CHOOSE_COMPANY = "Choisir son entreprise";
             public const string NAME_ALREADY_USED = "Cette entreprise existe déjà";
