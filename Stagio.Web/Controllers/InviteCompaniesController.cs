@@ -1,9 +1,13 @@
 ﻿using System;
+using System.EnterpriseServices;
 using System.Linq;
+using System.Reflection;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Stagio.DataLayer;
 using Stagio.Domain.Application;
 using Stagio.Domain.Entities;
+using Stagio.Domain.SecurityUtilities;
 using Stagio.Web.Services;
 using Stagio.Web.ViewModels.Coordinator;
 using Stagio.Web.ViewModels.InviteCompanies;
@@ -52,6 +56,7 @@ namespace Stagio.Web.Controllers
 
             foreach (var employee in employees)
             {
+                String key = GenerateCustomSubscribeKey(employee);
                 try
                 {
                     var mail = _emailService.BuildMail(employee.Identifier, coordinator.Identifier,
@@ -103,6 +108,15 @@ namespace Stagio.Web.Controllers
             }
 
             return RedirectToAction(MVC.Coordinator.Views.ViewNames.Index, MVC.Coordinator.Name).Success(WebMessage.InviteCompaniesMessage.INVITE_COMPANIES_SUCCES);
+        }
+
+        private string GenerateCustomSubscribeKey(Employee _employee)
+        {
+            var employee = _employeeRepository.GetById(_employee.Id);
+            var key = Cryptography.GenerateUnique();
+            employee.SubscribeKey = key;
+            _employeeRepository.Update(employee);
+            return key;
         }
     }
 }

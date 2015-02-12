@@ -12,6 +12,8 @@ namespace Stagio.Domain.Entities
         public int CompanyId { get; set; }
         public virtual Company Company { get; set; }
 
+        public string SubscribeKey;
+
         public string FullName()
         {
             return this.FirstName + " " + this.LastName;
