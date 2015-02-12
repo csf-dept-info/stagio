@@ -250,6 +250,8 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Account\Login.cs" />
+    <Compile Include="ViewModels\Archives\Details.cs" />
+    <Compile Include="ViewModels\Archives\Index.cs" />
     <Compile Include="ViewModels\Company\ChooseCompany.cs" />
     <Compile Include="ViewModels\Company\CompanyItem.cs" />
     <Compile Include="ViewModels\Company\Create.cs" />

@@ -1,7 +1,13 @@
-﻿namespace Stagio.Domain.Entities
+﻿using System.Web.Mvc;
+using Stagio.Domain.Entities;
+
+namespace Stagio.Web.ViewModels.Archives
 {
-    public class DepartmentalArchives : Entity
+    public class Details
     {
+        [HiddenInput(DisplayValue = false)]
+        public int Id { get; set; }
+        
         public int StudentsCount { get; set; }
 
         public int StudentsWithInternship { get; set; }
