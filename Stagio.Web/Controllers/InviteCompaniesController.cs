@@ -67,5 +67,42 @@ namespace Stagio.Web.Controllers
 
             return RedirectToAction(MVC.Coordinator.Views.ViewNames.Index, MVC.Coordinator.Name).Success(WebMessage.InviteCompaniesMessage.INVITE_COMPANIES_SUCCES);
         }
+
+        public virtual ViewResult InviteCompaniesSubscribes()
+        {
+            return View(MVC.InviteCompanies.Views.ViewNames.InviteCompanies);
+        }
+
+        [HttpPost]
+        public virtual ActionResult InviteCompaniesSubscribe(InviteCompanies inviteCompaniesVm)
+        {
+            var coordinator = _coordinatorRepository.GetById(_httpContextService.GetUserId());
+
+            var employees = _employeeRepository.GetAll().ToList();
+
+            if (!ModelState.IsValid)
+            {
+                return View(MVC.InviteCompanies.Views.ViewNames.InviteCompanies);
+            }
+
+
+
+            foreach (var employee in employees)
+            {
+                try
+                {
+                    var mail = _emailService.BuildMail(employee.Identifier, coordinator.Identifier,
+                                       inviteCompaniesVm.Subject, inviteCompaniesVm.Body);
+                    _emailService.SendEmail(mail);
+                }
+                catch (Exception)
+                {
+                    var errorMessage = WebMessage.InviteCompaniesMessage.GENERIC_INVITE_COMPANIES_ERROR;
+                    return View(MVC.InviteCompanies.Views.ViewNames.InviteCompanies).Error(errorMessage);
+                }
+            }
+
+            return RedirectToAction(MVC.Coordinator.Views.ViewNames.Index, MVC.Coordinator.Name).Success(WebMessage.InviteCompaniesMessage.INVITE_COMPANIES_SUCCES);
+        }
     }
 }

@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
 using Stagio.DataLayer;
 using Stagio.Domain.Entities;
+using Stagio.Domain.SecurityUtilities;
 using Stagio.Web.Services;
 using Stagio.Web.UnitTests.Controllers;
 
