@@ -1,10 +1,6 @@
 ﻿@model Stagio.Web.ViewModels.Company.Edit
 
-@{
-    ViewBag.Title = "Edit";
-}
-
-<h2 id=@Stagio.Web.Automation.PageObjects.CompanyPages.EditCompanyPage.PAGE_ID>Modifier le profil de l'entreprise</h2>
+<h2 id=@Stagio.Web.Automation.PageObjects.CompanyPages.EditCompanyPage.PAGE_ID>@WebMessage.CompanyMessage.EDIT_COMPANY_PROFILE</h2>
 
 @using (Html.BeginForm())
 {
@@ -17,7 +13,7 @@
 
         <div class="col-md-10">
             <div class="panel panel-primary">
-                <div class="panel-heading">Informations générales</div>
+                <div class="panel-heading">@WebMessage.GeneralMessage.GENERAL_INFORMATIONS</div>
                 <div class="panel-body">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-4" })
@@ -40,7 +36,7 @@
 
         <div class="col-md-10">
             <div class="panel panel-primary">
-                <div class="panel-heading">Coordonnées</div>
+                <div class="panel-heading">@WebMessage.GeneralMessage.CONTACT_DETAILS</div>
                 <div class="panel-body">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-4" })
@@ -78,7 +74,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-4 col-md-6">
-                    <input type="submit" value="Enregistrer les modifications" class="btn btn-primary" id="submitBtnProfile" />
+                    <input type="submit" value="@WebMessage.GeneralMessage.SAVE_MODIFICATIONS" class="btn btn-primary" id="submitBtnProfile" />
                 </div>
             </div>
         </div>

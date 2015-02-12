@@ -24,7 +24,7 @@
                                             <span class="input-group-addon">
                                                 <i class="glyphicon glyphicon-user"></i>
                                             </span>
-                                            @Html.TextBoxFor(model => model.Identifier, new { @class = "form-control", @id = "Identifier", placeholder = @WebMessage.AccountMessage.EMAIL, type = "identifier" })
+                                            @Html.TextBoxFor(model => model.Identifier, new { @class = "form-control", @id = "Identifier", placeholder = @WebMessage.GeneralMessage.EMAIL, type = "identifier" })
                                         </div>
                                         @Html.ValidationMessageFor(model => model.Identifier, "", new { @class = "text-danger" })
                                     </div>
