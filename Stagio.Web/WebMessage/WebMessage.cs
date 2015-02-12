@@ -13,6 +13,12 @@ namespace Stagio.Web
         {
             public const string INVALID_USERNAME_OR_PASSWORD = "Utilisateur ou mot de passe inexistant";
             public const string SYSTEM_IS_NOT_OPEN = "Le système est présentement fermé.";
+            public const string CONNECT_TO_STAGIO = "Connectez-vous à votre compte Stagio";
+            public const string CONNECT = "Se connecter";
+            public const string PASSWORD = "Mot de passe";
+            public const string EMAIL = "Courriel";
+            public const string HAVE_NO_ACCOUNT = "Vous n'avez pas de compte?";
+            public const string SIGN_UP_HERE = "Inscrivez-vous ici";
         }
 
         public static class StudentMessage
