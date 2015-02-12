@@ -57,6 +57,8 @@ namespace Stagio.Web
             public const string NEW_COMPANY = "Nouvelle entreprise...";
             public const string SELECT_YOUR_COMPANY = "Sélectionnez votre entreprise";
             public const string INFO_CREATE_NEW_COMPANY = "Si votre entreprise ne se trouve pas dans la liste, veuillez sélectionner \"Nouvelle entreprise\" afin de la créer.";
+            public const string CREATE_YOUR_COMPANY = "Créer son entreprise";
+            public const string CREATE_THE_COMPANY = "Créer l'entreprise";
         }
 
         public static class InternshipOfferMessage

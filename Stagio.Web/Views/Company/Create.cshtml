@@ -1,11 +1,7 @@
 ﻿@using Stagio.Domain.Application
 @model Stagio.Web.ViewModels.Company.Create
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Créer son entreprise</h2>
+<h2>@WebMessage.CompanyMessage.CREATE_YOUR_COMPANY</h2>
 
 
 @using (Html.BeginForm()) 
@@ -19,7 +15,7 @@
         <div class="panel panel-primary">
 
             <div class="panel-heading">
-                Informations générales
+                @WebMessage.GeneralMessage.GENERAL_INFORMATIONS
             </div>
 
             <div class="panel-body">
@@ -76,8 +72,8 @@
 
             <div class="panel-footer">
                 <p class="col-md-offset-2">
-                    <input type="submit" id="next-btn" value="Créer l'entreprise" class="btn btn-primary" />
-                    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-default" })
+                    <input type="submit" id="next-btn" value=@WebMessage.CompanyMessage.CREATE_THE_COMPANY class="btn btn-primary" />
+                    @Html.ActionLink(WebMessage.GeneralMessage.CANCEL, MVC.Home.Index(), new { @class = "btn btn-default" })
                 </p>
             </div>
 
