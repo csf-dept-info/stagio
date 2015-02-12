@@ -10,7 +10,7 @@ namespace Stagio.Web.Services
     {
         public string CreateSubscribeInvitation()
         {
-            String key = Cryptography.GenerateUnique();
+            String key = Cryptography.GenerateUnique();              
             return key;
         }
     }
