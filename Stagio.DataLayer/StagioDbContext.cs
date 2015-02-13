@@ -15,6 +15,7 @@ namespace Stagio.DataLayer
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<InternshipPeriod> InternshipPeriods { get; set; }
+        public DbSet<InternshipAgreement> InternshipAgreements { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
