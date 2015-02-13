@@ -166,5 +166,56 @@ namespace Stagio.Web
 
             public const string NO_NOTIFICATION_MESSAGE = "Aucune notification pour l'instant.";
         }
+
+        public static class InternshipAgreementMessage
+        {
+            public const string FORM_TITLE = "Contrat d’engagement d’un stage en hiver 2015";
+
+            public const string INTERNSHIP_START_DATE = "Date de début de stage:";
+            public const string INTERNSHIP_END_DATE = "Date de fin de stage:";
+
+            public const string REQUIRED_FIELD = "Ces informations sont requises.";
+
+            public static class CompanySection
+            {
+                public const string SECTION_TITLE = "Engagement de l'entreprise";
+
+                public const string COMPANY_NAME = "Nom de l'entreprise";
+                public const string COMPANY_ADDRESS = "Adresse";
+
+                public const string COMMITMENT_MESSAGE = "Nous nous engageons pour la période du stage à confier aux étudiants identifiés ci-dessous des tâches équivalentes à son niveau de compétence et à exercer la supervision requise.";
+                public const string REMUNERATED_LABEL = "Le stage est rémunéré";
+
+                public const string SIGN_LABEL = "Signature du responsable";
+
+                public const string SIGN_INFO = "Si la signature est nécessaire, exportez le document en format PDF (voir menu Fichier) et signez.";
+            }
+
+            public static class StudentSection
+            {
+                public const string SECTION_TITLE = "Engagement du stagiaire";
+                public const string COMMITMENT_MESSAGE = "Ayant rencontré le responsable du milieu de stage ci-haut mentionné et ayant pris connaissance de la nature du projet de stage que j’aurai à réaliser, je m’engage à respecter les politiques de l'entreprise et à réaliser les tâches qui me seront confiées au meilleur de ma connaissance pour toute la durée du stage.";
+
+                public const string STUDENT_NAME_LABEL = "Nom du stagiaire";
+                public const string STUDENT_IDENTIFIER_LABEL = "Matricule";
+
+                public const string SIGN_LABEL = "Signature du stagiaire";
+
+                public const string SIGN_INFO = "Si la signature est demandée, exportez le document et signez. Sinon, simplement écrire votre nom et la date.";
+            }
+
+            public static class SchoolSection
+            {
+                public const string SECTION_TITLE = "Engagement du milieu d’enseignement";
+                public const string COMMITMENT_MESSAGE = "Ayant pris connaissance de la nature du projet de stage offert, le Département d'informatique du Cégep de Sainte-foy, Québec, Canada, en reconnaît la validité. Il s’engage à fournir, à l'entreprise et à l'étudiant, l’encadrement et le support nécessaires à la réalisation de ce stage.";
+               
+                public const string COORDINATOR_NAME_LABEL = "Coordonnateur des stages";
+                public const string SIGN_LABEL = "Signature du coordonateur";
+
+                public const string SIGN_INFO = "La signature du coordonnateur sera ajoutée si l’employeur la demande.";
+                public const string MORE_INFO = "Le professeur superviseur du stage de l'étudiant sera communiqué avant le début du stage.";
+            }
+            
+        }
     }
 }
