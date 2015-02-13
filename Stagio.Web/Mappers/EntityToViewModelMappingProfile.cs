@@ -106,6 +106,12 @@ namespace Stagio.Web.Mappers
             Mapper.CreateMap<Notification, ViewModels.Notification.Notification>()
                .IgnoreAllNonExisting();
 
+            //InternshipAgreement
+            Mapper.CreateMap<InternshipAgreement, ViewModels.InternshipAgreement.Create>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.InternshipApplication.InternshipOffer.Company))
+                .IgnoreAllNonExisting();
+
         }
     }
 }

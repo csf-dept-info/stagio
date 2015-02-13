@@ -179,6 +179,7 @@
     <Compile Include="Controllers\CoordinatorController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InternshipAgreementController.cs" />
     <Compile Include="Controllers\InternshipApplicationController.cs" />
     <Compile Include="Controllers\InternshipOfferController.cs" />
     <Compile Include="Controllers\InviteCompaniesController.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="ViewModels\Employee\Create.cs" />
     <Compile Include="ViewModels\Employee\Edit.cs" />
     <Compile Include="ViewModels\Employee\Index.cs" />
+    <Compile Include="ViewModels\InternshipAgreement\Create.cs" />
     <Compile Include="ViewModels\InternshipApplication\CoordinatorProgressionIndex.cs" />
     <Compile Include="ViewModels\InternshipApplication\Create.cs" />
     <Compile Include="ViewModels\InternshipApplication\EmployeeIndex.cs" />
@@ -633,6 +635,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
+    <Content Include="Views\InternshipAgreement\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
