@@ -39,7 +39,7 @@ namespace Stagio.Domain.Entities
         public string GetCompanyName()
         {
             return this.InternshipOffer.Company.Name;
-            }
+        }
 
         public string GetOfferTitle()
         {
