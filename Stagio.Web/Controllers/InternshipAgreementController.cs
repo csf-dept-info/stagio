@@ -50,12 +50,15 @@ namespace Stagio.Web.Controllers
             {
                 InternshipApplication = application,
 
-                Coordinator = new ViewModels.InternshipOffer.StaffMember
-                {
-                    Name = coordinator.FullName(),
-                    Email = coordinator.Identifier,
-                    PhoneNumber = coordinator.PhoneNumber
-                },
+                StudentName = application.ApplyingStudent.FullName(),
+                StudentIdentifier = application.ApplyingStudent.StudentId,
+
+                CompanyName = application.InternshipOffer.Company.Name,
+                CompanyAddress = application.InternshipOffer.Company.Address,
+
+                PersonInCharge = Mapper.Map<Stagio.Web.ViewModels.InternshipOffer.StaffMember>(application.InternshipOffer.PersonInCharge),
+
+                Coordinator = Mapper.Map<Stagio.Web.ViewModels.InternshipOffer.StaffMember>(coordinator),
 
                 CompanyCommitmentMessage = WebMessage.InternshipAgreementMessage.CompanySection.COMMITMENT_MESSAGE,
                 StudentCommitmentMessage = WebMessage.InternshipAgreementMessage.StudentSection.COMMITMENT_MESSAGE,

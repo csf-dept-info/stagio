@@ -109,8 +109,20 @@ namespace Stagio.Web.Mappers
             //InternshipAgreement
             Mapper.CreateMap<InternshipAgreement, ViewModels.InternshipAgreement.Create>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.InternshipApplication.InternshipOffer.Company))
                 .IgnoreAllNonExisting();
+
+            //Employee to StaffMember
+            Mapper.CreateMap<Employee, ViewModels.InternshipOffer.StaffMember>()
+               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FullName()))
+               .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.FullPhoneNumber()))
+               .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Identifier))
+               .IgnoreAllNonExisting();
+
+            //Coordinator to StaffMember
+            Mapper.CreateMap<Coordinator, ViewModels.InternshipOffer.StaffMember>()
+               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FullName()))
+               .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Identifier))
+               .IgnoreAllNonExisting();
 
         }
     }

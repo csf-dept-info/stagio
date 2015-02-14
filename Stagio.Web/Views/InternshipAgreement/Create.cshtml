@@ -4,37 +4,33 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
+<h2>@Stagio.Web.WebMessage.InternshipAgreementMessage.FORM_TITLE</h2>
+<hr />
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal col-md-8">
-        <h4>@Stagio.Web.WebMessage.InternshipAgreementMessage.FORM_TITLE</h4>
-        <hr />
+    <div class="form-horizontal col-md-10">
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <!-- CompanySection -->
         <div class="panel panel-primary">
-
+            <div class="panel-heading">
+                @Stagio.Web.WebMessage.InternshipAgreementMessage.CompanySection.SECTION_TITLE
+            </div>
             <div class="panel-body">
-
-                <div class="panel-heading">
-                    @Stagio.Web.WebMessage.InternshipAgreementMessage.CompanySection.SECTION_TITLE
-                </div>
-
                 <!-- Company -->
                 <div class="form-group">
-                    <div class="col-md-4">
-                        <b>@Stagio.Web.WebMessage.InternshipAgreementMessage.CompanySection.COMPANY_NAME</b>
-                        @Html.DisplayFor(model => model.Company.Name, new { @class = "form-control" })
+                    @Html.LabelFor(model => model.CompanyName, new { @class = "control-label col-md-2" })
+                    <div class="form-control-static col-md-4">
+                        @Html.DisplayFor(model => model.CompanyName)
                     </div>
 
-                    <div class="col-md-4">
-                        @Stagio.Web.WebMessage.InternshipAgreementMessage.CompanySection.COMPANY_ADDRESS
-                        @Html.DisplayFor(model => model.Company.Address, new { @class = "form-control" })
+                    @Html.LabelFor(model => model.CompanyAddress, new { @class = "control-label col-md-2" })
+                    <div class="form-control-static col-md-4">
+                        @Html.DisplayFor(model => model.CompanyAddress)
                     </div>
                 </div>
                 <!-- ./Company-->
@@ -42,56 +38,48 @@
                 <!-- PersonInCharge -->
                 <div class="form-group">
                     @Html.LabelFor(model => model.PersonInCharge.Name, new { @class = "control-label col-md-2" })
-                    <div class="form-control-static col-md-2">
+                    <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.PersonInCharge.Name)
                     </div>
 
                     @Html.LabelFor(model => model.PersonInCharge.Title, new { @class = "control-label col-md-2" })
-                    <div class="form-control-static col-md-2">
+                    <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.PersonInCharge.Title)
                     </div>
-                </div>
 
-                <div class="form-group">
                     @Html.LabelFor(model => model.PersonInCharge.PhoneNumber, new { @class = "control-label col-md-2" })
-                    <div class="form-control-static col-md-2">
+                    <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.PersonInCharge.PhoneNumber)
                     </div>
 
                     @Html.LabelFor(model => model.PersonInCharge.Email, new { @class = "control-label col-md-2" })
-                    <div class="form-control-static col-md-2">
-                        @Html.DisplayFor(model => model.PersonInCharge.Email)
+                    <div class="form-control-static col-md-4">
+                        @Html.DisplayFor(model => model.PersonInCharge.Email, new { @class = "form-control" })
                     </div>
                 </div>
                 <!-- ./PersonInCharge -->
 
                 <div class="form-group">
-                    <div class="form-control-static col-md-8">
+                    <div class="form-control-static col-md-12">
                         @Html.TextAreaFor(model => model.CompanyCommitmentMessage, new { @class = "form-control", @rows = "4"})
                     </div>
                     @Html.ValidationMessageFor(model => model.CompanyCommitmentMessage, "", new { @class = "text-danger" })
-                </div>
 
-                <div class="form-group">
                     @Html.LabelFor(model => model.Remunerated, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-2">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.Remunerated)
-                        </div>
+                    <div class="form-control-static col-md-2">
+                        @Html.EditorFor(model => model.Remunerated, new { htmlAttributes = new { @class = "checkbox" } })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.EmployeeSignature, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-4">
+                    @Html.LabelFor(model => model.EmployeeSignature, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-5">
                         @Html.EditorFor(model => model.EmployeeSignature, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.EmployeeSignedDate, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-4">
-                        @Html.EditorFor(model => model.EmployeeSignedDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                   @Html.LabelFor(model => model.EmployeeSignedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                       @Html.EditorFor(model => model.EmployeeSignedDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                     </div>
                 </div>
             </div>
@@ -99,76 +87,88 @@
 
         <!-- StudentSection -->
         <div class="panel panel-primary">
-            
             <div class="panel-heading">
                 @Stagio.Web.WebMessage.InternshipAgreementMessage.StudentSection.SECTION_TITLE
             </div>
-
             <div class="panel-body">
                 <div class="form-group">
-                    <div class="form-control-static col-md-8">
+                    @Html.LabelFor(model => model.StudentName, new { @class = "control-label col-md-2" })
+                    <div class="form-control-static col-md-5">
+                        @Html.DisplayFor(model => model.StudentName)
+                    </div>
+
+                    @Html.LabelFor(model => model.StudentIdentifier, new { @class = "control-label col-md-2" })
+                    <div class="form-control-static col-md-3">
+                        @Html.DisplayFor(model => model.StudentIdentifier)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-control-static col-md-12">
                         @Html.TextAreaFor(model => model.StudentCommitmentMessage, new { @class = "form-control", @rows = "4" })
                     </div>
                     @Html.ValidationMessageFor(model => model.StudentCommitmentMessage, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    @WebMessage.InternshipAgreementMessage.StudentSection.STUDENT_NAME_LABEL
-                    @Html.LabelFor(model => model.PersonInCharge.PhoneNumber, new { @class = "control-label col-md-2" })
-                    <div class="form-control-static col-md-2">
-                        @Html.DisplayFor(model => model.InternshipApplication.ApplyingStudent.FullName())
-                    </div>
-
-                    @WebMessage.InternshipAgreementMessage.StudentSection.STUDENT_IDENTIFIER_LABEL
-                    <div class="form-control-static col-md-2">
-                        @Html.DisplayFor(model => model.InternshipApplication.ApplyingStudent.StudentId)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.StudentSignature, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-4">
+                    @Html.LabelFor(model => model.StudentSignature, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-5">
                         @Html.EditorFor(model => model.StudentSignature, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.StudentSignedDate, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-4">
+                    @Html.LabelFor(model => model.StudentSignedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
                         @Html.EditorFor(model => model.StudentSignedDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                     </div>
                 </div>
-
             </div>
         </div>
 
         <!-- School Section -->
         <div class="panel panel-primary">
-
             <div class="panel-heading">
                 @Stagio.Web.WebMessage.InternshipAgreementMessage.SchoolSection.SECTION_TITLE
             </div>
-
             <div class="panel-body">
+                <!-- Coordinator -->
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Coordinator.Name, new { @class = "control-label col-md-2" })
+                    <div class="form-control-static col-md-4">
+                        @Html.DisplayFor(model => model.Coordinator.Name)
+                    </div>
+
+                    @Html.LabelFor(model => model.Coordinator.Title, new { @class = "control-label col-md-2" })
+                    <div class="form-control-static col-md-4">
+                        @*@Html.DisplayFor(model => model.Coordinator.Title)*@ <b>TODO - MAKE TITLE MANDATORY</b>
+                    </div>
+
+                    @Html.LabelFor(model => model.Coordinator.PhoneNumber, new { @class = "control-label col-md-2" })
+                    <div class="form-control-static col-md-4">
+                        @Html.DisplayFor(model => model.Coordinator.PhoneNumber)
+                    </div>
+
+                    @Html.LabelFor(model => model.Coordinator.Email, new { @class = "control-label col-md-2" })
+                    <div class="form-control-static col-md-4">
+                        @Html.DisplayFor(model => model.Coordinator.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <!-- ./Coordinator -->
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SchoolCommitmentMessage, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.SchoolCommitmentMessage, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.SchoolCommitmentMessage, "", new { @class = "text-danger" })
+                    <div class="form-control-static col-md-12">
+                        @Html.TextAreaFor(model => model.SchoolCommitmentMessage, new { @class = "form-control", @rows = "4" })
                     </div>
+                    @Html.ValidationMessageFor(model => model.SchoolCommitmentMessage, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CoordinatorSignature, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-4">
+                    @Html.LabelFor(model => model.CoordinatorSignature, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-5">
                         @Html.EditorFor(model => model.CoordinatorSignature, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CoordinatorSignedDate, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-4">
+                    @Html.LabelFor(model => model.CoordinatorSignedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
                         @Html.EditorFor(model => model.CoordinatorSignedDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                     </div>
                 </div>
@@ -176,18 +176,16 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-2">
+                <input type="submit" value="Activer la convention de stage" class="btn btn-primary" />
+                @Html.ActionLink("Annuler", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
             </div>
+
         </div>
 
     </div>
 
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

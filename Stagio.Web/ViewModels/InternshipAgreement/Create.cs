@@ -17,8 +17,13 @@ namespace Stagio.Web.ViewModels.InternshipAgreement
 
         #region CompanySection
 
-        public Stagio.Domain.Entities.Company Company { get; set; }
-        public Stagio.Domain.Entities.StaffMember PersonInCharge { get; set; }
+        [DisplayName(WebMessage.InternshipAgreementMessage.CompanySection.COMPANY_NAME)]
+        public string CompanyName { get; set; }
+
+        [DisplayName(WebMessage.InternshipAgreementMessage.CompanySection.COMPANY_ADDRESS)]
+        public string CompanyAddress { get; set; }
+
+        public Stagio.Web.ViewModels.InternshipOffer.StaffMember PersonInCharge { get; set; }
 
         [Required(ErrorMessage = WebMessage.InternshipAgreementMessage.REQUIRED_FIELD)]
         public string CompanyCommitmentMessage { get; set; }
@@ -36,6 +41,12 @@ namespace Stagio.Web.ViewModels.InternshipAgreement
 
 
         #region StudentSection
+
+        [DisplayName(WebMessage.InternshipAgreementMessage.StudentSection.STUDENT_NAME_LABEL)]
+        public string StudentName { get; set; }
+
+        [DisplayName(WebMessage.InternshipAgreementMessage.StudentSection.STUDENT_IDENTIFIER_LABEL)]
+        public string StudentIdentifier { get; set; }
 
         [Required(ErrorMessage = WebMessage.InternshipAgreementMessage.REQUIRED_FIELD)]
         public string StudentCommitmentMessage { get; set; }
