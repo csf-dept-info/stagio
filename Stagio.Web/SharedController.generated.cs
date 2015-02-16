@@ -41,7 +41,6 @@ namespace T4MVC
                 public readonly string _Layout = "_Layout";
                 public readonly string _LoginPartial = "_LoginPartial";
                 public readonly string _MenuPartial = "_MenuPartial";
-                public readonly string Error = "Error";
             }
             public readonly string _Flash = "~/Views/Shared/_Flash.cshtml";
             public readonly string _Header = "~/Views/Shared/_Header.cshtml";
