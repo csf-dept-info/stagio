@@ -202,6 +202,15 @@ namespace Stagio.Web
                 public const string PROGRESSION_UPDATE_DATE_TEXT = "Vous avez accepté le poste le ";
                 //Le cas StudentAcceptedOffer n'a pas de prochaine étape, d'où les chaines vides
             }
+
+            public static class StudentCreateOffer
+            {
+                public const string APPLY_TO_INTERNSHIP = "Postuler pour un stage";
+                public const string UPLOAD_YOUR_FILES = "Téléversez vos fichiers";
+                public const string PROGRESSION_UPDATE_HTML_TITLE = "";
+                public const string PROGRESSION_UPDATE_DATE_TEXT = "Vous avez accepté le poste le ";
+                //Le cas StudentAcceptedOffer n'a pas de prochaine étape, d'où les chaines vides
+            }
         }
 
         public static class GlobalMessage

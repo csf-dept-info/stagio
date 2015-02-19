@@ -1,10 +1,6 @@
 ﻿@model Stagio.Web.ViewModels.InternshipApplication.Create
 
-@{
-    ViewBag.Title = "View";
-}
-
-<h2 id="application-create-page">Postuler pour un stage</h2>
+<h2 id="application-create-page">@WebMessage.InternshipApplicationMessage.StudentCreateOffer.APPLY_TO_INTERNSHIP</h2>
 
 @using (Html.BeginForm("Create", "InternshipApplication", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -18,7 +14,7 @@
         <div class="panel panel-primary">
             
             <div class="panel-heading">
-                Téléversez vos fichiers
+                @WebMessage.InternshipApplicationMessage.StudentCreateOffer.UPLOAD_YOUR_FILES
             </div>
 
             <div class="panel-body">
@@ -41,7 +37,7 @@
             <div class="panel-footer">
                 <p class="col-md-offset-2">
                     <input type="submit" id="confirm-button" value="Postuler" class="btn btn-primary" />
-                    @Html.ActionLink("Annuler", MVC.InternshipOffer.StudentIndex(), new { @class = "btn btn-default" })
+                    @Html.ActionLink(@WebMessage.GeneralMessage.CANCEL, MVC.InternshipOffer.StudentIndex(), new { @class = "btn btn-default" })
                 </p>
             </div>
         </div>
