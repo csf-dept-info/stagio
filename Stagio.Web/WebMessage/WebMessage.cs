@@ -196,6 +196,11 @@ namespace Stagio.Web
             {
                 return companyName + " a selectionné " + studentFullName + " pour l'une de leurs offres de stage.";
             }
+
+            public static string AStudentAppliedToAnOffer(string studentName, string companyName)
+            {
+                return studentName + " a appliqué à une offre de stage de " + companyName;
+            }
         }
     }
 }

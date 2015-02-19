@@ -177,10 +177,10 @@ namespace Stagio.Web.Controllers
 
             internshipApplication.Progression = InternshipApplication.ApplicationStatus.StudentHasApplied;
 
+            var student = _studentRepository.GetById(applicationViewModel.StudentId);
+
             if (!FileFieldsAreEmpty(applicationViewModel))
             {
-                var student = _studentRepository.GetById(applicationViewModel.StudentId);
-
                 string pathEnding = _fileService.SaveStudentFiles(student, applicationViewModel);
 
                 internshipApplication.PathToResume = pathEnding + "\\" + applicationViewModel.Resume.FileName;
@@ -192,6 +192,10 @@ namespace Stagio.Web.Controllers
             var offer = _offerRepository.GetById(applicationViewModel.InternshipOfferId);
             _notificationService.CompanyNotification(offer.Company, 
                 WebMessage.NotificationMessage.A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS,
+                "InternshipApplication", "EmployeePublicatedOffersIndex");
+
+            _notificationService.RoleGroupNotification(RoleNames.Coordinator,
+                WebMessage.NotificationMessage.AStudentAppliedToAnOffer(student.FirstName + " " + student.LastName, offer.Company.Name),
                 "InternshipApplication", "EmployeePublicatedOffersIndex");
 
             const string feedbackMessage = WebMessage.InternshipApplicationMessage.APPLICATION_CREATE_SUCCESS;
