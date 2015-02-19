@@ -56,6 +56,11 @@ namespace Stagio.Web
             public const string CHOOSE_PERIOD_TITLE = "Choisir la période d'ouverture du système";
             public const string CHOOSE_PERIOD_SUBTITLE = "Choisir une période d'ouverture du système permettera de bloquer l'accès au système par les employés et les étudiants";
             public const string CHOOSE_DATES = "Choisir les dates d'ouverture et de fermeture du système";
+            public const string CLEAN_DATABASE = "Réinitialiser le système";
+            public const string CLEAN = "Réinitialiser";
+            public const string CONFIRM = "Confirmer";
+            public const string CONFIRMATION = "Confirmation";
+            public const string CLOSE = "Fermer";
             public static string LAST_CHOSEN_PERIOD(string startingDate, string endingDate)
             {
                 return "Dernière période d'ouverture du système choisie: Du " + startingDate + " au " + endingDate;
