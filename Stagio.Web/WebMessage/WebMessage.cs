@@ -94,6 +94,13 @@ namespace Stagio.Web
             public const string WRONG_PASSWORD_VALIDATION = "Mot de passe invalide";
             public const string STUDENT_ACCOUNTS_IMPORT_SUCCESS = "Les comptes étudiants on été créés avec succès.";
             public const string STUDENT_LIST = "Liste des étudiants";
+            public static string VALIDATE_IMPORT = "Valider l'importation";
+            public static string DATA_TO_IMPORT = "Données à importer";
+            public static string IMPORT_STUDENT_ACCOUNTS = "Importer les comptes étudiants";
+            public static string APPLICATION_PROGRESSION = "Suivi des candidatures";
+            public static string STUDENT_APPLICATION_DATE = "L'étudiant a postulé le";
+            public const string SEE_APPLICATIONS = "Voir toutes les candidatures";
+            
             public static string TOTAL_STUDENT(int number)
             {
                 return number + " étudiant(s) au total";
@@ -109,9 +116,15 @@ namespace Stagio.Web
                 return number + " non-inscrit(s)";
             }
 
-            public static string VALIDATE_IMPORT = "Valider l'importation";
-            public static string DATA_TO_IMPORT = "Données à importer";
-            public static string IMPORT_STUDENT_ACCOUNTS = "Importer les comptes étudiants";
+            public static string STUDENTS_COUNT(int number)
+            {
+                return number + " étudiant(s)";
+            }
+
+            public static string COMPLETION(string percentage)
+            {
+                return percentage + " complété (success)";
+            }
         }
 
         public static class CompanyMessage
