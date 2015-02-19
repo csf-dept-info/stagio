@@ -1,0 +1,291 @@
+﻿@using System.Web.Mvc.Html
+@using Stagio.Domain.Application
+@model Stagio.Web.ViewModels.Archives.Details
+
+<h2 id="">Statistiques de la période de stage</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+
+    @Html.HiddenFor(model => model.Id)
+
+    <h2>Détails de l'offre de stage</h2>
+    <hr />
+    <div class="form-horizontal">
+        <div class="col-md-10">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Informations de base</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StudentsCount, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.StudentsCount)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StudentsWithInternship, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.StudentsWithInternship)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => (model.StudentsCount - model.StudentsWithInternship), new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.Display(WebMessage.InternshipPeriodMessage.STUDENTS_WITHOUT_INTERNSHIP_COUNT)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @rows = "6", @readonly = true })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumberOfTrainees, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.NumberOfTrainees)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Deadline, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.Deadline)
+                        </div>
+                    </div>
+                    @if (Model.PathToExtraFile != null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PathToExtraFile, new { @class = "control-label col-md-4" })
+                            <div class="form-control-static col-md-6">
+                                @Html.ActionLink("Télécharger ", "DownloadFile", new { pathToExtraFile = @Model.PathToExtraFile, offerId = @Model.Id })<i class="fa fa-download"> </i>
+                                @Html.ValidationMessageFor(model => model.PathToExtraFile, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <div class="panel panel-primary">
+                <div class="panel-heading">@Html.DisplayNameFor(model => model.Details)</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Details.HourlyWage, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.Details.HourlyWage)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Details.HoursPerWeek, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.Details.HoursPerWeek)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Details.WorkingHours, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.Details.WorkingHours)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Details.SpecificHardwareAndSoftware, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.TextAreaFor(model => model.Details.SpecificHardwareAndSoftware, new { @class = "form-control", @rows = "6", @readonly = true })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <div class="panel panel-primary">
+                <div class="panel-heading">@Html.DisplayNameFor(model => model.Contact)</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Contact.Name, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.Contact.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Contact.Title, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.Contact.Title)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Contact.PhoneNumber, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.Contact.PhoneNumber)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Contact.Email, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.Contact.Email)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.OtherContact != null)
+        {
+            <div class="col-md-10">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">@Html.DisplayNameFor(model => model.OtherContact)</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OtherContact.Name, new { @class = "control-label col-md-4" })
+                            <div class="form-control-static col-md-6">
+                                @Html.DisplayFor(model => model.OtherContact.Name)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OtherContact.Title, new { @class = "control-label col-md-4" })
+                            <div class="form-control-static col-md-6">
+                                @Html.DisplayFor(model => model.OtherContact.Title)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OtherContact.PhoneNumber, new { @class = "control-label col-md-4" })
+                            <div class="form-control-static col-md-6">
+                                @Html.DisplayFor(model => model.OtherContact.PhoneNumber)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OtherContact.Email, new { @class = "control-label col-md-4" })
+                            <div class="form-control-static col-md-6">
+                                @Html.DisplayFor(model => model.OtherContact.Email)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="col-md-10">
+            <div class="panel panel-primary">
+                <div class="panel-heading">@Html.DisplayNameFor(model => model.PersonInCharge)</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonInCharge.Name, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.PersonInCharge.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonInCharge.Title, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.PersonInCharge.Title)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonInCharge.PhoneNumber, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.PersonInCharge.PhoneNumber)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonInCharge.Email, new { @class = "control-label col-md-4" })
+                        <div class="form-control-static col-md-6">
+                            @Html.DisplayFor(model => model.PersonInCharge.Email)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <div id="content" style="display: none;" class="panel panel-primary">
+                <div class="panel-heading">Message de refus</div>
+                <div class="panel panel-body">
+                    <div class="form-group col-md-12">
+                        @Html.TextAreaFor(model => model.DenyMessage, new { @class = "form-control", id = "deny-message", placeholder = "Veuillez entrer la ou les raison(s) du refus", type = "Body", rows = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <input type="submit" id="send-mail-btn" value="Refuser l'offre" class="btn btn-danger col-xs-offset-1" />
+                        <button type="button" id="cancel-btn" class="btn btn-default" onclick=" toggleContent() ">Annuler</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+
+            @if (User.IsInRole(RoleNames.Student))
+            {
+                <div class="col-md-offset-4">
+                    <p>
+                        @if (ViewBag.IsApplicated == false)
+                        {
+                            @Html.ActionLink("Postuler", MVC.InternshipApplication.Create(Model.Id), new { id = "apply-button", @class = "btn btn-success" })
+                        }
+                        @Html.ActionLink("Retour", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+                    </p>
+                </div>
+
+            }
+            else if (User.IsInRole(RoleNames.Coordinator))
+            {
+                <div id="buttons" style="display: block;" class="form-group">
+                    <div class="col-md-offset-2">
+                        @if (Model.Status == Stagio.Domain.Entities.InternshipOffer.OfferStatus.OnValidation)
+                        {
+                            @Html.ActionLink("Accepter", MVC.InternshipOffer.ValidateOffer().AddRouteValues(new { id = Model.Id }), new { id = "validate-button", @class = "btn btn-success" })
+                            <button class="btn btn-danger" id="deny-button" type="button" onclick=" toggleContent() ">Refuser</button>
+                        }
+                        @Html.ActionLink("Retour", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+                    </div>
+                </div>
+
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                <script type="text/javascript">
+                    function toggleContent() {
+
+                        var contentId = document.getElementById("content");
+                        var buttonsId = document.getElementById("buttons");
+
+                        contentId.style.display == "block" ? contentId.style.display = "none" :
+                            contentId.style.display = "block";
+
+                        buttonsId.style.display == "block" ? buttonsId.style.display = "none" :
+                            buttonsId.style.display = "block";
+                    }
+                </script>
+            }
+            else if (User.IsInRole(RoleNames.Employee))
+            {
+                <div class="col-md-offset-4">
+                    @Html.ActionLink("Retour", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+                </div>
+            }
+        </div>
+    </div>
+}
+

@@ -5,7 +5,7 @@ using Stagio.Domain.Entities;
 
 namespace Stagio.Web.Services
 {
-    public class ArchiveService : IArchiveService
+    public class ArchivesService : IArchivesService
     {
         private readonly IEntityRepository<Student> _studentRepository;
         private readonly IEntityRepository<Employee> _employeeRepository;
@@ -16,7 +16,7 @@ namespace Stagio.Web.Services
         private readonly int companyAcceptedStudentCount;
         private readonly int studentAcceptedOfferCount;
 
-        public ArchiveService(IEntityRepository<Student> studentRepository,
+        public ArchivesService(IEntityRepository<Student> studentRepository,
                               IEntityRepository<Employee> employeeRepository,
                               IEntityRepository<InternshipApplication> intershipApplicationRepository,
                               IEntityRepository<Company> companyRepository,

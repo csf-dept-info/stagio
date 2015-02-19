@@ -100,6 +100,10 @@ namespace Stagio.Web.Mappers
             Mapper.CreateMap<ViewModels.Coordinator.ChoosePeriod, InternshipPeriod>()
                 .IgnoreAllNonExisting();
 
+            //DepartmentalArchives
+            Mapper.CreateMap<ViewModels.Archives.Details, DepartmentalArchives>()
+                .IgnoreAllNonExisting();
+
         }
     }
 }

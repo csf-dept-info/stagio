@@ -1,6 +1,6 @@
 ﻿namespace Stagio.Web.Services
 {
-    public interface IArchiveService
+    public interface IArchivesService
     {
         int GetStudentsCount();
 
