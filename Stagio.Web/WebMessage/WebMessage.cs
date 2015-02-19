@@ -49,6 +49,8 @@ namespace Stagio.Web
             public const string IDENTIFIER_ALREADY_USED = "Cet identifiant est déjà utilisé.";
             public const string ACCOUNT_CREATE_SUCCESS = "Votre compte employé a été créé avec succès!";
             public const string COMPANY_PROFILE_EDIT_SUCCESS = "Le profil de votre compagnie a été modifié avec succès.";
+            public const string CREATE_ACCOUNT_TITLE = "Création d'un compte Stagio pour un employé d'une entreprise";
+            public const string CREATE_ACCOUNT = "Créer le compte";
         }
 
         public static class CoordinatorMessage
