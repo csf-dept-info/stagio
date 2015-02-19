@@ -1,9 +1,5 @@
 ﻿@model Stagio.Web.ViewModels.InternshipAgreement.Create
 
-@{
-    ViewBag.Title = "Create";
-}
-
 <h2>@Stagio.Web.WebMessage.InternshipAgreementMessage.FORM_TITLE</h2>
 <hr />
 
@@ -14,7 +10,8 @@
     <div class="form-horizontal col-md-10">
         
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        @Html.HiddenFor(model => model.InternshipApplicationId)
+        
         <!-- CompanySection -->
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -26,11 +23,13 @@
                     @Html.LabelFor(model => model.CompanyName, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.CompanyName)
+                        @Html.HiddenFor(model => model.CompanyName)
                     </div>
 
                     @Html.LabelFor(model => model.CompanyAddress, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.CompanyAddress)
+                        @Html.HiddenFor(model => model.CompanyAddress)
                     </div>
                 </div>
                 <!-- ./Company-->
@@ -40,21 +39,25 @@
                     @Html.LabelFor(model => model.PersonInCharge.Name, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.PersonInCharge.Name)
+                        @Html.HiddenFor(model => model.PersonInCharge.Name)
                     </div>
 
                     @Html.LabelFor(model => model.PersonInCharge.Title, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.PersonInCharge.Title)
+                        @Html.HiddenFor(model => model.PersonInCharge.Title)
                     </div>
 
                     @Html.LabelFor(model => model.PersonInCharge.PhoneNumber, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.PersonInCharge.PhoneNumber)
+                        @Html.HiddenFor(model => model.PersonInCharge.PhoneNumber)
                     </div>
 
                     @Html.LabelFor(model => model.PersonInCharge.Email, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
-                        @Html.DisplayFor(model => model.PersonInCharge.Email, new { @class = "form-control" })
+                        @Html.DisplayFor(model => model.PersonInCharge.Email)
+                        @Html.HiddenFor(model => model.PersonInCharge.Email)
                     </div>
                 </div>
                 <!-- ./PersonInCharge -->
@@ -62,9 +65,9 @@
                 <div class="form-group">
                     <div class="form-control-static col-md-12">
                         @Html.TextAreaFor(model => model.CompanyCommitmentMessage, new { @class = "form-control", @rows = "4"})
+                        @Html.ValidationMessageFor(model => model.CompanyCommitmentMessage, "", new { @class = "text-danger" })
                     </div>
-                    @Html.ValidationMessageFor(model => model.CompanyCommitmentMessage, "", new { @class = "text-danger" })
-
+                    
                     @Html.LabelFor(model => model.Remunerated, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-2">
                         @Html.EditorFor(model => model.Remunerated, new { htmlAttributes = new { @class = "checkbox" } })
@@ -95,30 +98,34 @@
                     @Html.LabelFor(model => model.StudentName, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-5">
                         @Html.DisplayFor(model => model.StudentName)
+                        @Html.HiddenFor(model => model.StudentName)
                     </div>
 
                     @Html.LabelFor(model => model.StudentIdentifier, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-3">
                         @Html.DisplayFor(model => model.StudentIdentifier)
+                        @Html.HiddenFor(model => model.StudentIdentifier)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-control-static col-md-12">
                         @Html.TextAreaFor(model => model.StudentCommitmentMessage, new { @class = "form-control", @rows = "4" })
+                        @Html.ValidationMessageFor(model => model.StudentCommitmentMessage, "", new { @class = "text-danger" })
                     </div>
-                    @Html.ValidationMessageFor(model => model.StudentCommitmentMessage, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.StudentSignature, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-5">
                         @Html.EditorFor(model => model.StudentSignature, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                        @Html.HiddenFor(model => model.StudentSignature)
                     </div>
 
                     @Html.LabelFor(model => model.StudentSignedDate, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-3">
                         @Html.EditorFor(model => model.StudentSignedDate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                        @Html.HiddenFor(model => model.StudentSignedDate)
                     </div>
                 </div>
             </div>
@@ -135,21 +142,25 @@
                     @Html.LabelFor(model => model.Coordinator.Name, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.Coordinator.Name)
+                        @Html.HiddenFor(model => model.Coordinator.Name)
                     </div>
 
                     @Html.LabelFor(model => model.Coordinator.Title, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
-                        @*@Html.DisplayFor(model => model.Coordinator.Title)*@ <b>TODO - MAKE TITLE MANDATORY</b>
+                        @Html.DisplayFor(model => model.Coordinator.Title)
+                        @Html.HiddenFor(model => model.Coordinator.Title)
                     </div>
 
                     @Html.LabelFor(model => model.Coordinator.PhoneNumber, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
                         @Html.DisplayFor(model => model.Coordinator.PhoneNumber)
+                        @Html.HiddenFor(model => model.Coordinator.PhoneNumber)
                     </div>
 
                     @Html.LabelFor(model => model.Coordinator.Email, new { @class = "control-label col-md-2" })
                     <div class="form-control-static col-md-4">
-                        @Html.DisplayFor(model => model.Coordinator.Email, new { @class = "form-control" })
+                        @Html.DisplayFor(model => model.Coordinator.Email)
+                        @Html.HiddenFor(model => model.Coordinator.Email)
                     </div>
                 </div>
                 <!-- ./Coordinator -->
@@ -157,8 +168,8 @@
                 <div class="form-group">
                     <div class="form-control-static col-md-12">
                         @Html.TextAreaFor(model => model.SchoolCommitmentMessage, new { @class = "form-control", @rows = "4" })
+                        @Html.ValidationMessageFor(model => model.SchoolCommitmentMessage, "", new { @class = "text-danger" })
                     </div>
-                    @Html.ValidationMessageFor(model => model.SchoolCommitmentMessage, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">

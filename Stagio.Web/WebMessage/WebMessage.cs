@@ -169,6 +169,8 @@ namespace Stagio.Web
 
         public static class InternshipAgreementMessage
         {
+            public const string AGREEMENT_CREATE_SUCCESS = "La convention de stage a été publiée avec succès.";
+
             public const string FORM_TITLE = "Contrat d’engagement d’un stage en hiver 2015";
 
             public const string INTERNSHIP_START_DATE = "Date de début de stage:";

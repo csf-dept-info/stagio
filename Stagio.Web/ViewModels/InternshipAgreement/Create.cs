@@ -13,7 +13,7 @@ namespace Stagio.Web.ViewModels.InternshipAgreement
         [HiddenInput]
         public int Id { get; set; }
 
-        public Stagio.Domain.Entities.InternshipApplication InternshipApplication { get; set; }
+        public int InternshipApplicationId { get; set; }
 
         #region CompanySection
 

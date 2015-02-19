@@ -45,10 +45,9 @@ namespace Stagio.Web.Controllers
 
             var coordinator = _coordinatorRepository.GetById(_httpContext.GetUserId());
 
-
             var internshipAgreementViewModel = new Create()
             {
-                InternshipApplication = application,
+                InternshipApplicationId = application.Id,
 
                 StudentName = application.ApplyingStudent.FullName(),
                 StudentIdentifier = application.ApplyingStudent.StudentId,
@@ -78,7 +77,20 @@ namespace Stagio.Web.Controllers
                 return View(viewModel);
             }
 
-            return HttpNotFound();
+            var application = _applicationRepository.GetById(viewModel.InternshipApplicationId);
+
+            if (application == null)
+            {
+                return HttpNotFound();
+            }
+
+            var internshipAgreement = Mapper.Map<InternshipAgreement>(viewModel);
+
+            _agreementRepository.Add(internshipAgreement);
+
+            string feedbackMessage = WebMessage.InternshipAgreementMessage.AGREEMENT_CREATE_SUCCESS;
+
+            return RedirectToAction(MVC.InternshipApplication.GetApplicationsForSpecificStudent(application.ApplyingStudent.Id).Success(feedbackMessage));
         }
     }
 }

@@ -122,6 +122,7 @@ namespace Stagio.Web.Mappers
             Mapper.CreateMap<Coordinator, ViewModels.InternshipOffer.StaffMember>()
                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FullName()))
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Identifier))
+               .ForMember(dest => dest.Title, opt => opt.UseValue("Coordonnation des stages"))
                .IgnoreAllNonExisting();
 
         }
