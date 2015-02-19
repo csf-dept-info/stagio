@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using AutoMapper;
 using Microsoft.Ajax.Utilities;
 using Stagio.DataLayer;
@@ -22,13 +23,15 @@ namespace Stagio.Web.Controllers
         private readonly IEntityRepository<Student> _studentRepository;
         private readonly IHttpContextService _httpContext;
         private readonly IFileSaveService _fileService;
+        private readonly INotificationService _notificationService;
 
         public InternshipApplicationController(
             IEntityRepository<InternshipApplication> applicationRepository,
             IEntityRepository<InternshipOffer> offerRepository,
             IEntityRepository<Student> studentRepository, 
             IFileSaveService fileSaveService,
-            IHttpContextService httpContext)
+            IHttpContextService httpContext,
+            INotificationService notificationService)
         {
             DependencyService.VerifyDependencies(applicationRepository, offerRepository, studentRepository, fileSaveService, httpContext);
             
@@ -37,6 +40,7 @@ namespace Stagio.Web.Controllers
             _studentRepository = studentRepository;
             _fileService = fileSaveService;
             _httpContext = httpContext;
+            _notificationService = notificationService;
         }
 
         [Authorize(Roles = RoleNames.Student)]
@@ -185,7 +189,11 @@ namespace Stagio.Web.Controllers
 
             _applicationRepository.Add(internshipApplication);
 
-            string feedbackMessage = WebMessage.InternshipApplicationMessage.APPLICATION_CREATE_SUCCESS;
+            //TODO: Revoir avec Yannick pourquoi les propriétés de navigations ne s'applique pas
+            //var createdApplication = _applicationRepository.GetById(internshipApplication.Id);
+            //_notificationService.CompanyNotification(createdApplication.InternshipOffer.Company, WebMessage.NotificationMessage.A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS, "InternshipApplication", "EmployeeApplicationIndex");
+
+            const string feedbackMessage = WebMessage.InternshipApplicationMessage.APPLICATION_CREATE_SUCCESS;
 
             return RedirectToAction(MVC.InternshipApplication.StudentApplicationIndex().Success(feedbackMessage));
         }
@@ -213,6 +221,16 @@ namespace Stagio.Web.Controllers
             }
 
             _applicationRepository.Update(internshipApplication);
+
+            if (internshipApplication.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer)
+            {
+                _notificationService.CompanyNotification(internshipApplication.InternshipOffer.Company, 
+                    WebMessage.NotificationMessage.AStudentAcceptedYourInternshipOffer(internshipApplication.ApplyingStudent.FirstName, internshipApplication.ApplyingStudent.LastName),
+                    "InternshipApplication", "EmployeePublicatedOffersIndex");
+                _notificationService.RoleGroupNotification(RoleNames.Coordinator,
+                    WebMessage.NotificationMessage.AStudentHasBeenSelected(internshipApplication.ApplyingStudent.FirstName, internshipApplication.ApplyingStudent.LastName), 
+                    "InternshipApplication", "CoordinatorApplicationIndex");
+            }
 
             const string feedbackMessage = WebMessage.InternshipApplicationMessage.APPLICATION_PROGRESSION_UPDATE_SUCCESS;
 

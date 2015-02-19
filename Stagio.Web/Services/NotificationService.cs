@@ -56,18 +56,7 @@ namespace Stagio.Web.Services
 
             foreach (var user in selectedUsers)
             {
-                var notification = new Notification()
-                {
-                    Object = message,
-                    SenderId = _httpContext.GetUserId(),
-                    ReceiverId = user.Id,
-                    Unseen = true,
-                    Time = DateTime.Today,
-                    LinkAction = linkMethodName,
-                    LinkController = linkControllerName
-                };
-
-                _notificationRepository.Add(notification);
+                UserNotification(user.Id, message, linkControllerName, linkMethodName);
             }
         }
 
@@ -77,19 +66,24 @@ namespace Stagio.Web.Services
 
             foreach (var employee in employees)
             {
-                var notification = new Notification()
-                {
-                    Object = message,
-                    SenderId = _httpContext.GetUserId(),
-                    ReceiverId = employee.Id,
-                    Unseen = true,
-                    Time = DateTime.Today,
-                    LinkAction = linkMethodName,
-                    LinkController = linkControllerName
-                };
-
-                _notificationRepository.Add(notification);
+                UserNotification(employee.Id, message, linkControllerName, linkMethodName);
             }
+        }
+
+        public void UserNotification(int userId, string message, string linkControllerName, string linkMethodName)
+        {
+            var notification = new Notification()
+            {
+                Object = message,
+                SenderId = _httpContext.GetUserId(),
+                ReceiverId = userId,
+                Unseen = true,
+                Time = DateTime.Today,
+                LinkAction = linkMethodName,
+                LinkController = linkControllerName
+            };
+
+            _notificationRepository.Add(notification);
         }
     }
 }
