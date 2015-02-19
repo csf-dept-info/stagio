@@ -72,6 +72,21 @@ namespace Stagio.Web
             public const string CONFIRM_PASSWORD_MESSAGE = "Veuillez confirmer votre mot de passe.";
             public const string WRONG_PASSWORD_VALIDATION = "Mot de passe invalide";
             public const string STUDENT_ACCOUNTS_IMPORT_SUCCESS = "Les comptes étudiants on été créés avec succès.";
+            public const string STUDENT_LIST = "Liste des étudiants";
+            public static string TOTAL_STUDENT(int number)
+            {
+                return number + " étudiant(s) au total";
+            }
+
+            public static string SUBSCRIBED_STUDENTS(int number)
+            {
+                return number + " inscrit(s)";
+            }
+
+            public static string UNSUBSCRIBED_STUDENTS(int number)
+            {
+                return number + " non-inscrit(s)";
+            }
         }
 
         public static class CompanyMessage
