@@ -160,6 +160,8 @@ namespace Stagio.Web
 
         public static class NotificationMessage
         {
+            public const string NO_NOTIFICATION_MESSAGE = "Aucune notification pour l'instant.";
+
             public static string NEW_INTERNSHIP_OFFER_PUBLICATED = "Une nouvelle offre de stage est maintenant disponible.";
             public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED = "L'une de vos offres de stage a été publiée.";
             public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED_HAS_BEEN_DENIED = "L'une de vos offres de stage a été refusée.";
@@ -180,7 +182,20 @@ namespace Stagio.Web
                 return employee + " de " + company + "  a ajouté une nouvelle offre de stage.";
             }
 
-            public const string NO_NOTIFICATION_MESSAGE = "Aucune notification pour l'instant.";
+            public static string NewCompanyJoinedStagio(string name)
+            {
+                return name + " à rejoint Stagio.";
+            }
+
+            public static string ACompanyChoosedYouForOneOfTheirOffer(string companyName)
+            {
+                return companyName + " vous a selectionné pour l'une de leurs offres de stage.";
+            }
+
+            public static string ACompanyChoosedStudentOneOfTheirOffer(string companyName, string studentFullName)
+            {
+                return companyName + " a selectionné " + studentFullName + " pour l'une de leurs offres de stage.";
+            }
         }
     }
 }

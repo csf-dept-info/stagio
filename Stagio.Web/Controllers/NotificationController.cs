@@ -34,7 +34,9 @@ namespace Stagio.Web.Controllers
             var userId = _httpContextService.GetUserId();
             var currentUser = _applicationUserRepository.GetById(userId);
 
-            var notifications = Mapper.Map<IEnumerable<ViewModels.Notification.Notification>>(currentUser.Notifications.OrderByDescending(x => x.Time));
+            var notifications = Mapper.Map<IEnumerable<ViewModels.Notification.Notification>>(currentUser.Notifications
+                .OrderByDescending(x => x.Time.Date)
+                .ThenByDescending(x => x.Time.TimeOfDay));
 
             if (notifications.Count() > NUMBER_NOTIF_MAX)
             {

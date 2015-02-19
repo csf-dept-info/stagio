@@ -188,10 +188,11 @@ namespace Stagio.Web.Controllers
             }
 
             _applicationRepository.Add(internshipApplication);
-
-            //TODO: Revoir avec Yannick pourquoi les propriétés de navigations ne s'applique pas
-            //var createdApplication = _applicationRepository.GetById(internshipApplication.Id);
-            //_notificationService.CompanyNotification(createdApplication.InternshipOffer.Company, WebMessage.NotificationMessage.A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS, "InternshipApplication", "EmployeeApplicationIndex");
+            
+            var offer = _offerRepository.GetById(applicationViewModel.InternshipOfferId);
+            _notificationService.CompanyNotification(offer.Company, 
+                WebMessage.NotificationMessage.A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS,
+                "InternshipApplication", "EmployeePublicatedOffersIndex");
 
             const string feedbackMessage = WebMessage.InternshipApplicationMessage.APPLICATION_CREATE_SUCCESS;
 
@@ -222,13 +223,25 @@ namespace Stagio.Web.Controllers
 
             _applicationRepository.Update(internshipApplication);
 
-            if (internshipApplication.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer)
+            if (internshipApplication.Progression == InternshipApplication.ApplicationStatus.CompanyAcceptedStudent)
             {
-                _notificationService.CompanyNotification(internshipApplication.InternshipOffer.Company, 
-                    WebMessage.NotificationMessage.AStudentAcceptedYourInternshipOffer(internshipApplication.ApplyingStudent.FirstName, internshipApplication.ApplyingStudent.LastName),
-                    "InternshipApplication", "EmployeePublicatedOffersIndex");
+                _notificationService.RoleGroupNotification(RoleNames.Student,
+                    WebMessage.NotificationMessage.ACompanyChoosedYouForOneOfTheirOffer(internshipApplication.InternshipOffer.Company.Name),
+                    "InternshipApplication", "StudentApplicationIndex");
+
                 _notificationService.RoleGroupNotification(RoleNames.Coordinator,
-                    WebMessage.NotificationMessage.AStudentHasBeenSelected(internshipApplication.ApplyingStudent.FirstName, internshipApplication.ApplyingStudent.LastName), 
+                    WebMessage.NotificationMessage.ACompanyChoosedStudentOneOfTheirOffer(internshipApplication.InternshipOffer.Company.Name,
+                    internshipApplication.ApplyingStudent.FirstName + " "+ internshipApplication.ApplyingStudent.LastName),
+                    "InternshipApplication", "CoordinatorApplicationIndex");
+            }
+            else if (internshipApplication.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer)
+            {
+                _notificationService.CompanyNotification(internshipApplication.InternshipOffer.Company,
+                    WebMessage.NotificationMessage.AStudentAcceptedYourInternshipOffer(internshipApplication.ApplyingStudent.FirstName, internshipApplication.ApplyingStudent.LastName),
+                    "InternshipOffer", "EmployeePublicatedOffersIndex");
+
+                _notificationService.RoleGroupNotification(RoleNames.Coordinator,
+                    WebMessage.NotificationMessage.AStudentHasBeenSelected(internshipApplication.ApplyingStudent.FirstName, internshipApplication.ApplyingStudent.LastName),
                     "InternshipApplication", "CoordinatorApplicationIndex");
             }
 

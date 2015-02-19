@@ -14,6 +14,7 @@ namespace Stagio.Web.UnitTests.Controllers.CompanyTests
         protected IEntityRepository<Employee> _employeeRepository; 
         protected IEntityRepository<Company> _companyRepository;
         protected IHttpContextService _httpContextService;
+        protected INotificationService _notificationService;
 
         [TestInitialize]
         public void Initialize()
@@ -21,7 +22,8 @@ namespace Stagio.Web.UnitTests.Controllers.CompanyTests
             _companyRepository = Substitute.For<IEntityRepository<Company>>();
             _employeeRepository = Substitute.For<IEntityRepository<Employee>>();
             _httpContextService = Substitute.For<IHttpContextService>();
-            _companyController = new CompanyController(_companyRepository, _employeeRepository, _httpContextService);
+            _notificationService = Substitute.For<INotificationService>();
+            _companyController = new CompanyController(_companyRepository, _employeeRepository, _httpContextService, _notificationService);
         }
     }
 }

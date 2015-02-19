@@ -41,7 +41,7 @@ namespace Stagio.Web.Services
                     SenderId = employee.Id,
                     ReceiverId = coordinator.Id,
                     Unseen = true,
-                    Time = DateTime.Today,
+                    Time = DateTime.Now,
                     LinkAction = ACTION_NAME,
                     LinkController = CONTROLLER_NAME
                 };
@@ -78,7 +78,7 @@ namespace Stagio.Web.Services
                 SenderId = _httpContext.GetUserId(),
                 ReceiverId = userId,
                 Unseen = true,
-                Time = DateTime.Today,
+                Time = DateTime.Now,
                 LinkAction = linkMethodName,
                 LinkController = linkControllerName
             };
