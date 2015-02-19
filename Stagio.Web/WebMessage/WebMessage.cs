@@ -16,6 +16,7 @@ namespace Stagio.Web
             public const string NEXT = "Suivant";
             public const string SAVE = "Sauvegarder";
             public const string BACK = "Retour";
+            public const string MY_STAGIO_ACCOUNT = "Mon compte Stagio";
         }
 
         public static class UserInformation
@@ -52,6 +53,10 @@ namespace Stagio.Web
             public const string CREATE_ACCOUNT_TITLE = "Création d'un compte Stagio pour un employé d'une entreprise";
             public const string CREATE_ACCOUNT = "Créer le compte";
             public const string EDIT_PROFILE_TITLE = "Modifier mon profil";
+            public const string SEE_APPLICATIONS = "Voir toutes les candidatures";
+            public const string CREATE_INTERNSHIP_OFFER = "Créer une offre de stage";
+            public const string SEE_OFFERS = "Voir toutes les offres de stage";
+            public const string VALIDATING_OFFERS = "Offres en validation";
         }
 
         public static class CoordinatorMessage
