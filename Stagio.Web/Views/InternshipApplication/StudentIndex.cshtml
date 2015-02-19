@@ -12,7 +12,7 @@
     <hr />
     <div class="panel-primary">
         <div class="panel-heading" id="application-count">
-            @Model.Count() candidature(s)
+            @WebMessage.InternshipApplicationMessage.APPLICATIONS_COUNT(Model.Count())
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -96,7 +96,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                                                                <input type="submit" id="@updateProgressionConfirmationButtonId" value="Confirmer" class="btn btn-success" />
+                                                                <input type="submit" id="@updateProgressionConfirmationButtonId" value=@WebMessage.GeneralMessage.CONFIRM class="btn btn-success" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -104,14 +104,14 @@
                                                 <!-- /.modal -->
                                                 }
                                             }
-                                            <span class="pull-right text-muted visible-lg">@percentage% complété</span>
+                                            <span class="pull-right text-muted visible-lg">@WebMessage.InternshipApplicationMessage.COMPLETION(percentage.ToString())</span>
                                         </div>
 
                                         <br />
 
                                         <div class="@progressBarDivStyle">
                                             <div class="@progressBarStyle" role="progressbar" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100" style="width: @percentage%">
-                                                <span class="sr-only">@percentage% complété (success)</span>
+                                                <span class="sr-only">@WebMessage.InternshipApplicationMessage.COMPLETION_BAR(percentage.ToString())</span>
                                             </div>
                                         </div>
                                     </div>

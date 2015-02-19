@@ -17,6 +17,7 @@ namespace Stagio.Web
             public const string SAVE = "Sauvegarder";
             public const string BACK = "Retour";
             public const string MY_STAGIO_ACCOUNT = "Mon compte Stagio";
+            public const string CONFIRM = "Confirmer";
         }
 
         public static class UserInformation
@@ -71,7 +72,6 @@ namespace Stagio.Web
             {
                 public const string CLEAN_DATABASE = "Réinitialiser le système";
                 public const string CLEAN = "Réinitialiser";
-                public const string CONFIRM = "Confirmer";
                 public const string CONFIRMATION = "Confirmation";
                 public const string CLOSE = "Fermer";
                 public const string CLEAN_DATABASE_SUCCESS = "Le système a été remis à zéro.";
@@ -119,11 +119,6 @@ namespace Stagio.Web
             public static string STUDENTS_COUNT(int number)
             {
                 return number + " étudiant(s)";
-            }
-
-            public static string COMPLETION(string percentage)
-            {
-                return percentage + " complété (success)";
             }
         }
 
@@ -215,10 +210,18 @@ namespace Stagio.Web
             public static class CompanyViewsApplications
             {
                 public const string OFFER_APPLICATIONS = "Candidatures pour l'offre de stage";
-                public static string APPLICATIONS_COUNT(int number)
-                {
-                    return number + " candidature(s)";
-                }
+            }
+            public static string APPLICATIONS_COUNT(int number)
+            {
+                return number + " candidature(s)";
+            }
+            public static string COMPLETION_BAR(string percentage)
+            {
+                return percentage + " complété (success)";
+            }
+            public static string COMPLETION(string percentage)
+            {
+                return percentage + "% complété";
             }
         }
 
