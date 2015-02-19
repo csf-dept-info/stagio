@@ -157,6 +157,8 @@ namespace Stagio.Web
             public const string REQUIRED_PERSON_IN_CHARGE = "Ces informations sont requises.";
 
             public const string DRAFT_DELETE_VALIDATION_MESSAGE = "Êtes-vous certain de vouloir suprimer le brouillon?";
+
+            public const string SEE_COMPLETE_OFFER = "Voir l'offre complète";
         }
 
         public static class InviteCompaniesMessage
@@ -176,6 +178,7 @@ namespace Stagio.Web
                 public const string PROGRESSION_UPDATE_HTML_CONTENT = "Je confirme avoir passé une entrevue avec l'entreprise en date du ";
                 public const string PROGRESSION_UPDATE_HTML_TITLE = "Confirmation de votre présence à l'entrevue";
                 public const string PROGRESSION_UPDATE_DATE_TEXT = "Vous avez postulé le ";
+                public const string DOWNLOAD = "Télécharger ";
             }
 
             public static class StudentHadInterview
@@ -207,9 +210,15 @@ namespace Stagio.Web
             {
                 public const string APPLY_TO_INTERNSHIP = "Postuler pour un stage";
                 public const string UPLOAD_YOUR_FILES = "Téléversez vos fichiers";
-                public const string PROGRESSION_UPDATE_HTML_TITLE = "";
-                public const string PROGRESSION_UPDATE_DATE_TEXT = "Vous avez accepté le poste le ";
-                //Le cas StudentAcceptedOffer n'a pas de prochaine étape, d'où les chaines vides
+            }
+
+            public static class CompanyViewsApplications
+            {
+                public const string OFFER_APPLICATIONS = "Candidatures pour l'offre de stage";
+                public static string APPLICATIONS_COUNT(int number)
+                {
+                    return number + " candidature(s)";
+                }
             }
         }
 
