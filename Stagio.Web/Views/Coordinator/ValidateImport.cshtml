@@ -1,8 +1,5 @@
 ﻿@model List<Stagio.Web.ViewModels.Coordinator.ImportStudentViewModel>
-@{
-    ViewBag.Title = "Valider l'import";
-}
-<h2>Valider l'importation</h2>
+<h2>@WebMessage.CoordinatorMessage.VALIDATE_IMPORT</h2>
 
 @using (Html.BeginForm("ValidateImport", "Coordinator", FormMethod.Post))
 {
@@ -12,7 +9,7 @@
         <div class="panel panel-primary">
 
             <div class="panel-heading">
-                Données à importer
+                @WebMessage.CoordinatorMessage.DATA_TO_IMPORT
             </div>
 
             <div class="panel-body">
@@ -20,9 +17,9 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Matricule</th>
-                                <th>Prénom</th>
-                                <th>Nom</th>
+                                <th>@WebMessage.UserInformation.IDENTIFIER</th>
+                                <th>@WebMessage.UserInformation.FIRST_NAME</th>
+                                <th>@WebMessage.UserInformation.LAST_NAME</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,8 +42,8 @@
 
             <div class="panel-footer">
                 <p class="col-md-offset-2">
-                    <input type="submit" value="Importer les comptes étudiants" id="create-btn" class="btn btn btn-primary" />
-                    @Html.ActionLink("Annuler", MVC.Coordinator.Index(), new { @class = "btn btn-default" })
+                    <input type="submit" value=@WebMessage.CoordinatorMessage.IMPORT_STUDENT_ACCOUNTS id="create-btn" class="btn btn btn-primary" />
+                    @Html.ActionLink(@WebMessage.GeneralMessage.CANCEL, MVC.Coordinator.Index(), new { @class = "btn btn-default" })
                 </p>
             </div>
         </div>

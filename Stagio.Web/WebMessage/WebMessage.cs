@@ -17,6 +17,13 @@ namespace Stagio.Web
             public const string SAVE = "Sauvegarder";
             public const string BACK = "Retour";
         }
+
+        public static class UserInformation
+        {
+            public const string IDENTIFIER = "Matricule";
+            public const string FIRST_NAME = "Prénom";
+            public const string LAST_NAME = "Nom";
+        }
         public static class HomeMessage
         {
             public const string SYSTEM_IS_NOT_OPEN = "Le système est présentement fermé. Il sera ouvert à la prochaine période de stage.";
@@ -87,6 +94,10 @@ namespace Stagio.Web
             {
                 return number + " non-inscrit(s)";
             }
+
+            public static string VALIDATE_IMPORT = "Valider l'importation";
+            public static string DATA_TO_IMPORT = "Données à importer";
+            public static string IMPORT_STUDENT_ACCOUNTS = "Importer les comptes étudiants";
         }
 
         public static class CompanyMessage
