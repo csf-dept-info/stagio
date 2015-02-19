@@ -1,10 +1,6 @@
 ﻿@model Stagio.Web.ViewModels.Employee.Edit
 
-@{
-    ViewBag.Title = "Edit";
-}
-
-<h2 id=@Stagio.Web.Automation.PageObjects.EmployeePages.EditEmployeePage.PAGE_ID>Modifier mon profil</h2>
+<h2 id="employee-edit-page">@WebMessage.EmployeeMessage.EDIT_PROFILE_TITLE</h2>
 
 @using (Html.BeginForm())
 {
@@ -17,7 +13,7 @@
 
         <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">Informations personelles</div>
+            <div class="panel-heading">@WebMessage.GeneralMessage.GENERAL_INFORMATIONS</div>
             <div class="panel-body">
 
                 <div class="form-group">
@@ -60,7 +56,7 @@
 
                 <div class="form-group">
                         <div class="col-md-offset-4 col-md-6">
-                        <input type="submit" value="Enregistrer" class="btn btn-primary" id="submit_profile_button" name="action:EditProfile" />
+                        <input type="submit" value=@WebMessage.GeneralMessage.SAVE class="btn btn-primary" id="submit_profile_button" name="action:EditProfile" />
                     </div>
                 </div>
             </div>
@@ -69,7 +65,7 @@
 
         <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">Mot de passe</div>
+            <div class="panel-heading">@WebMessage.GeneralMessage.PASSWORD</div>
             <div class="panel-body">
                 <div class="form-group">
                         @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-4" })
@@ -97,7 +93,7 @@
 
                 <div class="form-group">
                         <div class="col-md-offset-4 col-md-6">
-                        <input type="submit" value="Enregistrer" class="btn btn-primary" id="submit_password_button" name="action:EditPassword" />
+                        <input type="submit" value=@WebMessage.GeneralMessage.SAVE class="btn btn-primary" id="submit_password_button" name="action:EditPassword" />
                     </div>
                 </div>
             </div>

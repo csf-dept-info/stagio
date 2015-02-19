@@ -51,6 +51,7 @@ namespace Stagio.Web
             public const string COMPANY_PROFILE_EDIT_SUCCESS = "Le profil de votre compagnie a été modifié avec succès.";
             public const string CREATE_ACCOUNT_TITLE = "Création d'un compte Stagio pour un employé d'une entreprise";
             public const string CREATE_ACCOUNT = "Créer le compte";
+            public const string EDIT_PROFILE_TITLE = "Modifier mon profil";
         }
 
         public static class CoordinatorMessage
