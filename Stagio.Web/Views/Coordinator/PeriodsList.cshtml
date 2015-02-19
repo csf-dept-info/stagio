@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Stagio.Web.ViewModels.Coordinator.ChoosePeriod>
-
+    
 <h2 id="">Liste des périodes de stages passées</h2>
 <hr />
 
@@ -17,6 +17,7 @@
         </thead>
 
         <tbody>
+            @{var offerID = 1;}
             @foreach (var item in Model)
             {
                 <tr id="@item.Id">
@@ -26,7 +27,11 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.EndDate, new { id = "EndDate" + item.Id })
                     </td>
+                    <td>
+                        @Html.ActionLink("Voir les détails", MVC.InternshipOffer.Details(item.Id), new { id = "internship-offer-details-" + offerID, @class = "btn btn-primary" })
+                    </td>
                 </tr>
+                offerID++;
             }
         </tbody>
     </table>

@@ -73,14 +73,9 @@ namespace Stagio.Web.Services
             return _internshipOfferRepository.GetAll().Count();
         }
 
-        public InternshipPeriod GetLastInternshipPeriod()
+        public IEnumerable<InternshipPeriod> GetInternshipPeriodsList()
         {
-            var internshipPeriodsList = _internshipPeriodRepository.GetAll().ToList();
-            if (internshipPeriodsList.Count < 1)
-            {
-                return internshipPeriodsList.Last();
-            }
-            return null;
+            return _internshipPeriodRepository.GetAll().ToList();
         }
     }
 }

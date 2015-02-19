@@ -175,6 +175,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ArchivesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="CiController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -644,7 +647,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
-    <Content Include="Views\Archives\PeriodsList.cshtml" />
+    <Content Include="Views\Coordinator\PeriodsList.cshtml" />
     <Content Include="Views\Archives\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>

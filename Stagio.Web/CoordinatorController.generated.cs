@@ -82,6 +82,7 @@ namespace Stagio.Web.Controllers
             public readonly string StudentsList = "StudentsList";
             public readonly string ChooseInternshipPeriod = "ChooseInternshipPeriod";
             public readonly string CleanDatabase = "CleanDatabase";
+            public readonly string InternshipsPeriodList = "InternshipsPeriodList";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -93,6 +94,7 @@ namespace Stagio.Web.Controllers
             public const string StudentsList = "StudentsList";
             public const string ChooseInternshipPeriod = "ChooseInternshipPeriod";
             public const string CleanDatabase = "CleanDatabase";
+            public const string InternshipsPeriodList = "InternshipsPeriodList";
         }
 
 
@@ -261,6 +263,17 @@ namespace Stagio.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CleanDatabase);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "cleanDatabaseVm", cleanDatabaseVm);
             CleanDatabaseOverride(callInfo, cleanDatabaseVm);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void InternshipsPeriodListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult InternshipsPeriodList()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.InternshipsPeriodList);
+            InternshipsPeriodListOverride(callInfo);
             return callInfo;
         }
 

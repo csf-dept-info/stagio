@@ -1035,7 +1035,7 @@ namespace Stagio.TestUtilities.Database
                     EmployeesCount = 25,
                     CompaniesCount = 17,
                     InternshipOffersCount = 19,
-                    InternshipPeriod = new InternshipPeriod{EndDate = DateTime.Today.AddMonths(-3), StartDate = DateTime.Today.AddMonths(-1)},
+                    InternshipPeriod = new InternshipPeriod{StartDate = DateTime.Today.AddMonths(-3), EndDate = DateTime.Today.AddMonths(-1)},
                     InterviewsCount = 22,
                     InternshipApplicationsCount = 31,
                     CompanyOffersCount = 19
@@ -1055,7 +1055,7 @@ namespace Stagio.TestUtilities.Database
                     EmployeesCount = 18,
                     CompaniesCount = 14,
                     InternshipOffersCount = 15,
-                    InternshipPeriod = new InternshipPeriod { EndDate = DateTime.Today.AddMonths(-12), StartDate = DateTime.Today.AddMonths(-10) },
+                    InternshipPeriod = new InternshipPeriod { StartDate = DateTime.Today.AddMonths(-12), EndDate = DateTime.Today.AddMonths(-10) },
                     InterviewsCount = 48,
                     InternshipApplicationsCount = 37,
                     CompanyOffersCount = 34

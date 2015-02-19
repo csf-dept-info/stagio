@@ -163,6 +163,15 @@ namespace Stagio.Web.Controllers
             return RedirectToAction(MVC.Ci.CleanDatabase()).Success(WebMessage.CoordinatorMessage.CLEAN_DATABASE_SUCCESS);
         }
 
+        public virtual ActionResult InternshipsPeriodList()
+        {
+            var internshipPeriodsList = _archivesService.GetInternshipPeriodsList();
+
+            var internshipPeriodsListVm = internshipPeriodsList.Select(Mapper.Map<ChoosePeriod>).ToList();
+
+            return View(MVC.Archives.Views.ViewNames.PeriodsList, internshipPeriodsListVm);
+        }
+
         private void SubscribeStudentList(IEnumerable<ImportStudentViewModel> importStudents)
         {
             foreach (var student in importStudents)
