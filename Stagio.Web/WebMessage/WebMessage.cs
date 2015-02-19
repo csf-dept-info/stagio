@@ -28,6 +28,12 @@ namespace Stagio.Web
         public static class HomeMessage
         {
             public const string SYSTEM_IS_NOT_OPEN = "Le système est présentement fermé. Il sera ouvert à la prochaine période de stage.";
+            public const string WELCOME = "Bienvenue sur";
+            public const string WELCOMING_MESSAGE_PART_1 = "Outil de suivi des stages en informatique";
+            public const string WELCOMING_MESSAGE_PART_2 = "du Cégep de Sainte-Foy";
+            public const string COMPANY = "Entreprise";
+            public const string STUDENT = "Étudiant";
+            public const string SUBSCRIPTION = "Inscription";
         }
 
         public static class AccountMessage
