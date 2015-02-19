@@ -46,25 +46,32 @@ namespace Stagio.Web
 
         public static class CoordinatorMessage
         {
+            public static class CleanDatabase
+            {
+                public const string CLEAN_DATABASE = "Réinitialiser le système";
+                public const string CLEAN = "Réinitialiser";
+                public const string CONFIRM = "Confirmer";
+                public const string CONFIRMATION = "Confirmation";
+                public const string CLOSE = "Fermer";
+                public const string CLEAN_DATABASE_SUCCESS = "Le système a été remis à zéro.";
+                public const string CLEAN_DATABASE_VALIDATION = "Cette action est irréversible";
+            }
+            public static class ChoosePeriod
+            {
+                public const string CHOOSE_DATE_SUCCESS = "Les dates de début et de fin de la période d'ouverture du système ont été sauvegardées.";
+                public const string INVALID_START_DATE = "La date de début ne peut pas être après la date de fin.";
+                public const string CHOOSE_PERIOD_TITLE = "Choisir la période d'ouverture du système";
+                public const string CHOOSE_PERIOD_SUBTITLE = "Choisir une période d'ouverture du système permettera de bloquer l'accès au système par les employés et les étudiants";
+                public const string CHOOSE_DATES = "Choisir les dates d'ouverture et de fermeture du système";
+
+                public static string LAST_CHOSEN_PERIOD(string startingDate, string endingDate)
+                {
+                    return "Dernière période d'ouverture du système choisie: Du " + startingDate + " au " + endingDate;
+                }
+            }
             public const string CONFIRM_PASSWORD_MESSAGE = "Veuillez confirmer votre mot de passe.";
-            public const string CLEAN_DATABASE_SUCCESS = "Le système a été remis à zéro.";
-            public const string CLEAN_DATABASE_VALIDATION = "Cette action est irréversible";
             public const string WRONG_PASSWORD_VALIDATION = "Mot de passe invalide";
             public const string STUDENT_ACCOUNTS_IMPORT_SUCCESS = "Les comptes étudiants on été créés avec succès.";
-            public const string CHOOSE_DATE_SUCCESS = "Les dates de début et de fin de la période d'ouverture du système ont été sauvegardées.";
-            public const string INVALID_START_DATE = "La date de début ne peut pas être après la date de fin.";
-            public const string CHOOSE_PERIOD_TITLE = "Choisir la période d'ouverture du système";
-            public const string CHOOSE_PERIOD_SUBTITLE = "Choisir une période d'ouverture du système permettera de bloquer l'accès au système par les employés et les étudiants";
-            public const string CHOOSE_DATES = "Choisir les dates d'ouverture et de fermeture du système";
-            public const string CLEAN_DATABASE = "Réinitialiser le système";
-            public const string CLEAN = "Réinitialiser";
-            public const string CONFIRM = "Confirmer";
-            public const string CONFIRMATION = "Confirmation";
-            public const string CLOSE = "Fermer";
-            public static string LAST_CHOSEN_PERIOD(string startingDate, string endingDate)
-            {
-                return "Dernière période d'ouverture du système choisie: Du " + startingDate + " au " + endingDate;
-            }
         }
 
         public static class CompanyMessage

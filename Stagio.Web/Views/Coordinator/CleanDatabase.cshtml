@@ -8,12 +8,12 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="col-md-offset-3 col-md-6">
             <div class="panel panel-red">
-                <div class="panel-heading">@WebMessage.CoordinatorMessage.CLEAN_DATABASE</div>
+                <div class="panel-heading">@WebMessage.CoordinatorMessage.CleanDatabase.CLEAN_DATABASE</div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <p class="text-center text-danger"> <i class="fa fa-warning"></i> @WebMessage.CoordinatorMessage.CLEAN_DATABASE_VALIDATION</p>
+                        <p class="text-center text-danger"> <i class="fa fa-warning"></i> @WebMessage.CoordinatorMessage.CleanDatabase.CLEAN_DATABASE_VALIDATION</p>
                         <div class="col-md-offset-4 col-md-6">
-                            <input type="button" value="@WebMessage.CoordinatorMessage.CLEAN" class="btn btn-danger btn-outline" id="submit-clean-database-button" data-toggle="modal" data-target="#myModal" />
+                            <input type="button" value="@WebMessage.CoordinatorMessage.CleanDatabase.CLEAN" class="btn btn-danger btn-outline" id="submit-clean-database-button" data-toggle="modal" data-target="#myModal" />
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">@WebMessage.CoordinatorMessage.CONFIRMATION</h4>
+                    <h4 class="modal-title" id="myModalLabel">@WebMessage.CoordinatorMessage.CleanDatabase.CONFIRMATION</h4>
                 </div>
                 <div class="modal-body">
 
@@ -47,8 +47,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">@WebMessage.CoordinatorMessage.CLOSE</button>
-                    <button class="btn btn-danger" id="delete-draft-validation-button" name="action:DeleteDraft">@WebMessage.CoordinatorMessage.CONFIRM</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@WebMessage.CoordinatorMessage.CleanDatabase.CLOSE</button>
+                    <button class="btn btn-danger" id="delete-draft-validation-button" name="action:DeleteDraft">@WebMessage.CoordinatorMessage.CleanDatabase.CONFIRM</button>
                 </div>
             </div>
             <!-- /.modal-content -->

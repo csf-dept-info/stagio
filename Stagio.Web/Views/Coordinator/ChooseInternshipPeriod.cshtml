@@ -1,7 +1,7 @@
 ﻿@model Stagio.Web.ViewModels.Coordinator.ChoosePeriod
 
-<h2 id=@Stagio.Web.Automation.PageObjects.CoordinatorPages.ChoosePeriodCoordinatorPage.PAGE_ID>@WebMessage.CoordinatorMessage.CHOOSE_PERIOD_TITLE</h2>
-<p>@WebMessage.CoordinatorMessage.CHOOSE_PERIOD_SUBTITLE</p>
+<h2 id=@Stagio.Web.Automation.PageObjects.CoordinatorPages.ChoosePeriodCoordinatorPage.PAGE_ID>@WebMessage.CoordinatorMessage.ChoosePeriod.CHOOSE_PERIOD_TITLE</h2>
+<p>@WebMessage.CoordinatorMessage.ChoosePeriod.CHOOSE_PERIOD_SUBTITLE</p>
 
 @Html.AntiForgeryToken()
 
@@ -12,10 +12,10 @@
         <div class="col-md-offset-2 col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading" id="panel-header">
-                    @WebMessage.CoordinatorMessage.CHOOSE_DATES
+                    @WebMessage.CoordinatorMessage.ChoosePeriod.CHOOSE_DATES
                 </div>
                 <div class="panel-body">
-                    <p>@WebMessage.CoordinatorMessage.LAST_CHOSEN_PERIOD(Model.StartDate.ToShortDateString(), Model.EndDate.ToShortDateString())</p>
+                    <p>@WebMessage.CoordinatorMessage.ChoosePeriod.LAST_CHOSEN_PERIOD(Model.StartDate.ToShortDateString(), Model.EndDate.ToShortDateString())</p>
                     @Html.ValidationMessage("dateError", "", new { @class = "text-danger col-md-offset-1" })
                     <br /><br />
                     <div class="form-group">
