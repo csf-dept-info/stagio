@@ -70,7 +70,28 @@ namespace Stagio.Web.Services
             }
         }
 
-        public void UserNotification(int userId, string message, string linkControllerName, string linkMethodName)
+        public void NewCompanyJoinedStagio(Company company,string message, string linkControllerName, string linkMethodName)
+        {
+            var allCoordinators = _coordinatorRepository.GetAll();
+
+            foreach (var coordinator in allCoordinators)
+            {
+                var notification = new Notification()
+                {
+                    Object = message,
+                    SenderId = coordinator.Id,
+                    ReceiverId = coordinator.Id,
+                    Unseen = true,
+                    Time = DateTime.Now,
+                    LinkAction = linkMethodName,
+                    LinkController = linkControllerName
+                };
+
+                _notificationRepository.Add(notification);
+            }
+        }
+
+        private void UserNotification(int userId, string message, string linkControllerName, string linkMethodName)
         {
             var notification = new Notification()
             {

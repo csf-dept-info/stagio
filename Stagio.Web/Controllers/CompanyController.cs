@@ -126,6 +126,10 @@ namespace Stagio.Web.Controllers
 
             _companyRepository.Add(company);
 
+            _notificationService.NewCompanyJoinedStagio(company, 
+                WebMessage.NotificationMessage.ANewCompanyChoosedStagio(company.Name), 
+                "", "");
+
             return RedirectToAction(MVC.Employee.Create(company.Id));
         }
     }

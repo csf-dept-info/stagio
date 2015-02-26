@@ -9,7 +9,6 @@ namespace Stagio.Web.Services
         void NotifyNewInternshipOfferCreated(int internshipOfferAuthorId);
         void RoleGroupNotification(string roleName, string message, string linkControllerName, string linkMethodName);
         void CompanyNotification(Company company, string message, string linkControllerName, string linkMethodName);
-
-        void UserNotification(int userId, string message, string linkControllerName, string linkMethodName);
+        void NewCompanyJoinedStagio(Company company, string message, string linkControllerName, string linkMethodName);
     }
 }

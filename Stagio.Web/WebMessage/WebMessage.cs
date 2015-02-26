@@ -201,6 +201,11 @@ namespace Stagio.Web
             {
                 return studentName + " a appliqué à une offre de stage de " + companyName;
             }
+
+            public static string ANewCompanyChoosedStagio(string companyName)
+            {
+                return companyName + " a rejoint le système Stagio";
+            }
         }
     }
 }
