@@ -155,12 +155,12 @@
     <Compile Include="DataAnnotation\ValidatePasswordTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountServiceTest.cs" />
-    <Compile Include="Services\ArchivesServiceTests.cs" />
     <Compile Include="Services\EmailServiceTests.cs" />
     <Compile Include="Services\EmployeeServiceTests.cs" />
     <Compile Include="Services\FileImportServiceTests.cs" />
     <Compile Include="Services\InternshipPeriodServiceTests.cs" />
     <Compile Include="Services\NotificationServiceTests.cs" />
+    <Compile Include="Services\ArchivesServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

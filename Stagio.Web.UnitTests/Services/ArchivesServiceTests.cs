@@ -1,15 +1,19 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Ploeh.AutoFixture;
 using Stagio.DataLayer;
 using Stagio.Domain.Entities;
+using Stagio.TestUtilities.Database;
 using Stagio.Web.Services;
 using Stagio.Web.UnitTests.Controllers;
 
 namespace Stagio.Web.UnitTests.Services
 {
-    class ArchivesServiceTests : AllControllersBaseClassTests
+    [TestClass]
+    public class ArchivesServiceTests : AllControllersBaseClassTests
     {
         public IArchivesService _archivesService;
 
@@ -29,7 +33,9 @@ namespace Stagio.Web.UnitTests.Services
         private const int APP_STUDENT_HAD_INTERVIEW_COUNT = 3;
         private const int APP_STUDENT_HAS_APPLIED_COUNT = 4;
         private const int ARCHIVES_COUNT = 2;
+        private IEnumerable<DepartmentalArchives> archivesList; 
         private DepartmentalArchives archive;
+        private int applicationsCount;
 
 
         [TestInitialize]
@@ -51,67 +57,68 @@ namespace Stagio.Web.UnitTests.Services
         [TestMethod]
         public void get_students_count_should_return_correct_number()
         {
-
+            _archivesService.GetStudentsCount().Should().Be(STUDENTS_COUNT);
         }
 
         [TestMethod]
         public void get_employees_count_should_return_correct_number()
         {
-
+            _archivesService.GetEmployeesCount().Should().Be(EMPLOYEES_COUNT);
         }
 
         [TestMethod]
         public void get_companies_count_should_return_correct_number()
         {
-
+            _archivesService.GetCompaniesCount().Should().Be(COMPANIES_COUNT);
         }
 
         [TestMethod]
         public void get_publicated_internship_offers_count_should_return_correct_number()
         {
-
+            _archivesService.GetPublicatedIntershipOffersCount().Should().Be(PUBLISHED_OFFERS_COUNT);
         }
 
         [TestMethod]
         public void get_internship_applications_count_should_return_correct_number()
         {
-
+            _archivesService.GetInternshipApplicationsCount().Should().Be(applicationsCount);
         }
 
         [TestMethod]
         public void get_interviews_count_should_return_correct_number()
         {
-
+            _archivesService.GetInterviewsCount().Should().Be(applicationsCount - APP_STUDENT_HAS_APPLIED_COUNT);
         }
 
         [TestMethod]
         public void get_students_with_internship_count_should_return_correct_number()
         {
-
+            _archivesService.GetStudentsWithInternshipCount().Should().Be(APP_STUDENT_ACCEPTED_OFFER_COUNT);
         }
 
         [TestMethod]
         public void get_company_offers_count_should_return_correct_number()
         {
-
+            _archivesService.GetCompanyOffersCount().Should().Be(APP_COMPANY_ACCEPTED_STUDENT_COUNT + APP_STUDENT_ACCEPTED_OFFER_COUNT);
         }
 
         [TestMethod]
         public void get_archives_should_return_a_complete_list_of_archives()
         {
-
+            _archivesService.GetArchives().Should().BeEquivalentTo(archivesList);
         }
 
         [TestMethod]
         public void get_archives_by_id_should_return_correct_archive()
         {
-
+            _archivesService.GetArchiveById(archive.Id).Should().Be(archive);
         }
 
         [TestMethod]
         public void create_archive_should_create_and_add_an_archive_to_the_repository()
         {
-
+            _archivesService.CreateArchive(TestData.ValidInternshipPeriod);
+            _archivesRepository.Received().Add(Arg.Is<DepartmentalArchives>(x => x.InternshipPeriod.StartDate == TestData.ValidInternshipPeriod.StartDate));
         }
 
         private void InitializeInternshipPeriod()
@@ -140,18 +147,16 @@ namespace Stagio.Web.UnitTests.Services
                 offer.Status = InternshipOffer.OfferStatus.Publicated;
             }
 
-            GenerateInternshipApplications();
-
             _internshipOfferRepository.GetAll().Returns(publishedOffers);
         }
 
         private void GenerateInternshipApplications()
         {
-            const int APPLICATIONS_COUNT = APP_COMPANY_ACCEPTED_STUDENT_COUNT + APP_STUDENT_ACCEPTED_OFFER_COUNT + APP_STUDENT_HAD_INTERVIEW_COUNT + APP_STUDENT_HAS_APPLIED_COUNT;
+            applicationsCount = APP_COMPANY_ACCEPTED_STUDENT_COUNT + APP_STUDENT_ACCEPTED_OFFER_COUNT + APP_STUDENT_HAD_INTERVIEW_COUNT + APP_STUDENT_HAS_APPLIED_COUNT;
 
-            var applications = _fixture.CreateMany<InternshipApplication>(APPLICATIONS_COUNT).AsQueryable();
+            var applications = _fixture.CreateMany<InternshipApplication>(applicationsCount).AsQueryable();
 
-            for (var i = 0; i < APPLICATIONS_COUNT; i++)
+            for (var i = 0; i < applicationsCount; i++)
             {
                 if (i < APP_STUDENT_HAS_APPLIED_COUNT)
                 {
@@ -161,7 +166,7 @@ namespace Stagio.Web.UnitTests.Services
                 {
                     applications.ElementAt(i).Progression = InternshipApplication.ApplicationStatus.StudentHadInterview;
                 }
-                else if (i < APPLICATIONS_COUNT - APP_STUDENT_ACCEPTED_OFFER_COUNT && i >= APP_STUDENT_HAS_APPLIED_COUNT + APP_STUDENT_HAD_INTERVIEW_COUNT)
+                else if (i < applicationsCount - APP_STUDENT_ACCEPTED_OFFER_COUNT && i >= APP_STUDENT_HAS_APPLIED_COUNT + APP_STUDENT_HAD_INTERVIEW_COUNT)
                 {
                     applications.ElementAt(i).Progression = InternshipApplication.ApplicationStatus.CompanyAcceptedStudent;
                 }
@@ -176,9 +181,9 @@ namespace Stagio.Web.UnitTests.Services
 
         private void GenerateDepartmentalArchives()
         {
-            var archives = _fixture.CreateMany<DepartmentalArchives>(ARCHIVES_COUNT).AsQueryable();
-            archive = archives.First();
-            _archivesRepository.GetAll().Returns(archives);
+            archivesList = _fixture.CreateMany<DepartmentalArchives>(ARCHIVES_COUNT).AsQueryable();
+            archive = archivesList.First();
+            _archivesRepository.GetAll().Returns(archivesList);
             _archivesRepository.GetById(archive.Id).Returns(archive);
         }
     }

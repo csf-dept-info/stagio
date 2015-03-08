@@ -12,8 +12,7 @@ namespace Stagio.Web.Services
         private readonly IEntityRepository<Employee> _employeeRepository;
         private readonly IEntityRepository<Company> _companyRepository;
         private readonly IEntityRepository<InternshipOffer> _internshipOfferRepository;
-        private readonly IEntityRepository<InternshipApplication> _internshipApplicationsRepository;
-        private List<InternshipApplication> _internshipApplicationsList; 
+        private readonly IEntityRepository<InternshipApplication> _internshipApplicationsRepository; 
 
         public ArchivesService(IEntityRepository<Student> studentRepository,
                                IEntityRepository<DepartmentalArchives> archivesRepository,
@@ -32,7 +31,6 @@ namespace Stagio.Web.Services
 
         public void CreateArchive(InternshipPeriod period)
         {
-            _internshipApplicationsList = _internshipApplicationsRepository.GetAll().ToList();
             var archive = new DepartmentalArchives
             {
                 InternshipPeriod = period,
@@ -49,8 +47,6 @@ namespace Stagio.Web.Services
             _archivesRepository.Add(archive);
         }
 
-
-
         public int GetStudentsCount()
         {
             return _studentRepository.GetAll().Count();
@@ -58,22 +54,22 @@ namespace Stagio.Web.Services
 
         public int GetInternshipApplicationsCount()
         {
-            return _internshipApplicationsList.Count();
+            return _internshipApplicationsRepository.GetAll().Count();
         }
 
         public int GetStudentsWithInternshipCount()
         {
-            return _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer);
+            return _internshipApplicationsRepository.GetAll().Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer);
         }
 
         public int GetCompanyOffersCount()
         {
-            return _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.CompanyAcceptedStudent) + GetStudentsWithInternshipCount();
+            return _internshipApplicationsRepository.GetAll().Count(x => x.Progression == InternshipApplication.ApplicationStatus.CompanyAcceptedStudent) + GetStudentsWithInternshipCount();
         }
 
         public int GetInterviewsCount()
         {
-            return _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentHadInterview) + GetCompanyOffersCount();
+            return _internshipApplicationsRepository.GetAll().Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentHadInterview) + GetCompanyOffersCount();
         }
 
         public int GetEmployeesCount()
