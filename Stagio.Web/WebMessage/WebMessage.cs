@@ -95,6 +95,13 @@ namespace Stagio.Web
                     return "Dernière période d'ouverture du système choisie: Du " + startingDate + " au " + endingDate;
                 }
             }
+            public static class InviteCompanies
+            {
+                public const string TITLE = "Inviter les entreprises à s'inscrire au système";
+                public const string SEND_MESSAGE = "Envoyer un message aux entreprises";
+                public const string SEND_INVITATIONS = "Envoyer les invitations";
+            }
+
             public const string CONFIRM_PASSWORD_MESSAGE = "Veuillez confirmer votre mot de passe.";
             public const string WRONG_PASSWORD_VALIDATION = "Mot de passe invalide";
             public const string STUDENT_ACCOUNTS_IMPORT_SUCCESS = "Les comptes étudiants on été créés avec succès.";
