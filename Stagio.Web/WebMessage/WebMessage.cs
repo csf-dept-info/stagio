@@ -75,7 +75,9 @@ namespace Stagio.Web
             public const string INTERNSHIP_OFFERS_COUNT = "Nombre d'offres de stage";
             public const string INTERVIEWS_COUNT = "Nombre d'entrevues";
             public const string INTERNSHIP_APPLICATIONS_COUNT = "Nombre de demandes";
-            public const string COMPANY_OFFERS_COUNT = "Nombre d'offres ";
+            public const string COMPANY_OFFERS_COUNT = "Nombre d'offres";
+            public const string START_DATE = "Date de début";
+            public const string END_DATE = "Date de fin";
         }
 
         public static class InviteCompaniesMessage

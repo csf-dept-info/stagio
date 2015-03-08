@@ -1,40 +1,28 @@
-﻿@model IEnumerable<Stagio.Web.ViewModels.Coordinator.ChoosePeriod>
-    
+﻿@model Stagio.Web.ViewModels.Coordinator.PeriodsList
+
 <h2 id="">Liste des périodes de stages passées</h2>
 <hr />
 
-<div class="table-responsive">
-    <table id="offers-table" class="display dataTable table table-striped table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.StartDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EndDate)
-                </th>
-            </tr>
-        </thead>
 
-        <tbody>
-            @{var offerID = 1;}
-            @foreach (var item in Model)
-            {
-                <tr id="@item.Id">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StartDate, new { id = "StartDate" + item.Id })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EndDate, new { id = "EndDate" + item.Id })
-                    </td>
-                    <td>
-                        @Html.ActionLink("Voir les détails", MVC.InternshipOffer.Details(item.Id), new { id = "internship-offer-details-" + offerID, @class = "btn btn-primary" })
-                    </td>
-                </tr>
-                offerID++;
-            }
-        </tbody>
-    </table>
+<!-- Nav tabs -->
+<div class="panel-primary">
+    <div class="panel-heading" id="period">Périodes de stages</div>
+    <div class="panel-body">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <input type="hidden" name="periods-count" value="@Model.periodsList.Count()">
+                <a href="#period-pills" data-toggle="tab" id="periods-count" aria-expanded="true">@Model.periodsList.Count() périodes au total</a>
+            </li>
+        </ul>
+        <br />
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="period-pills">
+                @Html.Partial("_PeriodIndexTablePartial", @Model.periodsList)
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -50,7 +38,7 @@
         $('table.display').DataTable({
             "info": false,
             "language": {
-                "search": "<i class=\"fa fa-search\"></i> Rechercher un étudiant ",
+                "search": "<i class=\"fa fa-search\"></i> Rechercher une période ",
                 "lengthMenu": "_MENU_ enregistrements par page",
                 "zeroRecords": "Rien n'a été trouvé",
                 "info": "Page _PAGE_ de _PAGES_",

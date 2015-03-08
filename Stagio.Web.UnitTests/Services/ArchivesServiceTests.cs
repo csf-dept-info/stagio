@@ -17,6 +17,7 @@ namespace Stagio.Web.UnitTests.Services
         public IArchivesService _archivesService;
 
         private IEntityRepository<Student> _studentRepository;
+        private IEntityRepository<DepartmentalArchives> _archivesRepository;
         private IEntityRepository<Employee> _employeeRepository;
         private IEntityRepository<InternshipApplication> _internshipApplicationRepository;
         private IEntityRepository<Company> _companyRepository;
@@ -27,15 +28,15 @@ namespace Stagio.Web.UnitTests.Services
         public void Initialize()
         {
             _studentRepository = Substitute.For<IEntityRepository<Student>>();
+            _archivesRepository = Substitute.For<IEntityRepository<DepartmentalArchives>>();
             _employeeRepository = Substitute.For<IEntityRepository<Employee>>();
             _internshipApplicationRepository = Substitute.For<IEntityRepository<InternshipApplication>>();
             _companyRepository = Substitute.For<IEntityRepository<Company>>();
             _internshipOfferRepository = Substitute.For<IEntityRepository<InternshipOffer>>();
-            _internshipPeriodRepository = Substitute.For<IEntityRepository<InternshipPeriod>>();
 
-            _archivesService = new ArchivesService(_studentRepository, _employeeRepository, 
-                                                   _internshipApplicationRepository, _companyRepository, 
-                                                   _internshipOfferRepository, _internshipPeriodRepository);
+            _archivesService = new ArchivesService(_studentRepository, _archivesRepository, 
+                                                   _employeeRepository, _internshipApplicationRepository, 
+                                                   _companyRepository, _internshipOfferRepository);
         }
     }
 }

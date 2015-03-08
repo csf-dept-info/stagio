@@ -21,6 +21,8 @@ namespace Stagio.Web.Services
 
         int GetIntershipOffersCount();
 
-        IEnumerable<InternshipPeriod> GetInternshipPeriodsList();
+        IEnumerable<DepartmentalArchives> GetArchives();
+
+        DepartmentalArchives GetArchiveById(int id);
     }
 }

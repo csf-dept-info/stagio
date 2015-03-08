@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Microsoft.Ajax.Utilities;
 using Stagio.DataLayer;
 using Stagio.Domain.Application;
 using Stagio.Domain.Entities;
@@ -163,13 +163,36 @@ namespace Stagio.Web.Controllers
             return RedirectToAction(MVC.Ci.CleanDatabase()).Success(WebMessage.CoordinatorMessage.CLEAN_DATABASE_SUCCESS);
         }
 
-        public virtual ActionResult InternshipsPeriodList()
+        public virtual ActionResult InternshipsPeriodsList()
         {
-            var internshipPeriodsList = _archivesService.GetInternshipPeriodsList();
+            var archivesList = _archivesService.GetArchives();
+            var periodsListVm = new PeriodsList
+            {
+                periodsList = new List<ViewModels.Archives.Index>()
+            };
 
-            var internshipPeriodsListVm = internshipPeriodsList.Select(Mapper.Map<ChoosePeriod>).ToList();
+            foreach (var archive in archivesList)
+            {
+                var periodVm = Mapper.Map<ViewModels.Archives.Index>(archive);
 
-            return View(MVC.Archives.Views.ViewNames.PeriodsList, internshipPeriodsListVm);
+                periodsListVm.periodsList.Add(periodVm);
+            }
+
+            return View(MVC.Coordinator.Views.ViewNames.PeriodsList, periodsListVm);
+        }
+
+        public virtual ActionResult InternshipPeriodDetails(int id)
+        {
+            var archive = _archivesService.GetArchiveById(id);
+
+            if (archive == null)
+            {
+                return HttpNotFound();
+            }
+
+            var periodDetails = Mapper.Map<ViewModels.Archives.Details>(archive);
+
+            return View(MVC.Coordinator.Views.ViewNames.InternshipPeriodsDetails, periodDetails);
         }
 
         private void SubscribeStudentList(IEnumerable<ImportStudentViewModel> importStudents)

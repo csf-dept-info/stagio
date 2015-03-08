@@ -60,6 +60,12 @@ namespace Stagio.Web.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ValidateImport);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult InternshipPeriodDetails()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.InternshipPeriodDetails);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public CoordinatorController Actions { get { return MVC.Coordinator; } }
@@ -82,7 +88,8 @@ namespace Stagio.Web.Controllers
             public readonly string StudentsList = "StudentsList";
             public readonly string ChooseInternshipPeriod = "ChooseInternshipPeriod";
             public readonly string CleanDatabase = "CleanDatabase";
-            public readonly string InternshipsPeriodList = "InternshipsPeriodList";
+            public readonly string InternshipsPeriodsList = "InternshipsPeriodsList";
+            public readonly string InternshipPeriodDetails = "InternshipPeriodDetails";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -94,7 +101,8 @@ namespace Stagio.Web.Controllers
             public const string StudentsList = "StudentsList";
             public const string ChooseInternshipPeriod = "ChooseInternshipPeriod";
             public const string CleanDatabase = "CleanDatabase";
-            public const string InternshipsPeriodList = "InternshipsPeriodList";
+            public const string InternshipsPeriodsList = "InternshipsPeriodsList";
+            public const string InternshipPeriodDetails = "InternshipPeriodDetails";
         }
 
 
@@ -130,6 +138,14 @@ namespace Stagio.Web.Controllers
         {
             public readonly string cleanDatabaseVm = "cleanDatabaseVm";
         }
+        static readonly ActionParamsClass_InternshipPeriodDetails s_params_InternshipPeriodDetails = new ActionParamsClass_InternshipPeriodDetails();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_InternshipPeriodDetails InternshipPeriodDetailsParams { get { return s_params_InternshipPeriodDetails; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_InternshipPeriodDetails
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -140,19 +156,25 @@ namespace Stagio.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _PeriodIndexTablePartial = "_PeriodIndexTablePartial";
                 public readonly string _StudentIndexTablePartial = "_StudentIndexTablePartial";
                 public readonly string ChooseInternshipPeriod = "ChooseInternshipPeriod";
                 public readonly string CleanDatabase = "CleanDatabase";
                 public readonly string ImportStudent = "ImportStudent";
                 public readonly string Index = "Index";
+                public readonly string InternshipPeriodsDetails = "InternshipPeriodsDetails";
+                public readonly string PeriodsList = "PeriodsList";
                 public readonly string StudentsList = "StudentsList";
                 public readonly string ValidateImport = "ValidateImport";
             }
+            public readonly string _PeriodIndexTablePartial = "~/Views/Coordinator/_PeriodIndexTablePartial.cshtml";
             public readonly string _StudentIndexTablePartial = "~/Views/Coordinator/_StudentIndexTablePartial.cshtml";
             public readonly string ChooseInternshipPeriod = "~/Views/Coordinator/ChooseInternshipPeriod.cshtml";
             public readonly string CleanDatabase = "~/Views/Coordinator/CleanDatabase.cshtml";
             public readonly string ImportStudent = "~/Views/Coordinator/ImportStudent.cshtml";
             public readonly string Index = "~/Views/Coordinator/Index.cshtml";
+            public readonly string InternshipPeriodsDetails = "~/Views/Coordinator/InternshipPeriodsDetails.cshtml";
+            public readonly string PeriodsList = "~/Views/Coordinator/PeriodsList.cshtml";
             public readonly string StudentsList = "~/Views/Coordinator/StudentsList.cshtml";
             public readonly string ValidateImport = "~/Views/Coordinator/ValidateImport.cshtml";
         }
@@ -267,13 +289,25 @@ namespace Stagio.Web.Controllers
         }
 
         [NonAction]
-        partial void InternshipsPeriodListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void InternshipsPeriodsListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult InternshipsPeriodList()
+        public override System.Web.Mvc.ActionResult InternshipsPeriodsList()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.InternshipsPeriodList);
-            InternshipsPeriodListOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.InternshipsPeriodsList);
+            InternshipsPeriodsListOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void InternshipPeriodDetailsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult InternshipPeriodDetails(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.InternshipPeriodDetails);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            InternshipPeriodDetailsOverride(callInfo, id);
             return callInfo;
         }
 

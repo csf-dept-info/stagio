@@ -175,9 +175,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ArchivesController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="CiController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -262,6 +259,7 @@
     </Compile>
     <Compile Include="ViewModels\Account\Login.cs" />
     <Compile Include="ViewModels\Archives\Details.cs" />
+    <Compile Include="ViewModels\Archives\Index.cs" />
     <Compile Include="ViewModels\Company\ChooseCompany.cs" />
     <Compile Include="ViewModels\Company\CompanyItem.cs" />
     <Compile Include="ViewModels\Company\Create.cs" />
@@ -271,6 +269,7 @@
     <Compile Include="ViewModels\Coordinator\ImportStudent.cs" />
     <Compile Include="ViewModels\Coordinator\ImportStudentViewModel.cs" />
     <Compile Include="ViewModels\Coordinator\Index.cs" />
+    <Compile Include="ViewModels\Coordinator\PeriodsList.cs" />
     <Compile Include="ViewModels\Coordinator\StudentsList.cs" />
     <Compile Include="ViewModels\Email\SendEmail.cs" />
     <Compile Include="ViewModels\Employee\Create.cs" />
@@ -648,7 +647,8 @@
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
     <Content Include="Views\Coordinator\PeriodsList.cshtml" />
-    <Content Include="Views\Archives\Details.cshtml" />
+    <Content Include="Views\Coordinator\InternshipPeriodsDetails.cshtml" />
+    <Content Include="Views\Coordinator\_PeriodIndexTablePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

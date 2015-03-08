@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Stagio.Web.ViewModels.Archives.Index>
+
+    <div class="table-responsive">
+        <table id="periods-table" class="display dataTable table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName(WebMessage.InternshipPeriodMessage.START_DATE)
+                    </th>
+                    <th>
+                        @Html.DisplayName(WebMessage.InternshipPeriodMessage.END_DATE)
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{var offerID = 1;}
+                @foreach (var item in Model)
+                {
+                    <tr id="@item.Id">
+                        <td>
+                            @String.Format(WebMessage.DataFormat.DATE_FORMAT, item.InternshipPeriod.StartDate)
+                        </td>
+                        <td>
+                            @String.Format(WebMessage.DataFormat.DATE_FORMAT, item.InternshipPeriod.EndDate)
+                        </td>
+                        <td colspan="1">
+                            @Html.ActionLink("Voir les détails", MVC.Coordinator.InternshipPeriodDetails(item.Id), new { id = "period-details-" + offerID, @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                    offerID++;
+                }
+            </tbody>
+        </table>
+    </div>
+

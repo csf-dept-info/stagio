@@ -104,6 +104,8 @@ namespace Stagio.Web.Mappers
             Mapper.CreateMap<ViewModels.Archives.Details, DepartmentalArchives>()
                 .IgnoreAllNonExisting();
 
+            Mapper.CreateMap<ViewModels.Archives.Index, DepartmentalArchives>()
+                .IgnoreAllNonExisting();
         }
     }
 }

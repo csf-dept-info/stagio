@@ -36,7 +36,6 @@ public static partial class MVC
     public static Stagio.Web.Controllers.InviteCompaniesController InviteCompanies = new Stagio.Web.Controllers.T4MVC_InviteCompaniesController();
     public static Stagio.Web.Controllers.NotificationController Notification = new Stagio.Web.Controllers.T4MVC_NotificationController();
     public static Stagio.Web.Controllers.StudentController Student = new Stagio.Web.Controllers.T4MVC_StudentController();
-    public static T4MVC.ArchivesController Archives = new T4MVC.ArchivesController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

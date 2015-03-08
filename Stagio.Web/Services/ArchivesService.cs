@@ -8,26 +8,26 @@ namespace Stagio.Web.Services
     public class ArchivesService : IArchivesService
     {
         private readonly IEntityRepository<Student> _studentRepository;
+        private readonly IEntityRepository<DepartmentalArchives> _archivesRepository; 
         private readonly IEntityRepository<Employee> _employeeRepository;
         private readonly IEntityRepository<Company> _companyRepository;
         private readonly IEntityRepository<InternshipOffer> _internshipOfferRepository;
-        private readonly IEntityRepository<InternshipPeriod> _internshipPeriodRepository;
         private readonly List<InternshipApplication> _internshipApplicationsList;
         private readonly int companyAcceptedStudentCount;
         private readonly int studentAcceptedOfferCount;
 
         public ArchivesService(IEntityRepository<Student> studentRepository,
-                              IEntityRepository<Employee> employeeRepository,
-                              IEntityRepository<InternshipApplication> intershipApplicationRepository,
-                              IEntityRepository<Company> companyRepository,
-                              IEntityRepository<InternshipOffer> internshipOfferRepository,
-                              IEntityRepository<InternshipPeriod> internshipPeriodRepository)
+                               IEntityRepository<DepartmentalArchives> archivesRepository,
+                               IEntityRepository<Employee> employeeRepository,
+                               IEntityRepository<InternshipApplication> intershipApplicationRepository,
+                               IEntityRepository<Company> companyRepository,
+                               IEntityRepository<InternshipOffer> internshipOfferRepository)
         {
             _studentRepository = studentRepository;
+            _archivesRepository = archivesRepository;
             _employeeRepository = employeeRepository;
             _companyRepository = companyRepository;
             _internshipOfferRepository = internshipOfferRepository;
-            _internshipPeriodRepository = internshipPeriodRepository;
             _internshipApplicationsList = intershipApplicationRepository.GetAll().ToList();
             studentAcceptedOfferCount = _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer);
             companyAcceptedStudentCount = _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.CompanyAcceptedStudent);
@@ -73,9 +73,14 @@ namespace Stagio.Web.Services
             return _internshipOfferRepository.GetAll().Count();
         }
 
-        public IEnumerable<InternshipPeriod> GetInternshipPeriodsList()
+        public IEnumerable<DepartmentalArchives> GetArchives()
         {
-            return _internshipPeriodRepository.GetAll().ToList();
+            return _archivesRepository.GetAll().ToList();
+        }
+
+        public DepartmentalArchives GetArchiveById(int id)
+        {
+            return _archivesRepository.GetById(id);
         }
     }
 }

@@ -12,7 +12,7 @@
 
         public int InternshipOffersCount { get; set; }
 
-        public InternshipPeriod InternshipPeriod { get; set; }
+        public virtual InternshipPeriod InternshipPeriod { get; set; }
 
         public int InterviewsCount { get; set; }
 
