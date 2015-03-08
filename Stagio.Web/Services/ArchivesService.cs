@@ -13,8 +13,6 @@ namespace Stagio.Web.Services
         private readonly IEntityRepository<Company> _companyRepository;
         private readonly IEntityRepository<InternshipOffer> _internshipOfferRepository;
         private readonly List<InternshipApplication> _internshipApplicationsList;
-        private readonly int companyAcceptedStudentCount;
-        private readonly int studentAcceptedOfferCount;
 
         public ArchivesService(IEntityRepository<Student> studentRepository,
                                IEntityRepository<DepartmentalArchives> archivesRepository,
@@ -29,9 +27,27 @@ namespace Stagio.Web.Services
             _companyRepository = companyRepository;
             _internshipOfferRepository = internshipOfferRepository;
             _internshipApplicationsList = intershipApplicationRepository.GetAll().ToList();
-            studentAcceptedOfferCount = _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer);
-            companyAcceptedStudentCount = _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.CompanyAcceptedStudent);
         }
+
+        public void CreateArchive(InternshipPeriod period)
+        {
+            var archive = new DepartmentalArchives
+            {
+                InternshipPeriod = period,
+                CompaniesCount = GetCompaniesCount(),
+                CompanyOffersCount = GetCompanyOffersCount(),
+                EmployeesCount = GetEmployeesCount(),
+                InternshipApplicationsCount = GetInternshipApplicationsCount(),
+                InternshipOffersCount = GetIntershipOffersCount(),
+                InterviewsCount = GetInterviewsCount(),
+                StudentsCount = GetStudentsCount(),
+                StudentsWithInternship = GetStudentsWithInternshipCount()
+            };
+
+            _archivesRepository.Add(archive);
+        }
+
+
 
         public int GetStudentsCount()
         {
@@ -45,12 +61,12 @@ namespace Stagio.Web.Services
 
         public int GetStudentsWithInternshipCount()
         {
-            return studentAcceptedOfferCount;
+            return _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.StudentAcceptedOffer);
         }
 
         public int GetCompanyOffersCount()
         {
-            return companyAcceptedStudentCount + studentAcceptedOfferCount;
+            return _internshipApplicationsList.Count(x => x.Progression == InternshipApplication.ApplicationStatus.CompanyAcceptedStudent) + GetStudentsWithInternshipCount();
         }
 
         public int GetInterviewsCount()

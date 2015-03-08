@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
 using Stagio.DataLayer;
 using Stagio.Domain.Application;
 using Stagio.Domain.Entities;
@@ -160,6 +159,9 @@ namespace Stagio.Web.Controllers
             {
                 return View(MVC.Coordinator.Views.ViewNames.CleanDatabase).Error(WebMessage.CoordinatorMessage.WRONG_PASSWORD_VALIDATION);
             }
+            
+            _archivesService.CreateArchive(_internshipPeriodService.GetActualInternshipPeriod());
+
             return RedirectToAction(MVC.Ci.CleanDatabase()).Success(WebMessage.CoordinatorMessage.CLEAN_DATABASE_SUCCESS);
         }
 

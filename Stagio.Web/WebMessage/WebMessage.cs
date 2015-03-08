@@ -67,17 +67,17 @@ namespace Stagio.Web
 
         public static class InternshipPeriodMessage
         {
-            public const string STUDENTS_COUNT = "Nombres d'étudiants";
-            public const string STUDENTS_WITH_INTERNSHIP_COUNT = "Étudiants avec un stage";
-            public const string STUDENTS_WITHOUT_INTERNSHIP_COUNT = "Étudiants sans stage";
-            public const string EMPLOYEES_COUNT = "Nombre d'employées";
-            public const string COMPANIES_COUNT = "Nombre de compagnies";
-            public const string INTERNSHIP_OFFERS_COUNT = "Nombre d'offres de stage";
-            public const string INTERVIEWS_COUNT = "Nombre d'entrevues";
-            public const string INTERNSHIP_APPLICATIONS_COUNT = "Nombre de demandes";
-            public const string COMPANY_OFFERS_COUNT = "Nombre d'offres";
-            public const string START_DATE = "Date de début";
-            public const string END_DATE = "Date de fin";
+            public const string STUDENTS_COUNT = "Nombre total d'étudiants inscrits";
+            public const string STUDENTS_WITH_INTERNSHIP_COUNT = "Nombre d'étudiants ayant obtenu un stage";
+            public const string STUDENTS_WITHOUT_INTERNSHIP_COUNT = "Nombre d'étudiants n'ayant pas obtenu de stage";
+            public const string EMPLOYEES_COUNT = "Nombre total d'employées inscrits";
+            public const string COMPANIES_COUNT = "Nombre total de compagnies inscrites";
+            public const string INTERNSHIP_OFFERS_COUNT = "Nombre total d'offres de stage offertes par les compagnies";
+            public const string INTERVIEWS_COUNT = "Nombre total d'entrevues ayant eu lieu";
+            public const string INTERNSHIP_APPLICATIONS_COUNT = "Nombre total d'applications pour un stage par un étudiant";
+            public const string COMPANY_OFFERS_COUNT = "Nombre total de compagnies ayant acceptées l'étudiant passé en entrevue";
+            public const string START_DATE = "Date de début de la période de stage";
+            public const string END_DATE = "Date de fin de la période de stage";
         }
 
         public static class InviteCompaniesMessage

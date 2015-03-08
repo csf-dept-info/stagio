@@ -5,6 +5,8 @@ namespace Stagio.Web.Services
 {
     public interface IArchivesService
     {
+        void CreateArchive(InternshipPeriod period);
+
         int GetStudentsCount();
 
         int GetStudentsWithInternshipCount();
