@@ -33,19 +33,19 @@
 <ul class="nav nav-tabs">
     <li class="active">
         <input type="hidden" name="refused-count" value="@refusedList.Count()">
-        <a href="#refused-pills" data-toggle="tab" aria-expanded="true">Refusées (@refusedList.Count())</a>
+        <a href="#refused-pills" data-toggle="tab" aria-expanded="true">@WebMessage.InternshipOfferMessage.REFUSED_OFFERS (@refusedList.Count())</a>
     </li>
     <li class="">
         <input type="hidden" name="draft-count" value="@draftList.Count()">
-        <a id="draft-tab" href="#draft-pills" data-toggle="tab" aria-expanded="false">Brouillons (@draftList.Count())</a>
+        <a id="draft-tab" href="#draft-pills" data-toggle="tab" aria-expanded="false">@WebMessage.InternshipOfferMessage.DRAFT_OFFERS (@draftList.Count())</a>
     </li>
     <li class="">
         <input type="hidden" name="onvalidation-count" value="@onvalidationList.Count()">
-        <a href="#onvalidation-pills" data-toggle="tab" aria-expanded="false">En validation (@onvalidationList.Count())</a>
+        <a href="#onvalidation-pills" data-toggle="tab" aria-expanded="false">@WebMessage.InternshipOfferMessage.OFFERS_ON_VALIDATION (@onvalidationList.Count())</a>
     </li>
     <li class="">
         <input type="hidden" name="publicated-count" value="@publicatedList.Count()">
-        <a href="#publicated-pills" data-toggle="tab" aria-expanded="false">Publiées (@publicatedList.Count())</a>
+        <a href="#publicated-pills" data-toggle="tab" aria-expanded="false">@WebMessage.InternshipOfferMessage.DRAFT_OFFERS (@publicatedList.Count())</a>
     </li>
 </ul>
 

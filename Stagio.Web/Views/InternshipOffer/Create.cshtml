@@ -1,11 +1,10 @@
-﻿@using Stagio.Web.Automation.PageObjects.InternshipOfferPages
-@model Stagio.Web.ViewModels.InternshipOffer.Create
+﻿@model Stagio.Web.ViewModels.InternshipOffer.Create
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2 id="internshipoffer-create-page">Création d'une offre de stage</h2>
+<h2 id="internshipoffer-create-page">@WebMessage.InternshipOfferMessage.OfferCreation.TITLE</h2>
 
 @using (Html.BeginForm("Create", "InternshipOffer", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -27,12 +26,12 @@
         <div class="panel panel-primary">
 
             <div class="panel-heading">
-                Informations sur le stage
+                @WebMessage.InternshipOfferMessage.INTERNSHIP_INFORMATIONS
             </div>
 
             <div class="panel-body">
 
-                <div class="panel-info"><p class="text-muted">Les champs obligatoires sont marqués d'un astérisque. (*)</p></div>
+                <div class="panel-info"><p class="text-muted">@WebMessage.GeneralMessage.REQUIRED_FIELDS</p></div>
                 <div><br /></div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-4" })
@@ -47,7 +46,7 @@
                     <div class="col-md-4">
                         @Html.TextBoxFor(model => model.Company.Name, new { @class = "form-control", @readonly = "readonly" })
                         <div class="text-info">
-                            <i class="fa fa-info"></i> Les informations complètes de l'entreprise seront affichées dans l'offre de stage.
+                            <i class="fa fa-info"></i> @WebMessage.InternshipOfferMessage.COMPANY_INFORMATIONS_NOTICE
                         </div>
                     </div>
                 </div>
@@ -137,7 +136,7 @@
                         @Html.TextBoxFor(model => model.ExtraFile, new { type = "file" })
                         @Html.ValidationMessageFor(model => model.ExtraFile)
                         <div class="text-info">
-                            <i class="fa fa-info"></i> Vous pouvez téléverser un fichier informatif supplémentaire concernant le stage. (10 Mo. maximum)
+                            <i class="fa fa-info"></i> @WebMessage.InternshipOfferMessage.OfferCreation.EXTRA_FILE_NOTICE
                         </div>
                     </div>
                 </div>
@@ -149,16 +148,16 @@
 
             <div class="panel-footer">
                 <div class="text-info">
-                    <p><i class="fa fa-info"></i> Votre offre de stage devra être validée par le coordonnateur avant d'être publiée sur le site.</p>
-                    <p><i class="fa fa-info"></i> Afin de retirer une offre de stage, veuillez contacter le responsable des stages.</p>
+                    <p><i class="fa fa-info"></i> @WebMessage.InternshipOfferMessage.OfferCreation.VALIDATION_NOTICE</p>
+                    <p><i class="fa fa-info"></i> @WebMessage.InternshipOfferMessage.OfferCreation.DELETE_OFFER_NOTICE</p>
                 </div>
                 <p class="col-md-offset-2">
                     <br />
-                    <input type="submit" id="@CreateInternshipOfferPage.SUBMIT_BUTTON_ID" value="Publier l'offre de stage" class="btn btn-primary" name="action:Create" />
-                    <input type="submit" id="@CreateInternshipOfferPage.SAVE_DRAFT_BUTTON_ID" value="Enregistrer le brouillon" class="btn btn-warning" name="action:SaveDraft" />
+                    <input type="submit" id="create-button" value=@WebMessage.InternshipOfferMessage.OfferCreation.SEND_OFFER class="btn btn-primary" name="action:Create" />
+                    <input type="submit" id="save-draft-button" value=@WebMessage.InternshipOfferMessage.OfferCreation.SAVE_DRAFT class="btn btn-warning" name="action:SaveDraft" />
 
 
-                    @Html.ActionLink("Annuler", MVC.InternshipOffer.EmployeeIndex(), new { @class = "btn btn-default" })
+                    @Html.ActionLink(WebMessage.GeneralMessage.CANCEL, MVC.InternshipOffer.EmployeeIndex(), new { @class = "btn btn-default" })
 
 
                     @if (Model.Id != 0)
@@ -174,7 +173,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title" id="myModalLabel">Supprimer le brouillon</h4>
+                                        <h4 class="modal-title" id="myModalLabel">@WebMessage.InternshipOfferMessage.OfferCreation.DELETE_DRAFT</h4>
                                     </div>
                                     <div class="modal-body">
 
@@ -184,8 +183,8 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                                        <button class="btn btn-danger" id="delete-draft-validation-button" name="action:DeleteDraft">Supprimer</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">@WebMessage.GeneralMessage.CLOSE</button>
+                                        <button class="btn btn-danger" id="delete-draft-validation-button" name="action:DeleteDraft">@WebMessage.GeneralMessage.DELETE</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->

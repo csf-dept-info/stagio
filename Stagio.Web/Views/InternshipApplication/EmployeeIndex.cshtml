@@ -12,7 +12,7 @@
                     <h4>@Html.DisplayFor(model => model.First().InternshipTitle) (Publiée le @Html.DisplayFor(model => model.First().OfferPublicationDate))</h4>
                 </div>
             <div class="form-group">
-                @Html.ActionLink(@WebMessage.InternshipOfferMessage.SEE_COMPLETE_OFFER, MVC.InternshipOffer.Details(@Model.First().InternshipOfferId), new { id = "internship-offer-details", @class = "btn btn-primary" })
+                @Html.ActionLink(WebMessage.InternshipOfferMessage.SEE_COMPLETE_OFFER, MVC.InternshipOffer.Details(@Model.First().InternshipOfferId), new { id = "internship-offer-details", @class = "btn btn-primary" })
             </div>
             <hr />
         }
@@ -49,11 +49,11 @@
                                 @Html.DisplayFor(modelItem => item.StudentName)
                             </td>
                             <td>
-                                @Html.ActionLink(@WebMessage.InternshipApplicationMessage.StudentHasApplied.DOWNLOAD, "DownloadFile", new { path = item.PathToResume, offerId = item.InternshipOfferId })<i class="fa fa-download"> </i>
+                                @Html.ActionLink(WebMessage.GeneralMessage.DOWNLOAD, "DownloadFile", new { path = item.PathToResume, offerId = item.InternshipOfferId })<i class="fa fa-download"> </i>
                                 @Html.ValidationMessageFor(model => item.PathToResume, "", new { @class = "text-danger" })
                             </td>
                             <td>
-                                @Html.ActionLink(@WebMessage.InternshipApplicationMessage.StudentHasApplied.DOWNLOAD, "DownloadFile", new { path = item.PathToCoverLetter, offerId = item.InternshipOfferId })<i class="fa fa-download"> </i>
+                                @Html.ActionLink(WebMessage.GeneralMessage.DOWNLOAD, "DownloadFile", new { path = item.PathToCoverLetter, offerId = item.InternshipOfferId })<i class="fa fa-download"> </i>
                                 @Html.ValidationMessageFor(model => item.PathToCoverLetter, "", new { @class = "text-danger" })
                             </td>
                             <td>

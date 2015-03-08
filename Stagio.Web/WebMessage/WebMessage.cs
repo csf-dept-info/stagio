@@ -18,6 +18,11 @@ namespace Stagio.Web
             public const string BACK = "Retour";
             public const string MY_STAGIO_ACCOUNT = "Mon compte Stagio";
             public const string CONFIRM = "Confirmer";
+            public const string CLOSE = "Fermer";
+            public const string DELETE = "Supprimer";
+            public const string DOWNLOAD = "Télécharger ";
+            public const string EDIT = "Éditer";
+            public const string REQUIRED_FIELDS = "Les champs obligatoires sont marqués d'un astérisque. (*)";
         }
 
         public static class UserInformation
@@ -154,6 +159,52 @@ namespace Stagio.Web
             public const string DRAFT_DELETE_VALIDATION_MESSAGE = "Êtes-vous certain de vouloir suprimer le brouillon?";
 
             public const string SEE_COMPLETE_OFFER = "Voir l'offre complète";
+
+            public const string OFFERS_ON_VALIDATION = "En validation";
+            public const string OFFERS_TO_VALIDATE = "À valider";
+            public const string REFUSED_OFFERS = "Refusées";
+            public const string PUBLICATED_OFFERS = "Publiées";
+            public const string DRAFT_OFFERS = "Brouillons";
+            public const string APPLY = "Postuler";
+
+            public const string INTERNSHIP_INFORMATIONS = "Informations sur le stage";
+            public const string COMPANY_INFORMATIONS_NOTICE = "Les informations complètes de l'entreprise seront affichées dans l'offre de stage.";
+
+            public static class OfferCreation
+            {
+                public const string TITLE = "Création d'une offre de stage";
+                public const string INTERNSHIP_INFORMATIONS = "Informations sur le stage";
+                public const string COMPANY_INFORMATIONS_NOTICE = "Les informations complètes de l'entreprise seront affichées dans l'offre de stage.";
+                public const string EXTRA_FILE_NOTICE = "Vous pouvez téléverser un fichier informatif supplémentaire concernant le stage. (10 Mo. maximum)";
+                public const string VALIDATION_NOTICE = "Votre offre de stage devra être validée par le coordonnateur avant d'être publiée sur le site.";
+                public const string DELETE_OFFER_NOTICE = "Afin de retirer une offre de stage, veuillez contacter le responsable des stages.";
+                public const string SEND_OFFER = "Publier l'offre de stage";
+                public const string SAVE_DRAFT = "Enregistrer le brouillon";
+                public const string DELETE_DRAFT = "Supprimer le brouillon";
+            }
+
+            public static class OfferDetails
+            {
+                public const string TITLE = "Détails de l'offre de stage";
+                public const string BASIC_INFOS = "Informations de base";
+                public const string DENY_MESSAGE = "Message de refus";
+                public const string DENY_REASONS = "Veuillez entrer la ou les raison(s) du refus";
+                public const string REFUSE_OFFER = "Refuser l'offre";
+                public const string ACCEPT = "Accepter";
+                public const string REFUSE = "Refuser";
+            }
+
+            public static class OfferIndex
+            {
+                public const string COORDINATOR_TITLE = "Offres de stage";
+                public const string EMPLOYEE_TITLE = "Offres de stage pour mon entreprise";
+                public const string STUDENT_TITLE = "Offres de stage disponibles";
+            }
+
+            public static string OFFERS_COUNT(int number)
+            {
+                return number + " offre(s) de stage";
+            }
         }
 
         public static class InviteCompaniesMessage
@@ -167,13 +218,13 @@ namespace Stagio.Web
             public const string NO_APPLICATION_FOR_THIS_STUDENT = "Cet étudiant n'a appliqué sur aucune offre.";
             public const string APPLICATION_CREATE_SUCCESS = "Vous avez postulez avec succès!";
             public const string APPLICATION_PROGRESSION_UPDATE_SUCCESS = "La progression de votre candidature a été mise à jour!";
+            public const string SEE_APPLICATIONS = "Voir les candidatures";
             public static class StudentHasApplied
             {
                 public const string PROGRESSION_DESCRIPTION = "En attente d'une entrevue...";
                 public const string PROGRESSION_UPDATE_HTML_CONTENT = "Je confirme avoir passé une entrevue avec l'entreprise en date du ";
                 public const string PROGRESSION_UPDATE_HTML_TITLE = "Confirmation de votre présence à l'entrevue";
                 public const string PROGRESSION_UPDATE_DATE_TEXT = "Vous avez postulé le ";
-                public const string DOWNLOAD = "Télécharger ";
             }
 
             public static class StudentHadInterview
