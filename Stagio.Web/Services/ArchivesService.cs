@@ -12,7 +12,8 @@ namespace Stagio.Web.Services
         private readonly IEntityRepository<Employee> _employeeRepository;
         private readonly IEntityRepository<Company> _companyRepository;
         private readonly IEntityRepository<InternshipOffer> _internshipOfferRepository;
-        private readonly List<InternshipApplication> _internshipApplicationsList;
+        private readonly IEntityRepository<InternshipApplication> _internshipApplicationsRepository;
+        private List<InternshipApplication> _internshipApplicationsList; 
 
         public ArchivesService(IEntityRepository<Student> studentRepository,
                                IEntityRepository<DepartmentalArchives> archivesRepository,
@@ -26,11 +27,12 @@ namespace Stagio.Web.Services
             _employeeRepository = employeeRepository;
             _companyRepository = companyRepository;
             _internshipOfferRepository = internshipOfferRepository;
-            _internshipApplicationsList = intershipApplicationRepository.GetAll().ToList();
+            _internshipApplicationsRepository = intershipApplicationRepository;
         }
 
         public void CreateArchive(InternshipPeriod period)
         {
+            _internshipApplicationsList = _internshipApplicationsRepository.GetAll().ToList();
             var archive = new DepartmentalArchives
             {
                 InternshipPeriod = period,
@@ -38,7 +40,7 @@ namespace Stagio.Web.Services
                 CompanyOffersCount = GetCompanyOffersCount(),
                 EmployeesCount = GetEmployeesCount(),
                 InternshipApplicationsCount = GetInternshipApplicationsCount(),
-                InternshipOffersCount = GetIntershipOffersCount(),
+                InternshipOffersCount = GetPublicatedIntershipOffersCount(),
                 InterviewsCount = GetInterviewsCount(),
                 StudentsCount = GetStudentsCount(),
                 StudentsWithInternship = GetStudentsWithInternshipCount()
@@ -84,9 +86,9 @@ namespace Stagio.Web.Services
             return _companyRepository.GetAll().Count();
         }
 
-        public int GetIntershipOffersCount()
+        public int GetPublicatedIntershipOffersCount()
         {
-            return _internshipOfferRepository.GetAll().Count();
+            return _internshipOfferRepository.GetAll().Count(x => x.Status == InternshipOffer.OfferStatus.Publicated);
         }
 
         public IEnumerable<DepartmentalArchives> GetArchives()

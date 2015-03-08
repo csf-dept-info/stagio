@@ -21,7 +21,7 @@ namespace Stagio.Web.Services
 
         int GetCompaniesCount();
 
-        int GetIntershipOffersCount();
+        int GetPublicatedIntershipOffersCount();
 
         IEnumerable<DepartmentalArchives> GetArchives();
 

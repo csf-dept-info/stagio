@@ -72,10 +72,10 @@ namespace Stagio.Web
             public const string STUDENTS_WITHOUT_INTERNSHIP_COUNT = "Nombre d'étudiants n'ayant pas obtenu de stage";
             public const string EMPLOYEES_COUNT = "Nombre total d'employées inscrits";
             public const string COMPANIES_COUNT = "Nombre total de compagnies inscrites";
-            public const string INTERNSHIP_OFFERS_COUNT = "Nombre total d'offres de stage offertes par les compagnies";
+            public const string INTERNSHIP_OFFERS_COUNT = "Nombre total d'offres de stage publiées";
             public const string INTERVIEWS_COUNT = "Nombre total d'entrevues ayant eu lieu";
             public const string INTERNSHIP_APPLICATIONS_COUNT = "Nombre total d'applications sur les offres de stage par les étudiants";
-            public const string COMPANY_OFFERS_COUNT = "Nombre total d'étudiants acceptés par les compagnies après une entrevue";
+            public const string COMPANY_OFFERS_COUNT = "Nombre total d'acceptations d'un étudiant par une compagnie après l'entrevue";
             public const string START_DATE = "Date de début de la période de stage";
             public const string END_DATE = "Date de fin de la période de stage";
         }
