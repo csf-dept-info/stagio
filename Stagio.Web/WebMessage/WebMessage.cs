@@ -25,6 +25,45 @@ namespace Stagio.Web
             public const string REQUIRED_FIELDS = "Les champs obligatoires sont marqués d'un astérisque. (*)";
         }
 
+        public static class Layout
+        {
+            public const string STAGIO = "Stagio";
+            public const string CARTEL = "Le Cartel de Progue";
+            public const string MAFERLAND = "Marc-Antoine Ferland";
+            public const string MAFORTIER = "Marc-Antoine Fortier";
+            public const string OROY = "Olivier Roy";
+            public const string RGAGNON = "Robin Gagnon";
+            public const string FCHANDONNET = "Francis Chandonnet";
+        }
+
+        public static class Menus
+        {
+            public static class EmployeeMenu
+            {
+                public const string EDIT_COMPANY = "Modifier mon entreprise";
+            }
+            public static class CoordinatorMenu
+            {
+                public const string IMPORT_STUDENT_LIST = "Importer une liste d'étudiants";
+                public const string STUDENT_LIST = "Liste des étudiants";
+                public const string INVITE_COMPANIES = "Inviter les entreprises";
+                public const string CHOOSE_PERIOD = "Choisir la période d'ouverture";
+                public const string CLEAN_DATABASE = "Réinitialiser le système";
+                public const string APPLICATION_INDEX = "Suivi des candidatures";
+            }
+            public static class StudentMenu
+            {
+                public const string INTERNSHIP_OFFERS = "Offres de stage";
+            }
+
+            public const string NOTIFICATIONS = "Notifications";
+            public const string INTERNSHIP_OFFERS = "Offres de stage";
+            public const string INTERNSHIP_APPLICATIONS = "Candidatures";
+            public const string EDIT_PROFILE = "Modifier mon profil";
+            public const string LOG_IN = "Se connecter";
+            public const string LOG_OUT = "Se déconnecter";
+        }
+
         public static class UserInformation
         {
             public const string IDENTIFIER = "Matricule";
