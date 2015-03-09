@@ -1,5 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Stagio.Web.Automation.Navigation;
 using Stagio.Web.Automation.Selenium;
 
