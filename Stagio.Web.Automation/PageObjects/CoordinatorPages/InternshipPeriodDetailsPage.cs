@@ -1,12 +1,19 @@
 ﻿using System;
 using OpenQA.Selenium;
+using Stagio.Web.Automation.Navigation;
 using Stagio.Web.Automation.Selenium;
 
 namespace Stagio.Web.Automation.PageObjects.CoordinatorPages
 {
-    class InternshipPeriodDetailsPage
+    public class InternshipPeriodDetailsPage
     {
         public const string PAGE_ID = "period-details-page";
+
+        public static void GoTo(int id)
+        {
+            PageNavigator.Coordinator.PeriodsList.Select();
+            Driver.Instance.FindElement(By.Id("period-details-" + id)).Click();
+        }
 
         public static bool IsDisplayed
         {

@@ -14,7 +14,6 @@
             </thead>
 
             <tbody>
-                @{var offerID = 1;}
                 @foreach (var item in Model)
                 {
                     <tr id="@item.Id">
@@ -25,10 +24,9 @@
                             @String.Format(WebMessage.DataFormat.DATE_FORMAT, item.InternshipPeriod.EndDate)
                         </td>
                         <td colspan="1">
-                            @Html.ActionLink("Voir les détails", MVC.Coordinator.InternshipPeriodDetails(item.Id), new { id = "period-details-" + offerID, @class = "btn btn-primary" })
+                            @Html.ActionLink("Voir les détails", MVC.Coordinator.InternshipPeriodDetails(item.Id), new { id = "period-details-" + item.Id, @class = "btn btn-primary" })
                         </td>
                     </tr>
-                    offerID++;
                 }
             </tbody>
         </table>
