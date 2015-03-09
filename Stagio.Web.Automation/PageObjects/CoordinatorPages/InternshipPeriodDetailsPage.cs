@@ -9,10 +9,10 @@ namespace Stagio.Web.Automation.PageObjects.CoordinatorPages
     {
         public const string PAGE_ID = "period-details-page";
 
-        public static void GoTo(int id)
+        public static void GoTo()
         {
             PageNavigator.Coordinator.PeriodsList.Select();
-            Driver.Instance.FindElement(By.Id("period-details-" + id)).Click();
+            Driver.Instance.FindElement(By.Id("period-details-1")).Click();
         }
 
         public static bool IsDisplayed

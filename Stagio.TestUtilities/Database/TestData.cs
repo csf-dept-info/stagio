@@ -1049,7 +1049,7 @@ namespace Stagio.TestUtilities.Database
                     EmployeesCount = 25,
                     CompaniesCount = 17,
                     InternshipOffersCount = 19,
-                    InternshipPeriod = ValidInternshipPeriod,
+                    InternshipPeriod = ValidInternshipPeriod2,
                     InterviewsCount = 22,
                     InternshipApplicationsCount = 31,
                     CompanyOffersCount = 19
@@ -1069,7 +1069,7 @@ namespace Stagio.TestUtilities.Database
                     EmployeesCount = 18,
                     CompaniesCount = 14,
                     InternshipOffersCount = 15,
-                    InternshipPeriod = ValidInternshipPeriod2,
+                    InternshipPeriod = ValidInternshipPeriod,
                     InterviewsCount = 48,
                     InternshipApplicationsCount = 37,
                     CompanyOffersCount = 34

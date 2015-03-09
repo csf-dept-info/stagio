@@ -20,7 +20,7 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.CoordinatorTests
         [TestMethod]
         public void coordinator_can_see_statistics_for_a_past_internship_period()
         {
-            InternshipPeriodDetailsPage.GoTo(TestData.Archive1.Id);
+            InternshipPeriodDetailsPage.GoTo();
             InternshipPeriodDetailsPage.HasContent(String.Format(WebMessage.DataFormat.DATE_FORMAT, TestData.Archive1.InternshipPeriod.StartDate)).Should().BeTrue();
         }
     }
