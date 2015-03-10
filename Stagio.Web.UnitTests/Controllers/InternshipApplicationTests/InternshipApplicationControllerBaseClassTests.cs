@@ -31,6 +31,7 @@ namespace Stagio.Web.UnitTests.Controllers.InternshipApplicationTests
             _fileService = Substitute.For<IFileSaveService>();
             _accountService = Substitute.For<IAccountService>();
             _internshipPeriodService = Substitute.For<IInternshipPeriodService>();
+            _notificationService = Substitute.For<INotificationService>();
 
             _internshipApplicationController = new InternshipApplicationController(_internshipApplicationRepository, _internshipOfferRepository, _studentRepository, _fileService, _httpContext, _notificationService);
             _accountController = new AccountController(_httpContext, _accountService, _internshipPeriodService);

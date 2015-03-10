@@ -137,6 +137,7 @@ namespace Stagio.Web.UnitTests.Controllers.InternshipApplicationTests
 
             var student = this.init_logged_in_student();
             application.StudentId = student.Id;
+            application.ApplyingStudent = student;
 
             var applicationViewModel = Mapper.Map<StudentIndex>(application);
 
@@ -161,6 +162,7 @@ namespace Stagio.Web.UnitTests.Controllers.InternshipApplicationTests
 
             var student = this.init_logged_in_student();
             application.StudentId = student.Id;
+            application.ApplyingStudent = student;
 
             var applicationViewModel = Mapper.Map<StudentIndex>(application);
 
@@ -182,13 +184,19 @@ namespace Stagio.Web.UnitTests.Controllers.InternshipApplicationTests
             //Arrange   
             var application = this.init_internship_application();
             application.Progression = InternshipApplication.ApplicationStatus.CompanyAcceptedStudent;
+            var company = _fixture.Create<Company>();
+            var offer = _fixture.Create<InternshipOffer>();
+
+            offer.Company = company;
 
             var student = this.init_logged_in_student();
             application.StudentId = student.Id;
+            application.ApplyingStudent = student;
 
             var applicationViewModel = Mapper.Map<StudentIndex>(application);
 
             _internshipApplicationRepository.GetById(applicationViewModel.Id).Returns(application);
+            _internshipOfferRepository.GetById(applicationViewModel.InternshipOfferId).Returns(offer);
 
             //Act
             var result = _internshipApplicationController.UpdateProgression(applicationViewModel) as RedirectToRouteResult;
