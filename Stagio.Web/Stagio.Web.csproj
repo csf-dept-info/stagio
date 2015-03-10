@@ -643,9 +643,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
-    <Content Include="Views\Coordinator\PeriodsList.cshtml" />
     <Content Include="Views\Coordinator\InternshipPeriodsDetails.cshtml" />
     <Content Include="Views\Coordinator\_PeriodIndexTablePartial.cshtml" />
+    <Content Include="Views\Coordinator\PeriodsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
