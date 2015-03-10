@@ -988,6 +988,20 @@ namespace Stagio.TestUtilities.Database
             }
         }
 
+        static public InternshipPeriod ValidInternshipPeriod2
+        {
+            get
+            {
+                var internshipPeriod = new InternshipPeriod
+                {
+                    StartDate = DateTime.Today.AddMonths(-12),
+                    EndDate = DateTime.Today.AddMonths(-10)
+                };
+
+                return internshipPeriod;
+            }
+        }
+
         #endregion
 
         #region Notifications
@@ -1020,6 +1034,50 @@ namespace Stagio.TestUtilities.Database
                 return notif;
             }
         }
+        #endregion
+
+        #region Archives
+
+        static public DepartmentalArchives Archive1
+        {
+            get
+            {
+                var archive = new DepartmentalArchives
+                {
+                    StudentsCount = 20,
+                    StudentsWithInternship = 18,
+                    EmployeesCount = 25,
+                    CompaniesCount = 17,
+                    InternshipOffersCount = 19,
+                    InternshipPeriod = ValidInternshipPeriod2,
+                    InterviewsCount = 22,
+                    InternshipApplicationsCount = 31,
+                    CompanyOffersCount = 19
+                };
+                return archive;
+            }
+        }
+
+        static public DepartmentalArchives Archive2
+        {
+            get
+            {
+                var archive = new DepartmentalArchives
+                {
+                    StudentsCount = 35,
+                    StudentsWithInternship = 32,
+                    EmployeesCount = 18,
+                    CompaniesCount = 14,
+                    InternshipOffersCount = 15,
+                    InternshipPeriod = ValidInternshipPeriod,
+                    InterviewsCount = 48,
+                    InternshipApplicationsCount = 37,
+                    CompanyOffersCount = 34
+                };
+                return archive;
+            }
+        }
+
         #endregion
     }
 }

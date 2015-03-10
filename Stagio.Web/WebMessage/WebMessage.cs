@@ -65,6 +65,21 @@ namespace Stagio.Web
             public const string DRAFT_DELETE_VALIDATION_MESSAGE = "Êtes-vous certain de vouloir suprimer le brouillon?";
         }
 
+        public static class InternshipPeriodMessage
+        {
+            public const string STUDENTS_COUNT = "Nombre total d'étudiants inscrits";
+            public const string STUDENTS_WITH_INTERNSHIP_COUNT = "Nombre d'étudiants ayant obtenu un stage";
+            public const string STUDENTS_WITHOUT_INTERNSHIP_COUNT = "Nombre d'étudiants n'ayant pas obtenu de stage";
+            public const string EMPLOYEES_COUNT = "Nombre total d'employées inscrits";
+            public const string COMPANIES_COUNT = "Nombre total de compagnies inscrites";
+            public const string INTERNSHIP_OFFERS_COUNT = "Nombre total d'offres de stage publiées";
+            public const string INTERVIEWS_COUNT = "Nombre total d'entrevues ayant eu lieu";
+            public const string INTERNSHIP_APPLICATIONS_COUNT = "Nombre total d'applications sur les offres de stage par les étudiants";
+            public const string COMPANY_OFFERS_COUNT = "Nombre total d'acceptations d'un étudiant par une compagnie après l'entrevue";
+            public const string START_DATE = "Date de début de la période de stage";
+            public const string END_DATE = "Date de fin de la période de stage";
+        }
+
         public static class InviteCompaniesMessage
         {
             public const string GENERIC_INVITE_COMPANIES_ERROR = "Une erreur s'est produite lors du processus d'envoi des messages. Veuillez réessayer.";

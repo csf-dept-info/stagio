@@ -47,6 +47,7 @@
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Coordinator.cs" />
+    <Compile Include="Entities\DepartmentalArchives.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\InternshipApplication.cs" />
