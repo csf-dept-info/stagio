@@ -1,11 +1,7 @@
 ﻿@using Stagio.Domain.Application
 @model Stagio.Web.ViewModels.Student.Subscribe
 
-@{
-    ViewBag.Title = "Inscription";
-}
-
-<h2 id="student-subscribe-page">S'inscrire à Stagio</h2>
+<h2 id="student-subscribe-page">@WebMessage.HomeMessage.SUBSCRIBE</h2>
 <hr />
 
 @using (Html.BeginForm())
@@ -14,7 +10,7 @@
 
     <div class="form-horizontal">
         <div class="panel panel-primary">
-            <div class="panel-heading">Inscription en tant qu'étudiant</div>
+            <div class="panel-heading">@WebMessage.HomeMessage.SUBSCRIBE_AS_STUDENT</div>
             <div class="panel-body">
 
                 <div class="form-group">
@@ -29,8 +25,8 @@
             </div>
             <div class="panel-footer">
                 <div class="col-md-offset-2">
-                    <input type="submit" value="Suivant" class="btn btn-primary" id="create-student-button" />
-                    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-default" })
+                    <input type="submit" value=@WebMessage.GeneralMessage.NEXT class="btn btn-primary" id="create-student-button" />
+                    @Html.ActionLink(WebMessage.GeneralMessage.CANCEL, MVC.Home.Index(), new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>

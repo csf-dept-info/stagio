@@ -79,6 +79,8 @@ namespace Stagio.Web
             public const string COMPANY = "Entreprise";
             public const string STUDENT = "Étudiant";
             public const string SUBSCRIPTION = "Inscription";
+            public const string SUBSCRIBE = "S'inscrire à Stagio";
+            public const string SUBSCRIBE_AS_STUDENT = "Inscription en tant qu'étudiant";
         }
 
         public static class AccountMessage
@@ -94,6 +96,10 @@ namespace Stagio.Web
         {
             public const string SUBSCRIBE_IDENTIFIER_NOT_FOUND = "Matricule invalide, veuillez contacter le coordonnateur des stages.";
             public const string ACCOUNT_CREATE_SUCCESS = "Votre compte étudiant a été créé avec succès!";
+            public const string PROFILE_CREATION_TITLE = "Création du profil";
+            public const string STUDENT = "Étudiant";
+            public const string PERSONAL_INFOS = "Informations personnelles";
+            public const string EDIT_PROFILE = "Modifier mon profil";
         }
 
         public static class EmployeeMessage
