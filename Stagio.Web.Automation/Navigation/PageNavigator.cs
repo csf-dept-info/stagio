@@ -226,6 +226,22 @@ namespace Stagio.Web.Automation.Navigation
                 }
             }
 
+            public class PeriodsList
+            {
+                public static string PAGE_LINK
+                {
+                    get
+                    {
+                        return "periods-list-button";
+                    }
+                }
+
+                public static void Select()
+                {
+                    MenuSelector.Select("managing-dropdown", "archives-link");
+                }
+            }
+
             public class ChoosePeriod
             {
                 public static void Select()

@@ -64,6 +64,9 @@
                         <a id="choose-period-link" href="@Url.Action(MVC.Coordinator.ChooseInternshipPeriod())"> <span class="fa fa-calendar fa-fw"> </span>@WebMessage.Menus.CoordinatorMenu.CHOOSE_PERIOD</a>
                     </li>
                     <li>
+                        <a id="archives-link" href="@Url.Action(MVC.Coordinator.InternshipsPeriodsList())"> <span class="fa fa-history fa-fw"> </span>@WebMessage.Menus.CoordinatorMenu.ARCHIVE</a>
+                    </li>
+                    <li>
                         <a id="clean-database-page" href="@Url.Action(MVC.Coordinator.CleanDatabase())"> <span class="fa fa-refresh fa-fw"> </span>@WebMessage.Menus.CoordinatorMenu.CLEAN_DATABASE</a>
                     </li>
                 </ul>
