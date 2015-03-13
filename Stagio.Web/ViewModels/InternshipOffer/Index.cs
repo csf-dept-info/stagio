@@ -10,19 +10,19 @@ namespace Stagio.Web.ViewModels.InternshipOffer
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [DisplayName("Titre du stage")]
+        [DisplayName(WebMessage.InternshipOfferMessage.INTERNSHIP_TITLE)]
         public string Title { get; set; }
 
-        [DisplayName("Description du projet pour le stage")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.DESCRIPTION)]
         public string Description { get; set; }
 
-        [DisplayName("Entreprise ou organisation")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.COMPANY)]
         public Domain.Entities.Company Company { get; set; }
 
-        [DisplayName("Nombre de stagiaires")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.NUMBER_OF_TRAINEES)]
         public int NumberOfTrainees { get; set; }
 
-        [DisplayName("Date de publication")]
+        [DisplayName(WebMessage.InternshipOfferMessage.PUBLICATION_DATE)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = WebMessage.DataFormat.DATE_FORMAT)]
         public DateTime PublicationDate { get; set; }
 

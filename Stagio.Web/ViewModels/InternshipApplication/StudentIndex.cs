@@ -15,16 +15,16 @@ namespace Stagio.Web.ViewModels.InternshipApplication
 
         public int InternshipOfferId { get; set; }
 
-        [DisplayName("Titre de l'offre")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OFFER_TITLE)]
         public string InternshipOfferTitle { get; set; }
 
-        [DisplayName("Compagnie")]
+        [DisplayName(WebMessage.HomeMessage.COMPANY)]
         public string CompanyName { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public Stagio.Domain.Entities.InternshipApplication.ApplicationStatus Progression { get; set; }
 
-        [DisplayName("Progression")]
+        [DisplayName(WebMessage.InternshipApplicationMessage.StudentHasApplied.PROGRESSION)]
         public int ProgressionPercentage { get; set; }
 
         public string ProgressionDescription { get; set; }
@@ -33,13 +33,13 @@ namespace Stagio.Web.ViewModels.InternshipApplication
 
         public string ProgessionUpdateHtmlTitle { get; set; }
 
-        [DisplayName("Dernière mise à jour")]
+        [DisplayName(WebMessage.InternshipApplicationMessage.StudentHasApplied.LAST_UPDATE)]
         public string LastProgressionUpdateDateText { get; set; }
 
         [Required(ErrorMessage = WebMessage.ErrorMessage.INVALID_DATE_FORMAT)]
         [DataType(DataType.DateTime, ErrorMessage = WebMessage.ErrorMessage.INVALID_DATE_FORMAT)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = WebMessage.DataFormat.DATE_FORMAT)]
-        [DisplayName("Dernière mise à jour")]
+        [DisplayName(WebMessage.InternshipApplicationMessage.StudentHasApplied.LAST_UPDATE)]
         public DateTime LastProgressionUpdateDate { get; set; }
     }
 }

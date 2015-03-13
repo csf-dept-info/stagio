@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Stagio.Web.ViewModels.InternshipApplication.CoordinatorProgressionIndex>
 
-    <h2 id="application-coordinator-index-page">Suivi des candidatures</h2>
+    <h2 id="application-coordinator-index-page">@WebMessage.CoordinatorMessage.APPLICATION_PROGRESSION</h2>
     <hr />
     <div class="panel-primary">
         <div class="panel-heading" id="application-count">
-            @Model.Count() étudiant(s)
+            @WebMessage.CoordinatorMessage.STUDENTS_COUNT(Model.Count())
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -79,7 +79,7 @@
 
                                         <div class="@progressBarDivStyle">
                                             <div class="@progressBarStyle" role="progressbar" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100" style="width: @percentage%">
-                                                <span class="sr-only">@percentage% complété (success)</span>
+                                                <span class="sr-only">@WebMessage.InternshipApplicationMessage.COMPLETION_BAR(percentage.ToString())</span>
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                         @if (item.BestProgression.ProgressionPercentage != 0)
                                         {
                                             <p class="text-center">
-                                                Vous avez postulé le  <br />
+                                                @WebMessage.CoordinatorMessage.STUDENT_APPLICATION_DATE <br />
                                                 <strong>@Html.DisplayFor(modelItem => item.BestProgression.LastProgressionUpdateDate)</strong>
                                             </p>
                                         }
@@ -102,7 +102,7 @@
                                     </td>
                                 }
                                 <td>
-                                     @Html.ActionLink("Voir toutes les candidatures", MVC.InternshipApplication.GetApplicationsForSpecificStudent(item.StudentId), new { id = "student-application-" + progressionID, @class = "btn btn-primary" })
+                                     @Html.ActionLink(@WebMessage.CoordinatorMessage.SEE_APPLICATIONS, MVC.InternshipApplication.GetApplicationsForSpecificStudent(item.StudentId), new { id = "student-application-" + progressionID, @class = "btn btn-primary" })
                                 </td>
                             </tr>
                                 progressionID++;

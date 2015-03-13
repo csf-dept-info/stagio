@@ -7,11 +7,11 @@ namespace Stagio.Web.ViewModels.InviteCompanies
     public class InviteCompanies
     {
         [Required]
-        [DisplayName("Sujet")]
+        [DisplayName(WebMessage.CoordinatorMessage.InviteCompanies.OBJECT)]
         public string Subject { get; set; }
 
         [Required]
-        [DisplayName("Message")]
+        [DisplayName(WebMessage.CoordinatorMessage.InviteCompanies.MESSAGE)]
         public string Body { get; set; }
     }
 }

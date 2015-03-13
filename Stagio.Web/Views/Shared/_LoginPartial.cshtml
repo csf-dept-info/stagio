@@ -1,5 +1,4 @@
 ﻿@using Stagio.Domain.Application
-@using Stagio.Web.Automation.PageObjects.CoordinatorPages
 
 @{
     var accountIndexLink = MVC.Home.Index();
@@ -37,7 +36,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-company">
                     <li>
-                        <a id="edit-company-link" href="@Url.Action(MVC.Company.Edit())"><i class="fa fa-edit fa-fw"> </i>Modifier mon entreprise</a>
+                        <a id="edit-company-link" href="@Url.Action(MVC.Company.Edit())"><i class="fa fa-edit fa-fw"> </i>@WebMessage.Menus.EmployeeMenu.EDIT_COMPANY</a>
                     </li>
                 </ul>
             </li>
@@ -52,23 +51,23 @@
                 </a>
                 <ul class="dropdown-menu dropdown-managing">
                     <li>
-                        <a id="edit-company-link" href="@Url.Action(MVC.Coordinator.ImportStudent())"> <span class="fa fa-upload fa-fw"> </span>Importer une liste d'étudiants</a>
+                        <a id="import-students-page" href="@Url.Action(MVC.Coordinator.ImportStudent())"> <span class="fa fa-upload fa-fw"> </span>@WebMessage.Menus.CoordinatorMenu.IMPORT_STUDENT_LIST</a>
                     </li>
                     <li>
-                        <a id="students-list-link" href="@Url.Action(MVC.Coordinator.StudentsList())"> <span class="fa fa-th-list fa-fw"> </span>Liste des étudiants</a>
+                        <a id="students-list-link" href="@Url.Action(MVC.Coordinator.StudentsList())"> <span class="fa fa-th-list fa-fw"> </span>@WebMessage.Menus.CoordinatorMenu.STUDENT_LIST</a>
                     </li>  
                     <li>
-                        <a id="@InviteCompaniesPage.PAGE_ID" href="@Url.Action(MVC.InviteCompanies.InviteCompanies())"> <span class="fa fa-send"> </span> Inviter les entreprises</a>
+                        <a id="invite-companies-page" href="@Url.Action(MVC.InviteCompanies.InviteCompanies())"> <span class="fa fa-send"> </span>@WebMessage.Menus.CoordinatorMenu.INVITE_COMPANIES</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a id="choose-period-link" href="@Url.Action(MVC.Coordinator.ChooseInternshipPeriod())"> <span class="fa fa-calendar fa-fw"> </span>Choisir la période d'ouverture</a>
+                        <a id="choose-period-link" href="@Url.Action(MVC.Coordinator.ChooseInternshipPeriod())"> <span class="fa fa-calendar fa-fw"> </span>@WebMessage.Menus.CoordinatorMenu.CHOOSE_PERIOD</a>
                     </li>
                     <li>
-                        <a id="archives-link" href="@Url.Action(MVC.Coordinator.InternshipsPeriodsList())"> <span class="fa fa-history fa-fw"> </span>Archives</a>
+                        <a id="archives-link" href="@Url.Action(MVC.Coordinator.InternshipsPeriodsList())"> <span class="fa fa-history fa-fw"> </span>@WebMessage.Menus.CoordinatorMenu.ARCHIVE</a>
                     </li>
                     <li>
-                        <a id="@CleanDatabasePage.PAGE_ID" href="@Url.Action(MVC.Coordinator.CleanDatabase())"> <span class="fa fa-refresh fa-fw"> </span>Réinitialiser le système</a>
+                        <a id="clean-database-page" href="@Url.Action(MVC.Coordinator.CleanDatabase())"> <span class="fa fa-refresh fa-fw"> </span>@WebMessage.Menus.CoordinatorMenu.CLEAN_DATABASE</a>
                     </li>
                 </ul>
             </li>
@@ -89,12 +88,12 @@
                 {
                     <li class="divider"></li>
                     <li>
-                        <a id="edit-profile-link" href="@Url.Action(@editProfileLink)"><i class="fa fa-edit fa-fw"> </i>Modifier mon profil</a>
+                        <a id="edit-profile-link" href="@Url.Action(@editProfileLink)"><i class="fa fa-edit fa-fw"> </i>@WebMessage.Menus.EDIT_PROFILE</a>
                     </li>
                 }
                 <li class="divider"></li>
                 <li>
-                    <a id="logout-link" href="@Url.Action(MVC.Account.Logout())"><i class="fa fa-sign-out fa-fw"> </i>Se déconnecter</a>
+                    <a id="logout-link" href="@Url.Action(MVC.Account.Logout())"><i class="fa fa-sign-out fa-fw"> </i>@WebMessage.Menus.LOG_OUT</a>
                 </li>
             </ul>
         </li>
@@ -102,6 +101,6 @@
     }
     else
     {
-        <li>@Html.ActionLink("Se connecter", MVC.Account.Login(), new { id = "login-link" }) </li>
+        <li>@Html.ActionLink(WebMessage.Menus.LOG_IN, MVC.Account.Login(), new { id = "login-link" }) </li>
     }
 </ul>

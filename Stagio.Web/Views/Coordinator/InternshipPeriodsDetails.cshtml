@@ -10,13 +10,13 @@
 
     @Html.HiddenFor(model => model.Id)
 
-    <h2 id="period-details-page">Période du @String.Format(WebMessage.DataFormat.DATE_FORMAT, Model.InternshipPeriod.StartDate) au @String.Format(WebMessage.DataFormat.DATE_FORMAT, Model.InternshipPeriod.EndDate)</h2>
+    <h2 id="period-details-page">@WebMessage.CoordinatorMessage.PeriodDetails.PERIOD_INTERVAL(String.Format(WebMessage.DataFormat.DATE_FORMAT, Model.InternshipPeriod.StartDate), String.Format(WebMessage.DataFormat.DATE_FORMAT, Model.InternshipPeriod.EndDate))</h2>
     <hr />
     <div class="form-horizontal">
         <div class="col-md-10">
             <div class="well">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Étudiants</div>
+                    <div class="panel-heading">@WebMessage.HomeMessage.STUDENTS</div>
                     <div class="panel-body">
 
                         <div class="form-group">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Employés et compagnies</div>
+                    <div class="panel-heading">@WebMessage.CoordinatorMessage.PeriodDetails.EMPLOYEES_AND_COMPANIES</div>
                     <div class="panel-body">
                         <div class="form-group">
                             @Html.LabelFor(model => model.EmployeesCount, new { @class = "control-label col-md-5" })
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Offres de stage et progression</div>
+                    <div class="panel-heading">@WebMessage.CoordinatorMessage.PeriodDetails.OFFERS_AND_PROGRESSION</div>
                     <div class="panel-body">
                         <div class="form-group">
                             @Html.LabelFor(model => model.InternshipOffersCount, new { @class = "control-label col-md-5" })
@@ -94,7 +94,7 @@
             </div>
 
             <div class="col-md-8">
-                @Html.ActionLink("Retour", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+                @Html.ActionLink(WebMessage.GeneralMessage.BACK, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
             </div>
         </div>
     </div>

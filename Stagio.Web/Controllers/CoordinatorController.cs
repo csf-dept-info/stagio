@@ -131,7 +131,7 @@ namespace Stagio.Web.Controllers
         {
             if (vmChoosePeriod.StartDate >= vmChoosePeriod.EndDate)
             {
-                ModelState.AddModelError("dateError", WebMessage.CoordinatorMessage.INVALID_START_DATE);
+                ModelState.AddModelError("dateError", WebMessage.CoordinatorMessage.ChoosePeriod.INVALID_START_DATE);
                 return View(MVC.Coordinator.Views.ChooseInternshipPeriod, vmChoosePeriod);
             }
 
@@ -139,7 +139,7 @@ namespace Stagio.Web.Controllers
 
             _internshipPeriodService.AddToPeriodRepository(period);
 
-            const string feedback = WebMessage.CoordinatorMessage.CHOOSE_DATE_SUCCESS;
+            const string feedback = WebMessage.CoordinatorMessage.ChoosePeriod.CHOOSE_DATE_SUCCESS;
             return RedirectToAction(MVC.Coordinator.Index()).Success(feedback);
         }
 

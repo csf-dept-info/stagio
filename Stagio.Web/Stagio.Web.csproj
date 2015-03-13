@@ -669,10 +669,6 @@
       <Project>{31C84FC9-F135-43AD-8ED1-9B3E5D5C719E}</Project>
       <Name>Stagio.TestUtilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Stagio.Web.Automation\Stagio.Web.Automation.csproj">
-      <Project>{51e8df23-3081-4304-9ec6-932c8a3f69c2}</Project>
-      <Name>Stagio.Web.Automation</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,22 +1,22 @@
 ﻿@model Stagio.Web.ViewModels.Coordinator.StudentsList
 
-<h2 id=@Stagio.Web.Automation.PageObjects.CoordinatorPages.StudentsListCoordinatorPage.PAGE_ID>Liste des étudiants</h2>
+<h2 id="students-list-page">@WebMessage.CoordinatorMessage.STUDENT_LIST</h2>
 <hr />
 @{
     var totalStudent = Model.subscribedStudents.Count() + Model.notSubscribedStudents.Count();
 }
 <!-- Nav tabs -->
 <div class="panel-primary">
-    <div class="panel-heading" id="student">@totalStudent étudiant(s) au total</div>
+    <div class="panel-heading" id="student">@WebMessage.CoordinatorMessage.TOTAL_STUDENT(totalStudent)</div>
     <div class="panel-body">
         <ul class="nav nav-tabs">
             <li class="active">
                 <input type="hidden" name="subscribed-count" value="@Model.subscribedStudents.Count()">
-                <a href="#subscribed-pills" data-toggle="tab" id="subscribed-count" aria-expanded="true">@Model.subscribedStudents.Count() inscrit(s)</a>
+                <a href="#subscribed-pills" data-toggle="tab" id="subscribed-count" aria-expanded="true">@WebMessage.CoordinatorMessage.SUBSCRIBED_STUDENTS(Model.subscribedStudents.Count())</a>
             </li>
             <li class="">
                 <input type="hidden" name="notSubscribed-count" value="@Model.notSubscribedStudents.Count()">
-                <a href="#notSubscribed-pills" data-toggle="tab" id="notSubscribed-count" aria-expanded="false">@Model.notSubscribedStudents.Count() non-inscrit(s)</a>
+                <a href="#notSubscribed-pills" data-toggle="tab" id="notSubscribed-count" aria-expanded="false">@WebMessage.CoordinatorMessage.UNSUBSCRIBED_STUDENTS(Model.notSubscribedStudents.Count())</a>
             </li>
         </ul>
         <br />

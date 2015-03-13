@@ -1,5 +1,4 @@
-﻿@using Stagio.Web.Automation.PageObjects.InternshipOfferPages
-@using Stagio.Domain.Application
+﻿@using Stagio.Domain.Application
 
 @model IEnumerable<Stagio.Web.ViewModels.InternshipOffer.Index>
 
@@ -10,18 +9,18 @@
 
 @if (User.IsInRole(RoleNames.Employee))
 {
-    pageID = EmployeeIndexInternshipOfferPage.PAGE_ID;
-    pageTitle = EmployeeIndexInternshipOfferPage.PAGE_TITLE;
+    pageID = "internship-offer-employee-index-page";
+    pageTitle = WebMessage.InternshipOfferMessage.OfferIndex.EMPLOYEE_TITLE;
 }
 else if (User.IsInRole(RoleNames.Student))
 {
-    pageID = StudentIndexInternshipOfferPage.PAGE_ID;
-    pageTitle = StudentIndexInternshipOfferPage.PAGE_TITLE;
+    pageID = "internship-offer-student-index-page";
+    pageTitle = WebMessage.InternshipOfferMessage.OfferIndex.STUDENT_TITLE;
 }
 else if (User.IsInRole(RoleNames.Coordinator))
 {
-    pageID = CoordinatorIndexInternshipOfferPage.PAGE_ID;
-    pageTitle = CoordinatorIndexInternshipOfferPage.PAGE_TITLE;
+    pageID = "internship-offer-coordinator-index-page";
+    pageTitle = WebMessage.InternshipOfferMessage.OfferIndex.COORDINATOR_TITLE;
 }
 
 <h2 id=@pageID>@pageTitle</h2>
@@ -31,7 +30,7 @@ else if (User.IsInRole(RoleNames.Coordinator))
 @if (Model.Any())
 {
     <div class="panel-primary">
-        <div class="panel-heading" id="offers-count">@Model.Count() offre(s) de stage</div>
+        <div class="panel-heading" id="offers-count">@WebMessage.InternshipOfferMessage.OFFERS_COUNT(Model.Count())</div>
         <div class="panel-body">
             @if (User.IsInRole(RoleNames.Employee) && !ViewBag.PublicatedOffersOnly)
             {
@@ -50,7 +49,7 @@ else if (User.IsInRole(RoleNames.Coordinator))
 }
 else
 {
-    <div id="offers-count">@Model.Count() offre(s) de stage</div>
+    <div id="offers-count">@WebMessage.InternshipOfferMessage.OFFERS_COUNT(Model.Count())</div>
     <div><br/></div>
 }
 
