@@ -8,6 +8,8 @@ namespace Stagio.Web
         {
             public const string SIGN_IN = "Se connecter";
             public const string PASSWORD = "Mot de passe";
+            public const string CURRENT_PASSWORD = "Mot de passe actuel";
+            public const string NEW_PASSWORD = "Nouveau mot de passe";
             public const string EMAIL = "Courriel";
             public const string GENERAL_INFORMATIONS = "Informations générales";
             public const string CANCEL = "Annuler";
@@ -18,10 +20,14 @@ namespace Stagio.Web
             public const string BACK = "Retour";
             public const string MY_STAGIO_ACCOUNT = "Mon compte Stagio";
             public const string CONFIRM = "Confirmer";
+            public const string CONFIRMATION = "Confirmation";
             public const string CLOSE = "Fermer";
             public const string DELETE = "Supprimer";
             public const string DOWNLOAD = "Télécharger ";
             public const string EDIT = "Éditer";
+            public const string MESSAGE = "Message";
+            public const string RESUME = "Curriculum vitæ";
+            public const string COVER_LETTER = "Lettre de présentation";
             public const string REQUIRED_FIELDS = "Les champs obligatoires sont marqués d'un astérisque. (*)";
         }
 
@@ -66,9 +72,15 @@ namespace Stagio.Web
 
         public static class UserInformation
         {
+            public const string ID = "Identifiant";
             public const string IDENTIFIER = "Matricule";
+            public const string COMPLETE_NAME = "Nom complet";
             public const string FIRST_NAME = "Prénom";
             public const string LAST_NAME = "Nom";
+            public const string PHONE_NUMBER = "Téléphone";
+            public const string EXTENSION_NUMBER = "Numéro de poste";
+            public const string EXTENTION = "Poste";
+            public const string FUNCTION = "Titre / Fonction";
         }
         public static class HomeMessage
         {
@@ -130,6 +142,8 @@ namespace Stagio.Web
             }
             public static class ChoosePeriod
             {
+                public const string START = "Début";
+                public const string END = "Fin";
                 public const string CHOOSE_DATE_SUCCESS = "Les dates de début et de fin de la période d'ouverture du système ont été sauvegardées.";
                 public const string INVALID_START_DATE = "La date de début ne peut pas être après la date de fin.";
                 public const string CHOOSE_PERIOD_TITLE = "Choisir la période d'ouverture du système";
@@ -146,6 +160,8 @@ namespace Stagio.Web
                 public const string TITLE = "Inviter les entreprises à s'inscrire au système";
                 public const string SEND_MESSAGE = "Envoyer un message aux entreprises";
                 public const string SEND_INVITATIONS = "Envoyer les invitations";
+                public const string OBJECT = "Sujet";
+                public const string MESSAGE = "Message";
             }
 
             public static class ImportStudents
@@ -189,7 +205,13 @@ namespace Stagio.Web
 
         public static class CompanyMessage
         {
+            public const string NAME = "Nom";
+            public const string ADDRESS = "Adresse";
+            public const string TELEPHONE = "Téléphone";
+            public const string EMAIL = "Adresse courriel";
+            public const string WEBSITE = "Site web";
             public const string CHOOSE_COMPANY = "Choisir son entreprise";
+            public const string YOUR_COMPANY_IS = "Votre entreprise est ...";
             public const string NAME_ALREADY_USED = "Cette entreprise existe déjà";
             public const string NEW_COMPANY = "Nouvelle entreprise...";
             public const string SELECT_YOUR_COMPANY = "Sélectionnez votre entreprise";
@@ -201,6 +223,9 @@ namespace Stagio.Web
 
         public static class InternshipOfferMessage
         {
+            public const string OFFER_TITLE = "Titre de l'offre";
+            public const string INTERNSHIP_TITLE = "Titre du stage";
+            public const string REQUIRED_INTERNSHIP_TITLE = "Titre du stage *";
             public const string DRAFT_DELETED_SUCCESS = "Le brouillon a été supprimé avec succès.";
             public const string DENY_OFFER_MAIL_SUBJECT = "Stagio - Une de vos offres de stage vient d'être refusée.";
             public const string BODY_IS_REQUIRED = "Veuillez inscrire la raison du refus de l'offre.";
@@ -221,11 +246,15 @@ namespace Stagio.Web
             public const string SEE_COMPLETE_OFFER = "Voir l'offre complète";
 
             public const string OFFERS_ON_VALIDATION = "En validation";
+            public const string OFFERS_ON_VALIDATION_COMPLETE = "Offres en validation";
             public const string OFFERS_TO_VALIDATE = "À valider";
             public const string REFUSED_OFFERS = "Refusées";
+            public const string REFUSED_OFFERS_COMPLETE = "Offres refusées";
             public const string PUBLICATED_OFFERS = "Publiées";
+            public const string PUBLICATED_OFFERS_COMPLETE = "Offres publiées";
             public const string DRAFT_OFFERS = "Brouillons";
             public const string APPLY = "Postuler";
+            public const string PUBLICATION_DATE = "Date de publication";
 
             public const string INTERNSHIP_INFORMATIONS = "Informations sur le stage";
             public const string COMPANY_INFORMATIONS_NOTICE = "Les informations complètes de l'entreprise seront affichées dans l'offre de stage.";
@@ -241,6 +270,21 @@ namespace Stagio.Web
                 public const string SEND_OFFER = "Publier l'offre de stage";
                 public const string SAVE_DRAFT = "Enregistrer le brouillon";
                 public const string DELETE_DRAFT = "Supprimer le brouillon";
+                public const string COMPANY = "Entreprise ou organisation";
+                public const string OTHER_CONTACT = "Autre contact pour le stage";
+                public const string EXTRA_FILE = "Fichier supplémentaire";
+                public const string CONTACT = "Responsable du stage";
+                public const string DESCRIPTION = "Description du projet pour le stage";
+                public const string DETAILS = "Détails spécifiques au stage";
+                public const string NUMBER_OF_TRAINEES = "Nombre de stagiaires";
+                public const string PERSON_IN_CHARGE = "Soumettre les candidatures à";
+                public const string DEADLINE = "Date limite pour soumettre les candidatures";
+                public const string REQUIRED_CONTACT = "Responsable du stage *";
+                public const string REQUIRED_DESCRIPTION = "Description du projet pour le stage *";
+                public const string REQUIRED_DETAILS = "Détails spécifiques au stage *";
+                public const string REQUIRED_NUMBER_OF_TRAINEES = "Nombre de stagiaires *";
+                public const string REQUIRED_PERSON_IN_CHARGE = "Soumettre les candidatures à *";
+                public const string REQUIRED_DEADLINE = "Date limite pour soumettre les candidatures *";
             }
 
             public static class OfferDetails
@@ -252,6 +296,14 @@ namespace Stagio.Web
                 public const string REFUSE_OFFER = "Refuser l'offre";
                 public const string ACCEPT = "Accepter";
                 public const string REFUSE = "Refuser";
+                public const string REQUIRED_SOFTWARE_HARDWARE = "Environnement matériel et logiciel *";
+                public const string REQUIRED_SCHEDULE = "Horaire *";
+                public const string REQUIRED_HOURS_PER_WEEK = "Nombre d'heures de travail par semaine *";
+                public const string REQUIRED_WAGE = "Salaire horaire *";
+                public const string SOFTWARE_HARDWARE = "Environnement matériel et logiciel";
+                public const string SCHEDULE = "Horaire";
+                public const string HOURS_PER_WEEK = "Nombre d'heures de travail par semaine";
+                public const string WAGE = "Salaire horaire";
             }
 
             public static class OfferIndex
@@ -279,12 +331,16 @@ namespace Stagio.Web
             public const string APPLICATION_CREATE_SUCCESS = "Vous avez postulez avec succès!";
             public const string APPLICATION_PROGRESSION_UPDATE_SUCCESS = "La progression de votre candidature a été mise à jour!";
             public const string SEE_APPLICATIONS = "Voir les candidatures";
+            public const string TOTAL_APPLICATIONS = "Candidatures au total";
+            public const string APPLICATION_DATE = "Date de postulation";
             public static class StudentHasApplied
             {
+                public const string PROGRESSION = "Progression";
                 public const string PROGRESSION_DESCRIPTION = "En attente d'une entrevue...";
                 public const string PROGRESSION_UPDATE_HTML_CONTENT = "Je confirme avoir passé une entrevue avec l'entreprise en date du ";
                 public const string PROGRESSION_UPDATE_HTML_TITLE = "Confirmation de votre présence à l'entrevue";
                 public const string PROGRESSION_UPDATE_DATE_TEXT = "Vous avez postulé le ";
+                public const string LAST_UPDATE = "Dernière mise à jour";
             }
 
             public static class StudentHadInterview

@@ -4,16 +4,16 @@ namespace Stagio.Web.ViewModels.InternshipOffer
 {
     public class DisplayOfferDetails
     {   
-        [DisplayName("Environnement matériel et logiciel")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferDetails.SOFTWARE_HARDWARE]
         public string SpecificHardwareAndSoftware { get; set; }
 
-        [DisplayName("Horaire de travail")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferDetails.SCHEDULE)]
         public string WorkingHours { get; set; }
 
-        [DisplayName("Nombre d'heures de travail par semaine")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferDetails.HOURS_PER_WEEK)]
         public string HoursPerWeek { get; set; }
 
-        [DisplayName("Salaire horaire")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferDetails.WAGE)]
         public string HourlyWage { get; set; }
     }
 }

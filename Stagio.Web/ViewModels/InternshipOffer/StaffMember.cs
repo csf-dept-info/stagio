@@ -6,19 +6,19 @@ namespace Stagio.Web.ViewModels.InternshipOffer
     public class StaffMember
     {
         [Required]
-        [DisplayName("Nom complet")]
+        [DisplayName(WebMessage.UserInformation.COMPLETE_NAME)]
         public string Name { get; set; }
 
         [Required]
-        [DisplayName("Titre / Fonction")]
+        [DisplayName(WebMessage.UserInformation.FUNCTION)]
         public string Title { get; set; }
 
         [Required]
-        [DisplayName("Téléphone")]
+        [DisplayName(WebMessage.UserInformation.PHONE_NUMBER)]
         public string PhoneNumber { get; set; }
 
         [Required]
-        [DisplayName("Courriel")]
+        [DisplayName(WebMessage.GeneralMessage.EMAIL)]
         public string Email { get; set; }
     }
 }
