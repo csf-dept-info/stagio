@@ -1,17 +1,17 @@
 ﻿@model Stagio.Web.ViewModels.Coordinator.PeriodsList
 
-<h2 id="periods-list-page">Liste des périodes de stages passées</h2>
+<h2 id="periods-list-page">@WebMessage.CoordinatorMessage.ChoosePeriod.PERIODS_LIST_TITLE</h2>
 <hr />
 
 
 <!-- Nav tabs -->
 <div class="panel-primary">
-    <div class="panel-heading" id="period">Périodes de stages</div>
+    <div class="panel-heading" id="period">@WebMessage.CoordinatorMessage.ChoosePeriod.INTERNSHIP_PERIODS</div>
     <div class="panel-body">
         <ul class="nav nav-tabs">
             <li class="active">
                 <input type="hidden" name="periods-count" value="@Model.periodsList.Count()">
-                <a href="#period-pills" data-toggle="tab" id="periods-count" aria-expanded="true">@Model.periodsList.Count() périodes au total</a>
+                <a href="#period-pills" data-toggle="tab" id="periods-count" aria-expanded="true">@WebMessage.CoordinatorMessage.ChoosePeriod.TOTAL_PERIODS(Model.periodsList.Count())</a>
             </li>
         </ul>
         <br />

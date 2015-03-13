@@ -28,6 +28,7 @@ namespace Stagio.Web
             public const string MESSAGE = "Message";
             public const string RESUME = "Curriculum vitæ";
             public const string COVER_LETTER = "Lettre de présentation";
+            public const string SEE_DETAILS = "Voir les détails";
             public const string REQUIRED_FIELDS = "Les champs obligatoires sont marqués d'un astérisque. (*)";
         }
 
@@ -91,6 +92,7 @@ namespace Stagio.Web
             public const string WELCOMING_MESSAGE_PART_2 = "du Cégep de Sainte-Foy";
             public const string COMPANY = "Entreprise";
             public const string STUDENT = "Étudiant";
+            public const string STUDENTS = "Étudiants";
             public const string SUBSCRIPTION = "Inscription";
             public const string SUBSCRIBE = "S'inscrire à Stagio";
             public const string SUBSCRIBE_AS_STUDENT = "Inscription en tant qu'étudiant";
@@ -150,12 +152,30 @@ namespace Stagio.Web
                 public const string CHOOSE_PERIOD_TITLE = "Choisir la période d'ouverture du système";
                 public const string CHOOSE_PERIOD_SUBTITLE = "Choisir une période d'ouverture du système permettera de bloquer l'accès au système par les employés et les étudiants";
                 public const string CHOOSE_DATES = "Choisir les dates d'ouverture et de fermeture du système";
+                public const string PERIODS_LIST_TITLE = "Liste des périodes de stages passées";
+                public const string INTERNSHIP_PERIODS = "Périodes de stages";
+
+                public static string TOTAL_PERIODS(int number)
+                {
+                    return number + " périodes au total";
+                }
 
                 public static string LAST_CHOSEN_PERIOD(string startingDate, string endingDate)
                 {
                     return "Dernière période d'ouverture du système choisie: Du " + startingDate + " au " + endingDate;
                 }
             }
+
+            public static class PeriodDetails
+            {
+                public const string EMPLOYEES_AND_COMPANIES = "Employés et entreprises";
+                public const string OFFERS_AND_PROGRESSION = "Offres de stage et progression";
+                public static string PERIOD_INTERVAL(String startingDate, String endingDate)
+                {
+                    return "Période du " + startingDate + " au " + endingDate;
+                }
+            }
+
             public static class InviteCompanies
             {
                 public const string TITLE = "Inviter les entreprises à s'inscrire au système";
