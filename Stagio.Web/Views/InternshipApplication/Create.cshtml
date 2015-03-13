@@ -36,7 +36,7 @@
 
             <div class="panel-footer">
                 <p class="col-md-offset-2">
-                    <input type="submit" id="confirm-button" value="Postuler" class="btn btn-primary" />
+                    <input type="submit" id="confirm-button" value=@WebMessage.InternshipOfferMessage.APPLY class="btn btn-primary" />
                     @Html.ActionLink(@WebMessage.GeneralMessage.CANCEL, MVC.InternshipOffer.StudentIndex(), new { @class = "btn btn-default" })
                 </p>
             </div>

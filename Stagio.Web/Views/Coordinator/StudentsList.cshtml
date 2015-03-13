@@ -1,6 +1,6 @@
 ﻿@model Stagio.Web.ViewModels.Coordinator.StudentsList
 
-<h2 id=@Stagio.Web.Automation.PageObjects.CoordinatorPages.StudentsListCoordinatorPage.PAGE_ID>@WebMessage.CoordinatorMessage.STUDENT_LIST</h2>
+<h2 id="students-list-page">@WebMessage.CoordinatorMessage.STUDENT_LIST</h2>
 <hr />
 @{
     var totalStudent = Model.subscribedStudents.Count() + Model.notSubscribedStudents.Count();

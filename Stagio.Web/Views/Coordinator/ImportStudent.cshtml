@@ -1,6 +1,6 @@
 ﻿@model Stagio.Web.ViewModels.Coordinator.ImportStudent
 
-<h2>Importer une liste d'étudiants</h2>
+<h2>@WebMessage.CoordinatorMessage.ImportStudents.TITLE</h2>
 
 @Html.AntiForgeryToken()
 
@@ -10,7 +10,7 @@
         <hr />
         <div class="panel panel-primary">
             <div class="panel-heading">
-                Sélectionner un fichier
+                @WebMessage.CoordinatorMessage.ImportStudents.SELECT_FILE
             </div>
             <div class="panel-body">
                 <div class="form-group">
@@ -24,7 +24,7 @@
             <div class="panel-footer">
                 <p>
                     <input type="submit" value="Importer" id="create-btn" class="btn btn-primary" />
-                    @Html.ActionLink("Annuler", MVC.Coordinator.Index(), new { @class = "btn btn-default" })
+                    @Html.ActionLink(@WebMessage.GeneralMessage.CANCEL, MVC.Coordinator.Index(), new { @class = "btn btn-default" })
                 </p>
             </div>
         </div>

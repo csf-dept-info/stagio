@@ -100,6 +100,7 @@ namespace Stagio.Web
             public const string STUDENT = "Étudiant";
             public const string PERSONAL_INFOS = "Informations personnelles";
             public const string EDIT_PROFILE = "Modifier mon profil";
+            public const string MY_APPLICATIONS = "Mes candidatures de stage";
         }
 
         public static class EmployeeMessage
@@ -147,16 +148,23 @@ namespace Stagio.Web
                 public const string SEND_INVITATIONS = "Envoyer les invitations";
             }
 
+            public static class ImportStudents
+            {
+                public const string TITLE = "Importer une liste d'étudiants";
+                public const string SELECT_FILE = "Sélectionner un fichier";
+            }
+
             public const string CONFIRM_PASSWORD_MESSAGE = "Veuillez confirmer votre mot de passe.";
             public const string WRONG_PASSWORD_VALIDATION = "Mot de passe invalide";
             public const string STUDENT_ACCOUNTS_IMPORT_SUCCESS = "Les comptes étudiants on été créés avec succès.";
             public const string STUDENT_LIST = "Liste des étudiants";
-            public static string VALIDATE_IMPORT = "Valider l'importation";
-            public static string DATA_TO_IMPORT = "Données à importer";
-            public static string IMPORT_STUDENT_ACCOUNTS = "Importer les comptes étudiants";
-            public static string APPLICATION_PROGRESSION = "Suivi des candidatures";
-            public static string STUDENT_APPLICATION_DATE = "L'étudiant a postulé le";
+            public const string VALIDATE_IMPORT = "Valider l'importation";
+            public const string DATA_TO_IMPORT = "Données à importer";
+            public const string IMPORT_STUDENT_ACCOUNTS = "Importer les comptes étudiants";
+            public const string APPLICATION_PROGRESSION = "Suivi des candidatures";
+            public const string STUDENT_APPLICATION_DATE = "L'étudiant a postulé le";
             public const string SEE_APPLICATIONS = "Voir toutes les candidatures";
+            public const string STUDENT_APPLICATIONS = "Candidatures de l'étudiant";
             
             public static string TOTAL_STUDENT(int number)
             {
