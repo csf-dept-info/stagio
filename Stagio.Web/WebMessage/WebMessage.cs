@@ -484,5 +484,23 @@ namespace Stagio.Web
 
             public const string NO_NOTIFICATION_MESSAGE = "Aucune notification pour l'instant.";
         }
+
+        public static class ResponsiveTable
+        {
+            public const string RECORDS_PER_PAGE = "enregistrements par page";
+            public const string FILTERED_RECORDS = "enregistrements filtrés";
+            public const string NOTHING_FOUND = "Rien n'a été trouvé";
+            public const string FIRST = "Premier";
+            public const string LAST = "Dernier";
+            public const string NEXT = "Suivant";
+            public const string PREVIOUS = "Précédent";
+            public const string PAGE = "Page";
+            public const string OF = "de";
+
+            public const string SEARCH_PERIOD = "Rechercher une période";
+            public const string SEARCH_STUDENT = "Rechercher un étudiant";
+            public const string SEARCH_APPLICATION = "Rechercher une candidature";
+            public const string SEARCH_OFFER = "Rechercher une offre";
+        }
     }
 }

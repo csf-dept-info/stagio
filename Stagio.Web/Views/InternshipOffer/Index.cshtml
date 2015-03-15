@@ -64,16 +64,16 @@ else
         $('table.display').DataTable({
             "info" : false,
             "language": {
-                "search": "<i class=\"fa fa-search\"></i> Rechercher une offre ",
-                "lengthMenu": "_MENU_ enregistrements par page",
-                "zeroRecords": "Rien n'a été trouvé",
-                "info": "Page _PAGE_ de _PAGES_",
-                "infoFiltered": "(_MAX_ enregistrements filtrés)",
-                "paginate" : {
-                    first: "Premier",
-                    previous: "Précédent",
-                    next: "Suivant",
-                    last: "Dernier"
+                "search": "<i class=\"fa fa-search\"></i> @WebMessage.ResponsiveTable.SEARCH_OFFER ",
+                "lengthMenu": "_MENU_ @WebMessage.ResponsiveTable.RECORDS_PER_PAGE",
+                "zeroRecords": "@WebMessage.ResponsiveTable.NOTHING_FOUND",
+                "info": "@WebMessage.ResponsiveTable.PAGE _PAGE_ @WebMessage.ResponsiveTable.OF _PAGES_",
+                "infoFiltered": "(_MAX_ @WebMessage.ResponsiveTable.FILTERED_RECORDS)",
+                "paginate": {
+                    first: "@WebMessage.ResponsiveTable.FIRST",
+                    previous: "@WebMessage.ResponsiveTable.PREVIOUS",
+                    next: "@WebMessage.ResponsiveTable.NEXT",
+                    last: "@WebMessage.ResponsiveTable.LAST"
                 }
             },
             "columnDefs": [{ orderable: false, "targets": -1 }],

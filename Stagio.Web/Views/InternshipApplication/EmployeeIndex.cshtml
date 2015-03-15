@@ -87,16 +87,16 @@ $(document).ready(function () {
     $('table.display').DataTable({
         "info": false,
         "language": {
-            "search": "<i class=\"fa fa-search\"></i> Rechercher une candidature ",
-            "lengthMenu": "_MENU_ enregistrements par page",
-            "zeroRecords": "Rien n'a été trouvé",
-            "info": "Page _PAGE_ de _PAGES_",
-            "infoFiltered": "(_MAX_ enregistrements filtrés)",
+            "search": "<i class=\"fa fa-search\"></i> @WebMessage.ResponsiveTable.SEARCH_APPLICATION ",
+            "lengthMenu": "_MENU_ @WebMessage.ResponsiveTable.RECORDS_PER_PAGE",
+            "zeroRecords": "@WebMessage.ResponsiveTable.NOTHING_FOUND",
+            "info": "@WebMessage.ResponsiveTable.PAGE _PAGE_ @WebMessage.ResponsiveTable.OF _PAGES_",
+            "infoFiltered": "(_MAX_ @WebMessage.ResponsiveTable.FILTERED_RECORDS)",
             "paginate": {
-                first: "Premier",
-                previous: "Précédent",
-                next: "Suivant",
-                last: "Dernier"
+                first: "@WebMessage.ResponsiveTable.FIRST",
+                previous: "@WebMessage.ResponsiveTable.PREVIOUS",
+                next: "@WebMessage.ResponsiveTable.NEXT",
+                last: "@WebMessage.ResponsiveTable.LAST"
             }
         },
         "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-right"ip>>>'
