@@ -162,7 +162,7 @@ namespace Stagio.Web.Controllers
             
             _archivesService.CreateArchive(_internshipPeriodService.GetActualInternshipPeriod());
 
-            return RedirectToAction(MVC.Ci.CleanDatabase()).Success(WebMessage.CoordinatorMessage.CLEAN_DATABASE_SUCCESS);
+            return RedirectToAction(MVC.Ci.CleanDatabase()).Success(WebMessage.CoordinatorMessage.CleanDatabase.CLEAN_DATABASE_SUCCESS);
         }
 
         public virtual ActionResult InternshipsPeriodsList()

@@ -4,7 +4,7 @@ namespace Stagio.Web.ViewModels.InternshipOffer
 {
     public class DisplayOfferDetails
     {   
-        [DisplayName(WebMessage.InternshipOfferMessage.OfferDetails.SOFTWARE_HARDWARE]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferDetails.SOFTWARE_HARDWARE)]
         public string SpecificHardwareAndSoftware { get; set; }
 
         [DisplayName(WebMessage.InternshipOfferMessage.OfferDetails.SCHEDULE)]
