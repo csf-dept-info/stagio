@@ -150,7 +150,7 @@ namespace Stagio.Web
                 public const string CHOOSE_DATE_SUCCESS = "Les dates de début et de fin de la période d'ouverture du système ont été sauvegardées.";
                 public const string INVALID_START_DATE = "La date de début ne peut pas être après la date de fin.";
                 public const string CHOOSE_PERIOD_TITLE = "Choisir la période d'ouverture du système";
-                public const string CHOOSE_PERIOD_SUBTITLE = "Choisir une période d'ouverture du système permettera de bloquer l'accès au système par les employés et les étudiants";
+                public const string CHOOSE_PERIOD_SUBTITLE = "Choisir une période d'ouverture du système permettra de bloquer l'accès au système par les employés et les étudiants";
                 public const string CHOOSE_DATES = "Choisir les dates d'ouverture et de fermeture du système";
                 public const string PERIODS_LIST_TITLE = "Liste des périodes de stages passées";
                 public const string INTERNSHIP_PERIODS = "Périodes de stages";
@@ -262,7 +262,7 @@ namespace Stagio.Web
             public const string REQUIRED_DETAILS = "Ces détails sont requis.";
             public const string REQUIRED_PERSON_IN_CHARGE = "Ces informations sont requises.";
 
-            public const string DRAFT_DELETE_VALIDATION_MESSAGE = "Êtes-vous certain de vouloir suprimer le brouillon?";
+            public const string DRAFT_DELETE_VALIDATION_MESSAGE = "Êtes-vous certain de vouloir supprimer le brouillon?";
 
             public const string SEE_COMPLETE_OFFER = "Voir l'offre complète";
 
