@@ -1,4 +1,8 @@
-﻿using System.Net.Mail;
+﻿using System;
+using System.Configuration;
+using System.Net;
+using System.Net.Mail;
+using SendGrid;
 
 namespace Stagio.Web.Services
 {
@@ -7,7 +11,11 @@ namespace Stagio.Web.Services
 
         public MailMessage BuildMail(string to, string from, string subject, string body)
         {
-            var mail = new MailMessage(from, to) { Subject = subject, Body = body };
+            var mail = new MailMessage(from, to)
+            {
+                Subject = subject, 
+                Body = body
+            };
 
             return mail;
         }
@@ -15,10 +23,40 @@ namespace Stagio.Web.Services
 
         public void SendEmail(MailMessage mail)
         {
-            var client = new SmtpClient("jenkinssmtp.cegep-ste-foy.qc.ca", 25)
-            {DeliveryMethod = SmtpDeliveryMethod.Network, UseDefaultCredentials = false};
+            var environment = ConfigurationManager.AppSettings["environment"];
 
-            client.Send(mail);
+            if (environment == "dev")
+            {
+                var client = new SmtpClient("jenkinssmtp.cegep-ste-foy.qc.ca", 25)
+                {
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false
+                };
+
+                client.Send(mail);
+            }
+            else if (environment == "prod")
+            {
+                var username = ConfigurationManager.AppSettings["mailAccountSendGrid"];    
+                var pswd = ConfigurationManager.AppSettings["mailPasswordSenGrid"]; 
+
+                var credentials = new NetworkCredential(username, pswd);
+
+                SendGridMessage myMessage = new SendGridMessage();
+                myMessage.AddTo(mail.To.ToString());
+                myMessage.From = new MailAddress(mail.From.ToString(), "Coordonateur de stages");
+                myMessage.Subject = mail.Subject.ToString();
+                myMessage.Text = mail.Body.ToString();
+
+                var transportWeb = new SendGrid.Web(credentials);
+
+                transportWeb.Deliver(myMessage);
+            }
+            else
+            {
+                throw new Exception("L'environment doit être prod ou dev. Voir <appSettings> dans Web.Config.");
+            }
+
         }
     }
 }
