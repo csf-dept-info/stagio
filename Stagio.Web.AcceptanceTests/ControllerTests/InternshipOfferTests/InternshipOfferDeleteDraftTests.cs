@@ -24,6 +24,7 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.InternshipOfferTests
             LoginPage.LoginAs(TestData.Employee1);
             EmployeeIndexInternshipOfferPage.GoTo();
         }
+        //Todo: ce test ne passe pas sur jenkins. Vérifier pourquoi.
         [Ignore]
         [TestMethod]
         public void employee_can_delete_internship_offer_draft()
