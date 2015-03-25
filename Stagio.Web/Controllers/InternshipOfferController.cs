@@ -376,7 +376,7 @@ namespace Stagio.Web.Controllers
                 UpdateInternshipOfferToRefusedStatus(internshipOffer);
                 _emailService.SendEmail(mail);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 ModelState.AddModelError("Body", WebMessage.InternshipOfferMessage.GENERIC_DENY_ERROR);
             }
