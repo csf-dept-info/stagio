@@ -37,18 +37,16 @@ namespace Stagio.Web.Services
             }
             else if (environment == "prod")
             {
-                var username = ConfigurationManager.AppSettings["mailAccountSendGrid"];    
-                var pswd = ConfigurationManager.AppSettings["mailPasswordSenGrid"]; 
-
-                var credentials = new NetworkCredential(username, pswd);
+                var accountSendGrid = ConfigurationManager.AppSettings["mailAccountSendGrid"];
+                var passwordSendGrid = ConfigurationManager.AppSettings["mailPasswordSenGrid"];
+                var credentials = new NetworkCredential(accountSendGrid, passwordSendGrid);
+                var transportWeb = new SendGrid.Web(credentials);
 
                 SendGridMessage myMessage = new SendGridMessage();
                 myMessage.AddTo(mail.To.ToString());
                 myMessage.From = new MailAddress(mail.From.ToString(), "Coordonateur de stages");
                 myMessage.Subject = mail.Subject.ToString();
                 myMessage.Text = mail.Body.ToString();
-
-                var transportWeb = new SendGrid.Web(credentials);
 
                 transportWeb.Deliver(myMessage);
             }
