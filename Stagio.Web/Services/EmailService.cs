@@ -24,18 +24,8 @@ namespace Stagio.Web.Services
         public void SendEmail(MailMessage mail)
         {
             var environment = ConfigurationManager.AppSettings["environment"];
-
-            if (environment == "dev")
-            {
-                var client = new SmtpClient("jenkinssmtp.cegep-ste-foy.qc.ca", 25)
-                {
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false
-                };
-
-                client.Send(mail);
-            }
-            else if (environment == "prod")
+            
+            if (environment == "prod")
             {
                 var accountSendGrid = ConfigurationManager.AppSettings["mailAccountSendGrid"];
                 var passwordSendGrid = ConfigurationManager.AppSettings["mailPasswordSenGrid"];
@@ -52,7 +42,13 @@ namespace Stagio.Web.Services
             }
             else
             {
-                throw new Exception("L'environment doit être prod ou dev. Voir <appSettings> dans Web.Config.");
+                var client = new SmtpClient("jenkinssmtp.cegep-ste-foy.qc.ca", 25)
+                {
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false
+                };
+
+                client.Send(mail);
             }
 
         }
