@@ -1,3 +1,4 @@
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -29,6 +30,9 @@ internal static class FlashMessageExtensions
 
     private static void CreateCookieWithFlashMessage(Notification notification, string message)
     {
+
+        message = WebUtility.HtmlEncode(message);
+        message = message.Replace(";", "");
         HttpContext.Current.Response.Cookies.Add(new HttpCookie(string.Format("Flash.{0}", notification), message) { Path = "/" });
     }
 
