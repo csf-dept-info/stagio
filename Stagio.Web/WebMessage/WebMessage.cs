@@ -166,6 +166,11 @@ namespace Stagio.Web
             public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED = "L'une de vos offres de stage a été publiée.";
             public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED_HAS_BEEN_DENIED = "L'une de vos offres de stage a été refusée.";
             public static string A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS = "Un nouvel étudiant a appliqué sur l'une de vos offres.";
+            public static string SEE_ALL_NOTIFICATIONS = "Voir toute les notifications";
+            public static string MARK_AS_SEEN = "Marquer comme vu";
+            public const string DISPLAY_OBJECT = "Sujet";
+            public const string DISPLAY_SEEN = "Vu";
+            public const string DISPLAY_DATE = "Date";
 
             public static string AStudentAcceptedYourInternshipOffer(string studentFirstName, string studentLastName)
             {

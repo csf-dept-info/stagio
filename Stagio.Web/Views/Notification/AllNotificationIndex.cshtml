@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Stagio.Web.ViewModels.Notification.Notification>
+
+<div class="col-md-12">
+    <div class="col-md-10 col-md-offset-1">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Object)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a href="@Url.Action((MVC.Notification.RedirectToNotificationPage(item.Id)))">
+                            @Html.DisplayFor(modelItem => item.Object)
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td>
+                        @if (item.Unseen)
+                        {
+                            <a href="@Url.Action("MarkAsSeen", "Notification", new {id = item.Id})">@WebMessage.NotificationMessage.MARK_AS_SEEN</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
