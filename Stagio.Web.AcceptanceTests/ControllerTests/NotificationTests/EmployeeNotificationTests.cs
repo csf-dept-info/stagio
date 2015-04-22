@@ -9,26 +9,32 @@ using OpenQA.Selenium;
 using Stagio.TestUtilities.Database;
 using Stagio.Web.Automation.Navigation;
 using Stagio.Web.Automation.PageObjects;
+using Stagio.Web.Automation.PageObjects.InternshipApplicationPages;
 using Stagio.Web.Automation.PageObjects.InternshipOfferPages;
 using Stagio.Web.Automation.Selenium;
 
 namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
 {
     [TestClass]
-    public class NotificationIndexTests : GlobalBaseTest
+    public class EmployeeNotificationTests : GlobalBaseTest
     {
-        
-        [TestInitialize]
-        public void Initialize()
+       
+        [TestMethod]
+        public void intershipoffer_has_been_denied()
         {
             LoginPage.GoTo();
-            LoginPage.LoginAs(TestData.Coordinator1);
-        }
+            LoginPage.LoginAs(TestData.SubscribedStudent1);
+            StudentIndexInternshipOfferPage.GoTo();
 
-        [TestMethod]
-        public void employee_can_visualize_internship_offers_associated_to_his_company()
-        {
-            const int NOTIF_ID = 1;
+            CreateInternshipApplicationPage.GoTo();
+            CreateInternshipApplicationPage.UploadFile("TestFile.pdf");
+
+            PageNavigator.AllUsers.Logout.Select();
+
+            LoginPage.GoTo();
+            LoginPage.LoginAs(TestData.Employee1);
+
+            const int NOTIF_ID = 3;
 
             NotificationPartialPage.GoTo();
             NotificationPartialPage.ClickNotif(NOTIF_ID);

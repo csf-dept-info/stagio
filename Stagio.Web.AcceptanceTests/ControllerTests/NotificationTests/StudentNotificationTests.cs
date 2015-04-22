@@ -15,14 +15,14 @@ using Stagio.Web.Automation.Selenium;
 namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
 {
     [TestClass]
-    public class NotificationIndexTests : GlobalBaseTest
+    public class StudentIndexTests : GlobalBaseTest
     {
         
         [TestInitialize]
         public void Initialize()
         {
             LoginPage.GoTo();
-            LoginPage.LoginAs(TestData.Coordinator1);
+            LoginPage.LoginAs(TestData.SubscribedStudent1);
         }
 
         [TestMethod]

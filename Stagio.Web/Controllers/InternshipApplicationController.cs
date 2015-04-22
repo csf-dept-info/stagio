@@ -196,7 +196,7 @@ namespace Stagio.Web.Controllers
 
             _notificationService.RoleGroupNotification(RoleNames.Coordinator,
                 WebMessage.NotificationMessage.AStudentAppliedToAnOffer(student.FirstName + " " + student.LastName, offer.Company.Name),
-                "InternshipApplication", "EmployeePublicatedOffersIndex");
+                "InternshipApplication", "CoordinatorApplicationIndex");
 
             const string feedbackMessage = WebMessage.InternshipApplicationMessage.APPLICATION_CREATE_SUCCESS;
 
