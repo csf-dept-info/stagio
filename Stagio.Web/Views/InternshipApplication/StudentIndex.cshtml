@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<Stagio.Web.ViewModels.InternshipApplication.StudentIndex>
 @using Stagio.Domain.Application
-@using Stagio.Web.Automation.PageObjects.InternshipApplicationPages;
 
     @if (User.IsInRole(RoleNames.Student))
     {
@@ -112,7 +111,6 @@
                                             </button>
                                         }
                                         
-                                        <span class="pull-right text-muted visible-lg">@percentage% complété</span>
                                         <span class="pull-right text-muted visible-lg">@WebMessage.InternshipApplicationMessage.COMPLETION(percentage.ToString())</span>
                                         </div>
 
