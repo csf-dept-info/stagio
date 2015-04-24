@@ -17,7 +17,7 @@ namespace Stagio.Web.ViewModels.Email
         [HiddenInput(DisplayValue = false)]
         public string Subject { get; set; }
 
-        [DisplayName("Message")]
+        [DisplayName(WebMessage.GeneralMessage.MESSAGE)]
         public string Body { get; set; }
     }
 }

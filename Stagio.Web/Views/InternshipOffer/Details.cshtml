@@ -11,12 +11,12 @@
 
 @Html.HiddenFor(model => model.Id)
 
-<h2>Détails de l'offre de stage</h2>
+<h2>@WebMessage.InternshipOfferMessage.OfferDetails.TITLE</h2>
 <hr />
 <div class="form-horizontal">
     <div class="col-md-10">
         <div class="panel panel-primary">
-            <div class="panel-heading">Informations de base</div>
+            <div class="panel-heading">@WebMessage.InternshipOfferMessage.OfferDetails.BASIC_INFOS</div>
             <div class="panel-body">
 
                 <div class="form-group">
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.PathToExtraFile, new { @class = "control-label col-md-4" })
                         <div class="form-control-static col-md-6">
-                            @Html.ActionLink("Télécharger ", "DownloadFile", new { pathToExtraFile = @Model.PathToExtraFile, offerId = @Model.Id })<i class="fa fa-download"> </i>
+                            @Html.ActionLink(WebMessage.GeneralMessage.DOWNLOAD, "DownloadFile", new { pathToExtraFile = @Model.PathToExtraFile, offerId = @Model.Id })<i class="fa fa-download"> </i>
                             @Html.ValidationMessageFor(model => model.PathToExtraFile, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -220,16 +220,16 @@
 
     <div class="col-md-10">
         <div id="content" style="display: none;" class="panel panel-primary">
-            <div class="panel-heading">Message de refus</div>
+            <div class="panel-heading">@WebMessage.InternshipOfferMessage.OfferDetails.DENY_MESSAGE</div>
             <div class="panel panel-body">
                 <div class="form-group col-md-12">
-                        @Html.TextAreaFor(model => model.DenyMessage, new { @class = "form-control", id = "deny-message", placeholder = "Veuillez entrer la ou les raison(s) du refus", type = "Body", rows = "6" })
+                        @Html.TextAreaFor(model => model.DenyMessage, new { @class = "form-control", id = "deny-message", placeholder = WebMessage.InternshipOfferMessage.OfferDetails.DENY_REASONS, type = "Body", rows = "6" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-group">
-                    <input type="submit" id="send-mail-btn" value="Refuser l'offre" class="btn btn-danger col-xs-offset-1" />
-                    <button type="button" id="cancel-btn" class="btn btn-default" onclick=" toggleContent() ">Annuler</button>
+                    <input type="submit" id="send-mail-btn" value=@WebMessage.InternshipOfferMessage.OfferDetails.REFUSE_OFFER class="btn btn-danger col-xs-offset-1" />
+                    <button type="button" id="cancel-btn" class="btn btn-default" onclick=" toggleContent() ">@WebMessage.GeneralMessage.CANCEL</button>
                     
                 </div>
             </div>
@@ -245,9 +245,9 @@
                 <p>
                     @if (ViewBag.IsApplicated == false)
                     {
-                        @Html.ActionLink("Postuler", MVC.InternshipApplication.Create(Model.Id), new {id = "apply-button", @class = "btn btn-success"})
+                        @Html.ActionLink(WebMessage.InternshipOfferMessage.APPLY, MVC.InternshipApplication.Create(Model.Id), new {id = "apply-button", @class = "btn btn-success"})
                     }
-                    @Html.ActionLink("Retour", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+                    @Html.ActionLink(WebMessage.GeneralMessage.BACK, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
                 </p>
             </div>
             
@@ -258,10 +258,10 @@
                 <div class="col-md-offset-2">
                     @if (Model.Status == Stagio.Domain.Entities.InternshipOffer.OfferStatus.OnValidation)
                     { 
-                        @Html.ActionLink("Accepter", MVC.InternshipOffer.ValidateOffer().AddRouteValues(new { id = Model.Id }), new { id = "validate-button", @class = "btn btn-success" })
-                        <button class="btn btn-danger" id="deny-button" type="button" onclick=" toggleContent() ">Refuser</button>
+                        @Html.ActionLink(WebMessage.InternshipOfferMessage.OfferDetails.ACCEPT, MVC.InternshipOffer.ValidateOffer().AddRouteValues(new { id = Model.Id }), new { id = "validate-button", @class = "btn btn-success" })
+                        <button class="btn btn-danger" id="deny-button" type="button" onclick=" toggleContent() ">@WebMessage.InternshipOfferMessage.OfferDetails.REFUSE</button>
                     }
-                    @Html.ActionLink("Retour", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+                    @Html.ActionLink(WebMessage.GeneralMessage.BACK, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
                 </div>
             </div>
 
@@ -284,7 +284,7 @@
         else if (User.IsInRole(RoleNames.Employee))
         {
             <div class="col-md-offset-4">
-                @Html.ActionLink("Retour", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+                @Html.ActionLink(WebMessage.GeneralMessage.BACK, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
             </div>
         }
     </div>

@@ -76,6 +76,7 @@ namespace Stagio.Web
             kernel.Bind<IEntityRepository<InternshipPeriod>>().To<EfEntityRepository<InternshipPeriod>>().InRequestScope();
             kernel.Bind<IEntityRepository<Notification>>().To<EfEntityRepository<Notification>>().InRequestScope();
             kernel.Bind<IEntityRepository<InternshipAgreement>>().To<EfEntityRepository<InternshipAgreement>>().InRequestScope();
+            kernel.Bind<IEntityRepository<DepartmentalArchives>>().To<EfEntityRepository<DepartmentalArchives>>().InRequestScope();
 
             //services
             kernel.Bind<IHttpContextService>().To<HttpContextService>().InRequestScope();
@@ -86,6 +87,7 @@ namespace Stagio.Web
             kernel.Bind<IInternshipPeriodService>().To<InternshipPeriodService>().InRequestScope();
             kernel.Bind<INotificationService>().To<NotificationService>().InRequestScope();
             kernel.Bind<IEmployeeService>().To<EmployeeService>().InRequestScope();
+            kernel.Bind<IArchivesService>().To<ArchivesService>().InRequestScope();
 
             //database
             kernel.Bind<IDatabaseHelper>().To<EfDatabaseHelper>().InRequestScope();

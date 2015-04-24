@@ -125,6 +125,12 @@ namespace Stagio.Web.Mappers
                .ForMember(dest => dest.Title, opt => opt.UseValue("Coordonnation des stages"))
                .IgnoreAllNonExisting();
 
+            //DepartmentalArchives
+            Mapper.CreateMap<DepartmentalArchives, ViewModels.Archives.Details>()
+                .IgnoreAllNonExisting();
+
+            Mapper.CreateMap<DepartmentalArchives, ViewModels.Archives.Index>()
+                .IgnoreAllNonExisting();
         }
     }
 }

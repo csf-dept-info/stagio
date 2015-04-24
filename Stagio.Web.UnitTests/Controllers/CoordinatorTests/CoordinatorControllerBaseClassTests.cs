@@ -17,6 +17,7 @@ namespace Stagio.Web.UnitTests.Controllers.CoordinatorTests
         protected IAccountService _accountService;
         protected IFileImportService _fileService;
         protected IInternshipPeriodService _internshipPeriodService;
+        protected IArchivesService _archivesService;
 
         [TestInitialize]
         public void Initialize()
@@ -27,8 +28,11 @@ namespace Stagio.Web.UnitTests.Controllers.CoordinatorTests
             _accountService = Substitute.For<IAccountService>();
             _fileService = Substitute.For<IFileImportService>();
             _internshipPeriodService = Substitute.For<IInternshipPeriodService>();
-
-            _coordinatorController = new CoordinatorController(_coordinatorRepository, _studentRepository, _accountService, _fileService, _httpContext, _internshipPeriodService);
+            _archivesService = Substitute.For<IArchivesService>();
+            
+            _coordinatorController = new CoordinatorController(_coordinatorRepository, _studentRepository, 
+                                                               _accountService, _fileService, 
+                                                               _httpContext, _internshipPeriodService, _archivesService);
         }
     }
 }

@@ -1,11 +1,7 @@
 ﻿@using Stagio.Domain.Application
 @model Stagio.Web.ViewModels.Employee.Create
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2 id=@Stagio.Web.Automation.PageObjects.EmployeePages.CreateEmployeePage.PAGE_ID>@Stagio.Web.Automation.PageObjects.EmployeePages.CreateEmployeePage.PAGE_TITLE</h2>
+<h2 id="employee-create-page">@WebMessage.EmployeeMessage.CREATE_ACCOUNT_TITLE</h2>
 
 @using (Html.BeginForm())
 {
@@ -15,7 +11,7 @@
     <div class="form-horizontal">
         <hr />
         <div class="panel panel-primary">
-            <div class="panel-heading">Informations personelles</div>
+            <div class="panel-heading">@WebMessage.GeneralMessage.GENERAL_INFORMATIONS</div>
             <div class="panel-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -37,7 +33,7 @@
         </div>
 
         <div class="panel panel-primary">
-            <div class="panel-heading">Coordonnées</div>
+            <div class="panel-heading">@WebMessage.GeneralMessage.CONTACT_DETAILS</div>
             <div class="panel-body">
                 <div class="form-group">
                     @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-2" })
@@ -66,7 +62,7 @@
         </div>
 
         <div class="panel panel-primary">
-            <div class="panel-heading">Mot de passe</div>
+            <div class="panel-heading">@WebMessage.GeneralMessage.PASSWORD</div>
             <div class="panel-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -91,8 +87,8 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <p>
-                    <input type="submit" value="Créer le compte" id="create-btn" class="btn btn-primary" />
-                    @Html.ActionLink("Annuler", MVC.Home.Index(), new { @class = "btn btn-default" })
+                    <input type="submit" value=@WebMessage.EmployeeMessage.CREATE_ACCOUNT id="create-btn" class="btn btn-primary" />
+                    @Html.ActionLink(WebMessage.GeneralMessage.CANCEL, MVC.Home.Index(), new { @class = "btn btn-default" })
                 </p>
             </div>
         </div>

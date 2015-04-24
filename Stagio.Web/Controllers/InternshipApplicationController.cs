@@ -171,7 +171,7 @@ namespace Stagio.Web.Controllers
             internshipApplication.CompanyAcceptedDate = DateTime.Now;
             internshipApplication.StudentAcceptedDate = DateTime.Now;
 
-            internshipApplication.InternshipAgreement = null;
+            internshipApplication.Agreement = null;
 
             internshipApplication.Progression = InternshipApplication.ApplicationStatus.StudentHasApplied;
 

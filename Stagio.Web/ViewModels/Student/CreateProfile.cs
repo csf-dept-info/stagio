@@ -11,29 +11,29 @@ namespace Stagio.Web.ViewModels.Student
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Courriel")]
+        [DisplayName(WebMessage.GeneralMessage.EMAIL)]
         public string Identifier { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = WebMessage.ErrorMessage.INVALID_PASSWORD_LENGTH, MinimumLength = 8)]
         [ValidatePassword(ErrorMessage = WebMessage.ErrorMessage.INVALID_PASSWORD_FORMAT)]
         [DataType(DataType.Password)]
-        [Display(Name = "Mot de passe")]
+        [Display(Name = WebMessage.GeneralMessage.PASSWORD)]
         public string NewPassword { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirmation")]
+        [Display(Name = WebMessage.GeneralMessage.CONFIRMATION)]
         [System.ComponentModel.DataAnnotations.CompareAttribute("NewPassword", ErrorMessage = WebMessage.ErrorMessage.INVALID_PASSWORD_CORRESPONDENCE)]
         public string ConfirmPassword { get; set; }
 
-        [DisplayName("Nom")]
+        [DisplayName(WebMessage.UserInformation.LAST_NAME)]
         public string LastName { get; set; }
 
-        [DisplayName("Prénom")]
+        [DisplayName(WebMessage.UserInformation.FIRST_NAME)]
         public string FirstName { get; set; }
 
-        [DisplayName("Téléphone")]
+        [DisplayName(WebMessage.UserInformation.PHONE_NUMBER)]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(WebMessage.RegularExpression.PHONE_NUMBER_FORMAT, ErrorMessage = WebMessage.ErrorMessage.INVALID_PHONE_NUMBER_FORMAT)]
         [StringLength(14)]

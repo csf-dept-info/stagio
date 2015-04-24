@@ -36,6 +36,8 @@ namespace Stagio.Domain.Entities
 
         public DateTime StudentAcceptedDate { get; set; }
 
+        public InternshipAgreement Agreement { get; set; }
+
         public string GetCompanyName()
         {
             return this.InternshipOffer.Company.Name;
