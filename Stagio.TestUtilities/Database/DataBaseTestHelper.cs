@@ -24,7 +24,6 @@ namespace Stagio.TestUtilities.Database
         private int _studentId1;
         private int _studentId2;
         private int _studentId3;
-        private int _studentId4;
 
         private int _studentWhoAppliedId;
         private int _studentWhoHadInterviewId;

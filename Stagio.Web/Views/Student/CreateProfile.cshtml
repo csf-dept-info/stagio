@@ -5,21 +5,21 @@
     ViewBag.Title = "Create profile";
 }
 
-<h2 id="student-create-profile-page">Création du profil</h2>
+<h2 id="student-create-profile-page">@WebMessage.StudentMessage.PROFILE_CREATION_TITLE</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Étudiant</h4>
+        <h4>@WebMessage.StudentMessage.STUDENT</h4>
         <hr />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
         <div class="panel panel-primary">
-            <div class="panel-heading">Informations personelles</div>
+            <div class="panel-heading">@WebMessage.StudentMessage.PERSONAL_INFOS</div>
             <div class="panel-body">
 
                 <div class="form-group">
@@ -55,7 +55,7 @@
         </div>
 
         <div class="panel panel-primary">
-            <div class="panel-heading">Mot de passe</div>
+            <div class="panel-heading">@WebMessage.GeneralMessage.PASSWORD</div>
             <div class="panel-body">
 
                 <div class="form-group">
@@ -78,7 +78,7 @@
 
             </div>
             <div class="panel-footer">
-                <input type="submit" value="Enregistrer" class="btn btn-primary" id="submit-create-profile" />
+                <input type="submit" value=@WebMessage.GeneralMessage.SAVE class="btn btn-primary" id="submit-create-profile" />
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@
 }
 
 <div>
-    @Html.ActionLink("Retour", MVC.Student.Index(), new { @class = "btn btn-default" })
+    @Html.ActionLink(WebMessage.GeneralMessage.BACK, MVC.Student.Index(), new { @class = "btn btn-default" })
 </div>
 
 @section Scripts {

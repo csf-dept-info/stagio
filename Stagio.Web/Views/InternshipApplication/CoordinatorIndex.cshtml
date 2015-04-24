@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Stagio.Web.ViewModels.InternshipApplication.CoordinatorProgressionIndex>
 
-    <h2 id="application-coordinator-index-page">Suivi des candidatures</h2>
+    <h2 id="application-coordinator-index-page">@WebMessage.CoordinatorMessage.APPLICATION_PROGRESSION</h2>
     <hr />
     <div class="panel-primary">
         <div class="panel-heading" id="application-count">
-            @Model.Count() étudiant(s)
+            @WebMessage.CoordinatorMessage.STUDENTS_COUNT(Model.Count())
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -79,7 +79,7 @@
 
                                         <div class="@progressBarDivStyle">
                                             <div class="@progressBarStyle" role="progressbar" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100" style="width: @percentage%">
-                                                <span class="sr-only">@percentage% complété (success)</span>
+                                                <span class="sr-only">@WebMessage.InternshipApplicationMessage.COMPLETION_BAR(percentage.ToString())</span>
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                         @if (item.BestProgression.ProgressionPercentage != 0)
                                         {
                                             <p class="text-center">
-                                                Vous avez postulé le  <br />
+                                                @WebMessage.CoordinatorMessage.STUDENT_APPLICATION_DATE <br />
                                                 <strong>@Html.DisplayFor(modelItem => item.BestProgression.LastProgressionUpdateDate)</strong>
                                             </p>
                                         }
@@ -102,7 +102,7 @@
                                     </td>
                                 }
                                 <td>
-                                     @Html.ActionLink("Voir toutes les candidatures", MVC.InternshipApplication.GetApplicationsForSpecificStudent(item.StudentId), new { id = "student-application-" + progressionID, @class = "btn btn-primary" })
+                                     @Html.ActionLink(@WebMessage.CoordinatorMessage.SEE_APPLICATIONS, MVC.InternshipApplication.GetApplicationsForSpecificStudent(item.StudentId), new { id = "student-application-" + progressionID, @class = "btn btn-primary" })
                                 </td>
                             </tr>
                                 progressionID++;
@@ -123,16 +123,16 @@
             $('table.display').DataTable({
                 "info": false,
                 "language": {
-                    "search": "<i class=\"fa fa-search\"></i> Rechercher une candidature ",
-                    "lengthMenu": "_MENU_ enregistrements par page",
-                    "zeroRecords": "Rien n'a été trouvé",
-                    "info": "Page _PAGE_ de _PAGES_",
-                    "infoFiltered": "(_MAX_ enregistrements filtrés)",
+                    "search": "<i class=\"fa fa-search\"></i> @WebMessage.ResponsiveTable.SEARCH_APPLICATION ",
+                    "lengthMenu": "_MENU_ @WebMessage.ResponsiveTable.RECORDS_PER_PAGE",
+                    "zeroRecords": "@WebMessage.ResponsiveTable.NOTHING_FOUND",
+                    "info": "@WebMessage.ResponsiveTable.PAGE _PAGE_ @WebMessage.ResponsiveTable.OF _PAGES_",
+                    "infoFiltered": "(_MAX_ @WebMessage.ResponsiveTable.FILTERED_RECORDS)",
                     "paginate": {
-                        first: "Premier",
-                        previous: "Précédent",
-                        next: "Suivant",
-                        last: "Dernier"
+                        first: "@WebMessage.ResponsiveTable.FIRST",
+                        previous: "@WebMessage.ResponsiveTable.PREVIOUS",
+                        next: "@WebMessage.ResponsiveTable.NEXT",
+                        last: "@WebMessage.ResponsiveTable.LAST"
                     }
                 },
                 "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-right"ip>>>'

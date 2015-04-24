@@ -1,179 +1,179 @@
 ﻿@model IEnumerable<Stagio.Web.ViewModels.InternshipApplication.StudentIndex>
-    @using Stagio.Domain.Application    @using Stagio.Web.Automation.PageObjects.InternshipApplicationPages;
+@using Stagio.Domain.Application
 
-    @if (User.IsInRole(RoleNames.Student))
-    {
-        <h2 id="@StudentIndexInternshipApplicationPage.PAGE_ID">@StudentIndexInternshipApplicationPage.PAGE_TITLE</h2>
-    }
-    else
-    {
-        <h2 id="@StudentIndexInternshipApplicationPage.PAGE_ID">Candidatures de l'étudiant</h2>
-    }
-    <hr />
-    <div class="panel-primary">
-        <div class="panel-heading" id="application-count">
-            @Model.Count() candidature(s)
-        </div>
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table id="offers-table" class="display dataTable table table-striped table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.InternshipOfferTitle)</th>
-                            <th>@Html.DisplayNameFor(model => model.CompanyName)</th>
-                            <th>@Html.DisplayNameFor(model => model.ProgressionPercentage)</th>
-                            <th>@Html.DisplayNameFor(model => model.LastProgressionUpdateDateText)</th>
-                        </tr>
-                    </thead>
+@if (User.IsInRole(RoleNames.Student))
+{
+    <h2 id="student-application-index-page">@WebMessage.StudentMessage.MY_APPLICATIONS</h2>
+}
+else
+{
+    <h2 id="student-application-index-page">@WebMessage.CoordinatorMessage.STUDENT_APPLICATIONS</h2>
+}
+<hr />
+<div class="panel-primary">
+    <div class="panel-heading" id="application-count">
+        @WebMessage.InternshipApplicationMessage.APPLICATIONS_COUNT(Model.Count())
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table id="offers-table" class="display dataTable table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.InternshipOfferTitle)</th>
+                        <th>@Html.DisplayNameFor(model => model.CompanyName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ProgressionPercentage)</th>
+                        <th>@Html.DisplayNameFor(model => model.LastProgressionUpdateDateText)</th>
+                    </tr>
+                </thead>
 
-                    <tbody>
-                        @{var offerID = 1;}
+                <tbody>
+                    @{var offerID = 1;}
 
-                        @foreach (var item in Model)
+                    @foreach (var item in Model)
+                    {
+                        var internshipOfferId = item.InternshipOfferId;
+                        var internshipOfferTitle = item.InternshipOfferTitle;
+
+                        <tr id="@item.Id">
+                            <td>
+                                @Html.ActionLink(@internshipOfferTitle, MVC.InternshipOffer.Details(internshipOfferId), new { id = "internship-offer-details" + offerID })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CompanyName)
+                            </td>
+                            <td>
+                                @Html.HiddenFor(modelItem => item.Id)
+
+                                @{
+                        var percentage = Html.DisplayFor(modelItem => item.ProgressionPercentage);
+                        var progressBarDivStyle = "progress progress-striped active";
+                        var progressBarStyle = "progress-bar progress-bar-striped";
+                        var updateProgressionButtonId = "update-progression-button-" + offerID;
+                        var updateProgressionModalId = "next-step-modal-" + offerID;
+                        var updateProgressionConfirmationButtonId = "update-progression-confirm-button-" + offerID;
+
+                        if (percentage.ToString() == "100")
                         {
-                            var internshipOfferId = item.InternshipOfferId;
-                            var internshipOfferTitle = item.InternshipOfferTitle;
+                            progressBarDivStyle = "progress progress-striped";
+                            progressBarStyle = "progress-bar progress-bar-success";
+                        }
+                                }
+                                <div>
+                                    <div class="collapse-group">
+                                        <strong>@Html.DisplayFor(modelItem => item.ProgressionDescription)</strong>
 
-                            <tr id="@item.Id">
-                                <td>
-                                    @Html.ActionLink(@internshipOfferTitle, MVC.InternshipOffer.Details(internshipOfferId), new { id = "internship-offer-details" + offerID })
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CompanyName)
-                                </td>
-                                <td>
-                                    @Html.HiddenFor(modelItem => item.Id)
-
-                                    @{
-                            var percentage = Html.DisplayFor(modelItem => item.ProgressionPercentage);
-                            var progressBarDivStyle = "progress progress-striped active";
-                            var progressBarStyle = "progress-bar progress-bar-striped";
-                            var updateProgressionButtonId = StudentIndexInternshipApplicationPage.UPDATE_PROGRESSION_BUTTON_ID + offerID;
-                            var updateProgressionModalId = "next-step-modal-" + offerID;
-                            var updateProgressionConfirmationButtonId = StudentIndexInternshipApplicationPage.UPDATE_PROGRESSION_CONFIRM_BUTTON_ID + offerID;
-
-                            if (percentage.ToString() == "100")
-                            {
-                                progressBarDivStyle = "progress progress-striped";
-                                progressBarStyle = "progress-bar progress-bar-success";
-                            }
-                                    }
-                                    <div>
-                                        <div class="collapse-group">
-                                            <strong>@Html.DisplayFor(modelItem => item.ProgressionDescription)</strong>
-
-                                            @if (percentage.ToString() != "100")
+                                        @if (percentage.ToString() != "100")
+                                        {
+                                            if (User.IsInRole(RoleNames.Student))
                                             {
-                                                if (User.IsInRole(RoleNames.Student))
-                                                {
-                                                    <button id="@updateProgressionButtonId" type="button" class="btn btn-outline btn-primary btn-circle" data-toggle="modal" data-target="#@updateProgressionModalId">
-                                                        <i class="fa fa-check"></i>
-                                                    </button>
-                                                }
+                                                <button id="@updateProgressionButtonId" type="button" class="btn btn-outline btn-primary btn-circle" data-toggle="modal" data-target="#@updateProgressionModalId">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                            }
 
-                                                using (Html.BeginForm("UpdateProgression", "InternshipApplication", FormMethod.Post))
-                                                {
-                                                    @Html.AntiForgeryToken();
-                                                @Html.HiddenFor(modelItem => item.Id);
+                                            using (Html.BeginForm("UpdateProgression", "InternshipApplication", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken();
+                                            @Html.HiddenFor(modelItem => item.Id);
 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="@updateProgressionModalId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h4 class="modal-title">@Html.DisplayFor(modelItem => item.ProgessionUpdateHtmlTitle)</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p class="text-success"><i class="fa fa-check"></i> @Html.DisplayFor(modelItem => item.ProgessionUpdateHtmlContent)</p>
-                                                                @Html.EditorFor(modelItem => item.LastProgressionUpdateDate, new { htmlAttributes = new { @class = "datepicker form-control" } })
-                                                                @Html.ValidationMessageFor(modelItem => item.LastProgressionUpdateDate, "", new { @class = "text-danger" })
-                                                                <style>
-                                                                    .datepicker {
-                                                                        z-index: 1151 !important;
-                                                                    }
-                                                                </style>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                                                                <input type="submit" id="@updateProgressionConfirmationButtonId" value="Confirmer" class="btn btn-success" />
-                                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="@updateProgressionModalId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <h4 class="modal-title">@Html.DisplayFor(modelItem => item.ProgessionUpdateHtmlTitle)</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="text-success"><i class="fa fa-check"></i> @Html.DisplayFor(modelItem => item.ProgessionUpdateHtmlContent)</p>
+                                                            @Html.EditorFor(modelItem => item.LastProgressionUpdateDate, new { htmlAttributes = new { @class = "datepicker form-control" } })
+                                                            @Html.ValidationMessageFor(modelItem => item.LastProgressionUpdateDate, "", new { @class = "text-danger" })
+                                                            <style>
+                                                                .datepicker {
+                                                                    z-index: 1151 !important;
+                                                                }
+                                                            </style>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">@WebMessage.GeneralMessage.CANCEL</button>
+                                                            <input type="submit" id="@updateProgressionConfirmationButtonId" value=@WebMessage.GeneralMessage.CONFIRM class="btn btn-success" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- /.modal -->
-                                                }
-                                            }
-                                            <span class="pull-right text-muted visible-lg">@percentage% complété</span>
-                                        </div>
-
-                                        <br />
-
-                                        <div class="@progressBarDivStyle">
-                                            <div class="@progressBarStyle" role="progressbar" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100" style="width: @percentage%">
-                                                <span class="sr-only">@percentage% complété (success)</span>
                                             </div>
-                                        </div>
+                                            <!-- /.modal -->
+                                            }
+                                        }
+                                        <span class="pull-right text-muted visible-lg">@WebMessage.InternshipApplicationMessage.COMPLETION(percentage.ToString())</span>
                                     </div>
 
-                                </td>
-                                <td>
-                                    <p class="text-center">
-                                        @Html.DisplayFor(modelItem => item.LastProgressionUpdateDateText)<br />
-                                        <strong>@Html.DisplayFor(modelItem => item.LastProgressionUpdateDate)</strong>
-                                    </p>
-                                </td>
-                            </tr>
+                                    <br />
 
-                                            offerID++;
-                        }
-                    </tbody>
-                </table>
-            </div>
+                                    <div class="@progressBarDivStyle">
+                                        <div class="@progressBarStyle" role="progressbar" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100" style="width: @percentage%">
+                                            <span class="sr-only">@WebMessage.InternshipApplicationMessage.COMPLETION_BAR(percentage.ToString())</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <p class="text-center">
+                                    @Html.DisplayFor(modelItem => item.LastProgressionUpdateDateText)<br />
+                                    <strong>@Html.DisplayFor(modelItem => item.LastProgressionUpdateDate)</strong>
+                                </p>
+                            </td>
+                        </tr>
+
+                                        offerID++;
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
-    <!-- DataTables Scripts -->
-    <script src="~/Content/js/plugins/metisMenu/metisMenu.min.js"></script>
-    <script src="~/Content/js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="~/Content/js/plugins/dataTables/dataTables.bootstrap.js"></script>
-    <script src="~/Content/js/sb-admin-2.js"></script>
+<!-- DataTables Scripts -->
+<script src="~/Content/js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="~/Content/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="~/Content/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="~/Content/js/sb-admin-2.js"></script>
 
-    <!-- DatePicker Content -->
-    <link href="~/Content/css/plugins/datepicker/datepicker3.css" rel="stylesheet" />
-    <script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.js"></script>
-    <script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.fr.js"></script>
+<!-- DatePicker Content -->
+<link href="~/Content/css/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+<script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.fr.js"></script>
 
-    <script>
-        $(document).ready(
-            function () {
-                $('table.display').DataTable({
-                    "info": false,
-                    "language": {
-                        "search": "<i class=\"fa fa-search\"></i> Rechercher une candidature ",
-                        "lengthMenu": "_MENU_ enregistrements par page",
-                        "zeroRecords": "Rien n'a été trouvé",
-                        "info": "Page _PAGE_ de _PAGES_",
-                        "infoFiltered": "(_MAX_ enregistrements filtrés)",
-                        "paginate": {
-                            first: "Premier",
-                            previous: "Précédent",
-                            next: "Suivant",
-                            last: "Dernier"
-                        }
-                    },
-                    "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-right"ip>>>'
-                });
-            })
-    </script>
+<script>
+    $(document).ready(
+        function () {
+            $('table.display').DataTable({
+                "info": false,
+                "language": {
+                    "search": "<i class=\"fa fa-search\"></i> @WebMessage.ResponsiveTable.SEARCH_APPLICATION ",
+                    "lengthMenu": "_MENU_ @WebMessage.ResponsiveTable.RECORDS_PER_PAGE",
+                    "zeroRecords": "@WebMessage.ResponsiveTable.NOTHING_FOUND",
+                    "info": "@WebMessage.ResponsiveTable.PAGE _PAGE_ @WebMessage.ResponsiveTable.OF _PAGES_",
+                    "infoFiltered": "(_MAX_ @WebMessage.ResponsiveTable.FILTERED_RECORDS)",
+                    "paginate": {
+                        first: "@WebMessage.ResponsiveTable.FIRST",
+                        previous: "@WebMessage.ResponsiveTable.PREVIOUS",
+                        next: "@WebMessage.ResponsiveTable.NEXT",
+                        last: "@WebMessage.ResponsiveTable.LAST"
+                    }
+                },
+                "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-right"ip>>>'
+            });
+        })
+</script>
 
-    <script type="text/javascript">
-        $('.datepicker').datepicker({
-            endDate: "today",
-            language: "fr",
-            todayHighlight: true,
-            autoclose: true,
-            format: "yyyy-mm-dd"
-        });
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+        endDate: "today",
+        language: "fr",
+        todayHighlight: true,
+        autoclose: true,
+        format: "yyyy-mm-dd"
+    });
 
-    </script>
+</script>

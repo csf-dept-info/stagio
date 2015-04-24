@@ -9,18 +9,18 @@ namespace Stagio.Web.ViewModels.Coordinator
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [DisplayName("Nom")]
+        [DisplayName(WebMessage.UserInformation.LAST_NAME)]
         public string LastName { get; set; }
 
-        [DisplayName("Prénom")]
+        [DisplayName(WebMessage.UserInformation.FIRST_NAME)]
         public string FirstName { get; set; }
 
-        [DisplayName("Téléphone")]
+        [DisplayName(WebMessage.UserInformation.PHONE_NUMBER)]
         [DataType(DataType.PhoneNumber)]
         [StringLength(10)]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Identifiant")]
+        [Display(Name = WebMessage.UserInformation.ID)]
         public string Identifier { get; set; }
     }
 }

@@ -15,11 +15,11 @@
 
 <div class="jumbotron">
     <div class="h1">
-        Bienvenue sur
+        @WebMessage.HomeMessage.WELCOME
         <img src="~/Ressources/Logo_2(990x430).png" alt="Stage Stagio" name="Stagio Sainte-Foy" height="50%" width="50%" />
     </div>
     <p class="lead">
-        Outil de suivi des stages en informatique <br /> du Cégep de Sainte-Foy
+        @WebMessage.HomeMessage.WELCOMING_MESSAGE_PART_1 <br /> @WebMessage.HomeMessage.WELCOMING_MESSAGE_PART_2
     </p>
 </div>
 
@@ -33,13 +33,13 @@
                         <i class="fa fa-briefcase fa-5x hidden-xs"></i>
                     </div>
                     <div class="col-xs-9 text-right-md text-right-lg">
-                        <div class="huge">Entreprise</div>
+                        <div class="huge">@WebMessage.HomeMessage.COMPANY</div>
                     </div>
                 </div>
             </div>
             <a href="@Url.Action(MVC.Company.ChooseCompany())" id="employee-create">
                 <div class="panel-footer">
-                    <span class="pull-left"><h4><b>Inscription</b></h4></span>
+                    <span class="pull-left"><h4><b>@WebMessage.HomeMessage.SUBSCRIPTION</b></h4></span>
                     <span class="pull-right"><i class="fa fa-3x fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -54,14 +54,14 @@
                         <i class="fa fa-user fa-5x hidden-xs"></i>
                     </div>
                     <div class="col-xs-9 text-right-md text-right-lg">
-                        <div class="huge">Étudiant</div>
+                        <div class="huge">@WebMessage.HomeMessage.STUDENT</div>
                     </div>
                 </div>
             </div>
             <a href="@Url.Action(MVC.Student.SubscribeStudent())" id="subscribe-student">
 
                 <div class="panel-footer">
-                    <span class="pull-left"><h4><b>Inscription</b></h4></span>
+                    <span class="pull-left"><h4><b>@WebMessage.HomeMessage.SUBSCRIPTION</b></h4></span>
                     <span class="pull-right"><i class="fa fa-3x fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
