@@ -60,6 +60,13 @@ namespace Stagio.DataLayer
                 .HasForeignKey(t => t.StudentId)
                 .WillCascadeOnDelete(false);
 
+            //Relations between InternshipAgreement and InternshipApplication
+            modelBuilder.Entity<InternshipAgreement>()
+                .HasRequired(t => t.InternshipApplication)
+                .WithMany()
+                .HasForeignKey(t => t.InternshipApplicationId)
+                .WillCascadeOnDelete(true);
+
             //Relations between Notifications, Senders and Receivers
             modelBuilder.Entity<Notification>()
                 .HasRequired(t => t.Receiver)
