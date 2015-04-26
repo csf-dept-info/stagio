@@ -18,11 +18,13 @@ namespace Stagio.Web.Controllers
         private readonly IEntityRepository<InternshipApplication> _applicationRepository;
         private readonly IEntityRepository<Coordinator> _coordinatorRepository;
         private readonly IHttpContextService _httpContext;
+        private readonly NotificationService _notificationService;
 
         public InternshipAgreementController(
             IEntityRepository<InternshipAgreement> agreementRepository,
             IEntityRepository<InternshipApplication> applicationRepository,
             IEntityRepository<Coordinator> coordinatorRepository,
+            NotificationService notificationService,
             IHttpContextService httpContext)
         {
             DependencyService.VerifyDependencies(agreementRepository, applicationRepository, coordinatorRepository, httpContext);
@@ -30,6 +32,7 @@ namespace Stagio.Web.Controllers
             _agreementRepository = agreementRepository;
             _applicationRepository = applicationRepository;
             _coordinatorRepository = coordinatorRepository;
+            _notificationService = notificationService;
             _httpContext = httpContext;
         }
 
@@ -89,6 +92,8 @@ namespace Stagio.Web.Controllers
             _agreementRepository.Add(internshipAgreement);
 
             string feedbackMessage = WebMessage.InternshipAgreementMessage.AGREEMENT_CREATE_SUCCESS;
+
+            _notificationService.NotifyInternhipAgreementActivated(viewModel.Id, viewModel.CompanyName, internshipAgreement.InternshipApplicationId, internshipAgreement.PersonInChargeId, internshipAgreement.Coordinator.Id);
 
             return RedirectToAction(MVC.InternshipApplication.GetApplicationsForSpecificStudent(application.ApplyingStudent.Id).Success(feedbackMessage));
         }

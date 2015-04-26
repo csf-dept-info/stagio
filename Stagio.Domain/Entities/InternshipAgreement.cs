@@ -34,7 +34,8 @@ namespace Stagio.Domain.Entities
 
 
         #region SchoolSection
-
+        [ForeignKey("Coordinator")]
+        public int CoordinatorId { get; set; }
         public virtual StaffMember Coordinator { get; set; }
         public string SchoolCommitmentMessage { get; set; }
         public DateTime? CoordinatorSignedDate { get; set; }

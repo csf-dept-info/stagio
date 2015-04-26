@@ -482,6 +482,16 @@ namespace Stagio.Web
                 return employee + " de " + company + "  a ajouté une nouvelle offre de stage.";
             }
 
+            public static string StudentInternshipAgreementActivatedMessage(string company)
+            {
+                return "La convention de stage a été activée pour votre candidature chez " + company + ", veuillez aller la signer";
+            }
+
+            public static string EmployeeInternshipAgreementActivatedMessage(string student)
+            {
+                return "La convention de stage a été activée pour la stage de " + student + " dans votre entreprise, veuillez aller la signer";
+            }
+
             public const string NO_NOTIFICATION_MESSAGE = "Aucune notification pour l'instant.";
         }
 

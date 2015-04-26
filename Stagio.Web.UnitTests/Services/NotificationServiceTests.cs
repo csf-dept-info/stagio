@@ -21,18 +21,27 @@ namespace Stagio.Web.UnitTests.Services
 
         private IEntityRepository<Coordinator> _coordinatorRepository;
         private IEntityRepository<Employee> _employeeRepository;
+        private IEntityRepository<Student> _studentRepository;
         private IEntityRepository<Notification> _notificationRepository;
+        private IEntityRepository<InternshipAgreement> _internshipAgreementRepository;
+        private IEntityRepository<InternshipApplication> _internshipApplicationRepository;
 
         [TestInitialize]
         public void Initialize()
         {
             _coordinatorRepository = Substitute.For<IEntityRepository<Coordinator>>();
             _employeeRepository = Substitute.For<IEntityRepository<Employee>>();
+            _studentRepository = Substitute.For<IEntityRepository<Student>>();
             _notificationRepository = Substitute.For<IEntityRepository<Notification>>();
+            _internshipAgreementRepository = Substitute.For<IEntityRepository<InternshipAgreement>>();
+            _internshipApplicationRepository = Substitute.For<IEntityRepository<InternshipApplication>>();
 
             _notificationService = new NotificationService(_notificationRepository, 
                                                         _coordinatorRepository,
-                                                        _employeeRepository);
+                                                        _employeeRepository,
+                                                        _studentRepository, 
+                                                        _internshipAgreementRepository,
+                                                        _internshipApplicationRepository);
         }
 
         [Ignore]
