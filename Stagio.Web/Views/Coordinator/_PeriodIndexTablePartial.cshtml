@@ -25,7 +25,7 @@
                             @String.Format(WebMessage.DataFormat.DATE_FORMAT, item.InternshipPeriod.EndDate)
                         </td>
                         <td align="center">
-                            @Html.ActionLink("Voir les détails", MVC.Coordinator.InternshipPeriodDetails(item.Id), new { id = "period-details-" + item.Id, @class = "btn btn-primary" })
+                            @Html.ActionLink(WebMessage.GeneralMessage.SEE_DETAILS, MVC.Coordinator.InternshipPeriodDetails(item.Id), new { id = "period-details-" + item.Id, @class = "btn btn-primary" })
                         </td>
                     </tr>
                 }

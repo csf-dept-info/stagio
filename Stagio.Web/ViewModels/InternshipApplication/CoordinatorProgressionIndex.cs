@@ -16,10 +16,10 @@ namespace Stagio.Web.ViewModels.InternshipApplication
         [HiddenInput(DisplayValue = false)]
         public int StudentId { get; set; }
 
-        [DisplayName("Nom")]
+        [DisplayName(WebMessage.UserInformation.LAST_NAME)]
         public string LastName { get; set; }
 
-        [DisplayName("Prénom")]
+        [DisplayName(WebMessage.UserInformation.FIRST_NAME)]
         public string FirstName { get; set; }
 
         public StudentIndex BestProgression { get; set; }

@@ -1,5 +1,4 @@
 @using Stagio.Domain.Application
-@using Stagio.Web.Automation.Navigation
 @model IEnumerable<Stagio.Web.ViewModels.Notification.Notification>
 
 @{
@@ -15,14 +14,14 @@
         internshipOffersLink = MVC.InternshipOffer.EmployeeIndex();
         
         internshipApplicationsLink = MVC.InternshipOffer.EmployeePublicatedOffersIndex();
-        internshipApplicationsButtonId = PageNavigator.InternshipApplication.EmployeeIndex.BUTTON_ID;
+        internshipApplicationsButtonId = "employee-index-internship-application-button";
     }
     else if (User.IsInRole(RoleNames.Student))
     {
         internshipOffersLink = MVC.InternshipOffer.StudentIndex();
         
         internshipApplicationsLink = MVC.InternshipApplication.StudentApplicationIndex();
-        internshipApplicationsButtonId = PageNavigator.InternshipApplication.StudentIndex.BUTTON_ID;
+        internshipApplicationsButtonId = "student-index-internship-application-button";
     }
     else if (User.IsInRole(RoleNames.Coordinator))
     {
@@ -35,15 +34,15 @@
     <ul class="nav navbar-top-links navbar-left">
         <li class="nav-divider"></li>
         <li class="nav">
-            <a href="@Url.Action(internshipOffersLink)" id=@PageNavigator.InternshipOffer.Index.BUTTON_ID><i class="fa fa-lg fa-plus fa-fw"></i>Offres de stage</a>
+            <a href="@Url.Action(internshipOffersLink)" id="internship-offer-index-button"><i class="fa fa-lg fa-plus fa-fw"></i>@WebMessage.Menus.INTERNSHIP_OFFERS</a>
         </li>
         <li class="nav">
-            <a href="@Url.Action(internshipApplicationsLink)" id=@internshipApplicationsButtonId><i class="fa fa-lg fa-ticket fa-fw"></i>Candidatures</a>
+            <a href="@Url.Action(internshipApplicationsLink)" id=@internshipApplicationsButtonId><i class="fa fa-lg fa-ticket fa-fw"></i>@WebMessage.Menus.INTERNSHIP_APPLICATIONS</a>
         </li>
         @if (User.IsInRole(RoleNames.Coordinator))
         {
         <li class="nav">
-            <a href="@Url.Action(@MVC.InternshipApplication.CoordinatorApplicationIndex())" id="progression-btn"><i class="fa fa-lg fa-tasks fa-fw"></i>Suivi des candidatures</a>
+            <a href="@Url.Action(@MVC.InternshipApplication.CoordinatorApplicationIndex())" id="progression-btn"><i class="fa fa-lg fa-tasks fa-fw"></i>@WebMessage.Menus.CoordinatorMenu.APPLICATION_INDEX</a>
         </li>
         }
     </ul>
@@ -80,7 +79,7 @@
                     <li>
                         <a>
                             <div>
-                                <strong>Notifications</strong>
+                                <strong>@WebMessage.Menus.NOTIFICATIONS</strong>
                             </div>
                         </a>
                     </li>

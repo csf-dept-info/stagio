@@ -42,20 +42,20 @@
                         <td align="center">
                             @if (User.IsInRole(RoleNames.Employee) && (item.Status == Stagio.Domain.Entities.InternshipOffer.OfferStatus.Draft || item.Status == Stagio.Domain.Entities.InternshipOffer.OfferStatus.Refused))
                             {
-                                @Html.ActionLink("Éditer", MVC.InternshipOffer.Edit(item.Id), new { id = "internship-offer-edit-" + offerID, @class = "btn btn-warning" })
+                                @Html.ActionLink(WebMessage.GeneralMessage.EDIT, MVC.InternshipOffer.Edit(item.Id), new { id = "internship-offer-edit-" + offerID, @class = "btn btn-warning" })
                             }
                             else if ((User.IsInRole(RoleNames.Coordinator) || User.IsInRole(RoleNames.Employee)) && item.Status == Stagio.Domain.Entities.InternshipOffer.OfferStatus.Publicated)
                             {
                                 <div style="padding: 5px">
-                                    @Html.ActionLink("Voir l'offre complète", MVC.InternshipOffer.Details(item.Id), new { id = "internship-offer-details-" + offerID, @class = "btn btn-primary" })
+                                    @Html.ActionLink(WebMessage.InternshipOfferMessage.SEE_COMPLETE_OFFER, MVC.InternshipOffer.Details(item.Id), new { id = "internship-offer-details-" + offerID, @class = "btn btn-primary" })
                                 </div>
                                 <div style="padding: 5px">
-                                    @Html.ActionLink("Voir les candidatures", MVC.InternshipApplication.EmployeeApplicationIndex(item.Id), new { id = "internship-offer-applications-" + offerID, @class = "btn btn-primary" })
+                                    @Html.ActionLink(WebMessage.InternshipApplicationMessage.SEE_APPLICATIONS, MVC.InternshipApplication.EmployeeApplicationIndex(item.Id), new { id = "internship-offer-applications-" + offerID, @class = "btn btn-primary" })
                                 </div>
                             }
                             else
                             {
-                                @Html.ActionLink("Voir l'offre complète", MVC.InternshipOffer.Details(item.Id), new { id = "internship-offer-details-" + offerID, @class = "btn btn-primary" })
+                                @Html.ActionLink(WebMessage.InternshipOfferMessage.SEE_COMPLETE_OFFER, MVC.InternshipOffer.Details(item.Id), new { id = "internship-offer-details-" + offerID, @class = "btn btn-primary" })
                             }
                         </td>
                     </tr>

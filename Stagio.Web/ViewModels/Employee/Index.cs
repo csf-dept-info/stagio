@@ -6,16 +6,16 @@ namespace Stagio.Web.ViewModels.Employee
 {
     public class Index
     {
-        [DisplayName("Candidatures au total")]
+        [DisplayName(WebMessage.InternshipApplicationMessage.TOTAL_APPLICATIONS)]
         public int TotalApplicationsCount { get; set; }
 
-        [DisplayName("Offres refusées")]
+        [DisplayName(WebMessage.InternshipOfferMessage.REFUSED_OFFERS_COMPLETE)]
         public int RefusedOffersCount { get; set; }
 
-        [DisplayName("Offres en validation")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OFFERS_ON_VALIDATION_COMPLETE)]
         public int OnValidationOffersCount { get; set; }
 
-        [DisplayName("Offres publiées")]
+        [DisplayName(WebMessage.InternshipOfferMessage.PUBLICATED_OFFERS_COMPLETE)]
         public int PublishedOffersCount { get; set; }
     }
 }
