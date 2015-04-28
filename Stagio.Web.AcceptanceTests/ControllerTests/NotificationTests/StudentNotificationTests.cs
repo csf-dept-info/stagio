@@ -17,17 +17,22 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
     [TestClass]
     public class StudentIndexTests : GlobalBaseTest
     {
-        
-        [TestInitialize]
-        public void Initialize()
-        {
-            LoginPage.GoTo();
-            LoginPage.LoginAs(TestData.SubscribedStudent1);
-        }
-
         [TestMethod]
         public void employee_can_visualize_internship_offers_associated_to_his_company()
         {
+            LoginPage.GoTo();
+            LoginPage.LoginAs(TestData.Coordinator1);
+            CoordinatorIndexInternshipOfferPage.GoTo();
+
+            PageNavigator.InternshipOffer.Details.Select(TestData.InternshipOfferOnValidation1.Id);
+
+            CoordinatorIndexInternshipOfferPage.ValidateInternshipOffer();
+
+            PageNavigator.AllUsers.Logout.Select();
+
+            LoginPage.GoTo();
+            LoginPage.LoginAs(TestData.SubscribedStudent1);
+
             const int NOTIF_ID = 1;
 
             NotificationPartialPage.GoTo();
