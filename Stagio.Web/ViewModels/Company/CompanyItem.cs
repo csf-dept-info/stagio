@@ -8,7 +8,7 @@ namespace Stagio.Web.ViewModels.Company
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [DisplayName("Nom")]
+        [DisplayName(WebMessage.CompanyMessage.NAME)]
         public string Name { get; set; }
     }
 }

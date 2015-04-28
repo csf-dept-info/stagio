@@ -4,21 +4,21 @@
     ViewBag.Title = "Edit";
 }
 
-<h2 id="student-edit-page">Modifier mon profil</h2>
+<h2 id="student-edit-page">@WebMessage.StudentMessage.EDIT_PROFILE</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Étudiant</h4>
+        <h4>@WebMessage.StudentMessage.STUDENT</h4>
         <hr />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
         
         <div class="panel panel-primary">
-            <div class="panel-heading">Informations personelles</div>
+            <div class="panel-heading">@WebMessage.StudentMessage.PERSONAL_INFOS</div>
             <div class="panel-body">
 
                 <div class="form-group">
@@ -52,7 +52,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Enregistrer" class="btn btn-primary" id="submitBtnProfile" name="action:EditProfile" />
+                        <input type="submit" value=@WebMessage.GeneralMessage.SAVE class="btn btn-primary" id="submitBtnProfile" name="action:EditProfile" />
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
         </div>
 
         <div class="panel panel-primary">
-            <div class="panel-heading">Mot de passe</div>
+            <div class="panel-heading">@WebMessage.GeneralMessage.PASSWORD</div>
             <div class="panel-body">
                 <div class="toggle-control-password">
 
@@ -90,7 +90,7 @@
                     
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Enregistrer" class="btn btn-primary" id="submitBtnPassword" name="action:EditPassword" />
+                            <input type="submit" value=@WebMessage.GeneralMessage.SAVE class="btn btn-primary" id="submitBtnPassword" name="action:EditPassword" />
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
 }
 
 <div>
-    @Html.ActionLink("Retour", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+    @Html.ActionLink(WebMessage.GeneralMessage.BACK, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
 </div>
 
 @section Scripts {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,11 @@ namespace Stagio.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            if (ConfigurationManager.AppSettings["environment"] == "prod")
+            {
+                routes.IgnoreRoute("Ci");
+            }
 
             routes.MapRoute(
                 name: "Default",

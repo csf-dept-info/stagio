@@ -1,12 +1,7 @@
 ﻿@model Stagio.Web.ViewModels.Coordinator.ChoosePeriod
 
-
-@{
-    ViewBag.Title = "ChooseInternshipPeriod";
-}
-
-<h2 id=@Stagio.Web.Automation.PageObjects.CoordinatorPages.ChoosePeriodCoordinatorPage.PAGE_ID>Choisir la période d'ouverture du système</h2>
-<p>Choisir une période d'ouverture du système permettera de bloquer l'accès au système par les employés et les étudiants</p>
+<h2 id="choose-period-page">@WebMessage.CoordinatorMessage.ChoosePeriod.CHOOSE_PERIOD_TITLE</h2>
+<p>@WebMessage.CoordinatorMessage.ChoosePeriod.CHOOSE_PERIOD_SUBTITLE</p>
 
 @Html.AntiForgeryToken()
 
@@ -17,10 +12,10 @@
         <div class="col-md-offset-2 col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading" id="panel-header">
-                    Choisir les dates d'ouverture et de fermeture du système
+                    @WebMessage.CoordinatorMessage.ChoosePeriod.CHOOSE_DATES
                 </div>
                 <div class="panel-body">
-                    <p>Dernière période d'ouverture du système choisie: Du @Model.StartDate.ToShortDateString() au @Model.EndDate.ToShortDateString()</p>
+                    <p>@WebMessage.CoordinatorMessage.ChoosePeriod.LAST_CHOSEN_PERIOD(Model.StartDate.ToShortDateString(), Model.EndDate.ToShortDateString())</p>
                     @Html.ValidationMessage("dateError", "", new { @class = "text-danger col-md-offset-1" })
                     <br /><br />
                     <div class="form-group">
@@ -39,8 +34,8 @@
 
                 <div class="panel-footer">
                     <p>
-                        <input type="submit" value="Sauvegarder" id="choose-period-button" class="btn btn-primary" />
-                        @Html.ActionLink("Retour", MVC.Coordinator.Index(), new { @class = "btn btn-default" })
+                        <input type="submit" value="@WebMessage.GeneralMessage.SAVE" id="choose-period-button" class="btn btn-primary" />
+                        @Html.ActionLink(@WebMessage.GeneralMessage.BACK, MVC.Coordinator.Index(), new { @class = "btn btn-default" })
                     </p>
                 </div>
             </div>

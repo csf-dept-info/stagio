@@ -12,12 +12,12 @@ namespace Stagio.Web.ViewModels.InternshipApplication
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Curriculum vitæ")]
+        [DisplayName(WebMessage.GeneralMessage.RESUME)]
         [ValidateFile(ValidExtensions = new[] {".pdf"})]
         public HttpPostedFileBase Resume { get; set; }
         
         [Required]
-        [DisplayName("Lettre de présentation")]
+        [DisplayName(WebMessage.GeneralMessage.COVER_LETTER)]
         [ValidateFile(ValidExtensions = new[] { ".pdf" })]
         public HttpPostedFileBase CoverLetter { get; set; }
 

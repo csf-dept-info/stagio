@@ -51,7 +51,9 @@
     <Compile Include="PageObjects\CompanyPages\EditCompanyPage.cs" />
     <Compile Include="PageObjects\CoordinatorPages\ChoosePeriodCoordinatorPage.cs" />
     <Compile Include="PageObjects\CoordinatorPages\CleanDatabasePage.cs" />
+    <Compile Include="PageObjects\CoordinatorPages\InternshipPeriodDetailsPage.cs" />
     <Compile Include="PageObjects\CoordinatorPages\InviteCompaniesPage.cs" />
+    <Compile Include="PageObjects\CoordinatorPages\PeriodsListPage.cs" />
     <Compile Include="PageObjects\CoordinatorPages\StudentsListCoordinatorPage.cs" />
     <Compile Include="PageObjects\EmployeePages\CreateEmployeePage.cs" />
     <Compile Include="PageObjects\EmployeePages\EditEmployeePage.cs" />
@@ -71,9 +73,9 @@
     <Compile Include="PageObjects\NotificationPartialPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Selenium\Driver.cs" />
-    <Compile Include="Selenium\StudentPages\CreateStudentProfilePage.cs" />
-    <Compile Include="Selenium\StudentPages\EditStudentProfilePage.cs" />
-    <Compile Include="Selenium\StudentPages\SubscribeStudentPage.cs" />
+    <Compile Include="PageObjects\StudentPages\CreateStudentProfilePage.cs" />
+    <Compile Include="PageObjects\StudentPages\EditStudentProfilePage.cs" />
+    <Compile Include="PageObjects\StudentPages\SubscribeStudentPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Stagio.Domain\Stagio.Domain.csproj">

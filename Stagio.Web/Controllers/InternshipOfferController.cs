@@ -380,7 +380,7 @@ namespace Stagio.Web.Controllers
                 _notificationService.CompanyNotification(internshipOffer.Company, WebMessage.NotificationMessage.ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED_HAS_BEEN_DENIED, "InternshipOffer", "EmployeeIndex");
                 _emailService.SendEmail(mail);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 ModelState.AddModelError("Body", WebMessage.InternshipOfferMessage.GENERIC_DENY_ERROR);
             }

@@ -22,7 +22,6 @@ namespace Stagio.Web.UnitTests.Controllers.CoordinatorTests
         [TestMethod]
         public void clean_database_control_should_return_clean_database_view_if_coordinator_password_is_invalid()
         {
-
             var coordinator = _fixture.Create<Coordinator>();
             _httpContext.GetUserId().Returns(coordinator.Id);
             _coordinatorRepository.GetById(coordinator.Id).Returns(coordinator);
@@ -36,11 +35,7 @@ namespace Stagio.Web.UnitTests.Controllers.CoordinatorTests
         [TestMethod]
         public void clean_database_control_should_return_clean_database_view_if_view_model_is_null()
         {
-
-            var cleanDatabaseVm = new Stagio.Web.ViewModels.Coordinator.CleanDatabase();
-            cleanDatabaseVm = null;
-
-            var result = _coordinatorController.CleanDatabase(cleanDatabaseVm) as ViewResult;
+            var result = _coordinatorController.CleanDatabase(null) as ViewResult;
 
             result.ViewName.Should().Be(MVC.Coordinator.Views.ViewNames.CleanDatabase);
         }
@@ -57,19 +52,15 @@ namespace Stagio.Web.UnitTests.Controllers.CoordinatorTests
         [TestMethod]
         public void clean_database_control_should_return_index_if_coordinator_password_is_valid()
         {
-
             var coordinator = _fixture.Create<Coordinator>();
-            var cleanDatabaseVm = new CleanDatabase() { Password = coordinator.Password };
+            var cleanDatabaseVm = new CleanDatabase { Password = coordinator.Password };
             _httpContext.GetUserId().Returns(coordinator.Id);
             coordinator.Password = Cryptography.Encrypt(cleanDatabaseVm.Password);
             _coordinatorRepository.GetById(coordinator.Id).Returns(coordinator);
 
             var result = _coordinatorController.CleanDatabase(cleanDatabaseVm) as RedirectToRouteResult;
             var action = result.RouteValues["Action"];
-            //result.ViewName.Should().Be(MVC.Coordinator.Views.ViewNames.Index);
             action.Should().Be("CleanDatabase");
-
-
         }
     }
 }

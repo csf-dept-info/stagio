@@ -6,15 +6,15 @@ namespace Stagio.Web.ViewModels.Coordinator
     public class ImportStudentViewModel
     {
         [Required]
-        [DisplayName("Nom")]
+        [DisplayName(WebMessage.UserInformation.LAST_NAME)]
         public string LastName { get; set; }
 
         [Required]
-        [DisplayName("Prénom")]
+        [DisplayName(WebMessage.UserInformation.FIRST_NAME)]
         public string FirstName { get; set; }
 
         [Required]
-        [DisplayName("Matricule")]
+        [DisplayName(WebMessage.UserInformation.IDENTIFIER)]
         [StringLength(7, ErrorMessage = WebMessage.ErrorMessage.INVALID_IDENTIFIER_FORMAT)]
         public string Identifier { get; set; }                      
 

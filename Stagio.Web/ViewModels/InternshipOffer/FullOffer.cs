@@ -15,39 +15,39 @@ namespace Stagio.Web.ViewModels.InternshipOffer
         [DisplayName("Date de l'offre")]
         public DateTime PublicationDate { get; set; }
 
-        [DisplayName("Titre du stage")]
+        [DisplayName(WebMessage.InternshipOfferMessage.INTERNSHIP_TITLE)]
         public string Title { get; set; }
 
-        [DisplayName("Entreprise ou organisation")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.COMPANY)]
         public Domain.Entities.Company Company { get; set; }
 
-        [DisplayName("Responsable du stage")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.CONTACT)]
         public StaffMember Contact { get; set; }
 
-        [DisplayName("Autre contact pour le stage")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.OTHER_CONTACT)]
         public StaffMember OtherContact { get; set; }
 
-        [DisplayName("Description du projet pour le stage")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.DESCRIPTION)]
         public string Description { get; set; }
 
-        [DisplayName("Détails spécifiques au stage")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.DETAILS)]
         public DisplayOfferDetails Details { get; set; }
 
-        [DisplayName("Nombre de stagiaires")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.NUMBER_OF_TRAINEES)]
         public int NumberOfTrainees { get; set; }
 
-        [DisplayName("Soumettre les candidatures à")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.PERSON_IN_CHARGE)]
         public StaffMember PersonInCharge { get; set; }
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = WebMessage.DataFormat.DATE_FORMAT)]
-        [DisplayName("Date limite pour soumettre les candidatures")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.DEADLINE)]
         public DateTime Deadline { get; set; }
 
-        [DisplayName("Message de refus")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferDetails.DENY_MESSAGE)]
         public string DenyMessage { get; set; }
         
-        [DisplayName("Fichier supplémentaire")]
+        [DisplayName(WebMessage.InternshipOfferMessage.OfferCreation.EXTRA_FILE)]
         public string PathToExtraFile { get; set; }
 
         [HiddenInput(DisplayValue = false)]

@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Configuration;
+using System.Security.Claims;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -12,6 +13,12 @@ namespace Stagio.Web
     {
         protected void Application_Start()
         {
+            //Todo: L'environnment dev devrait aussi être en HTTPS
+            if (ConfigurationManager.AppSettings["environment"] == "prod")
+            {
+                GlobalFilters.Filters.Add(new RequireHttpsAttribute());    
+            }
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

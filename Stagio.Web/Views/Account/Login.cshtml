@@ -10,7 +10,7 @@
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <strong>Connectez-vous à votre compte Stagio</strong>
+                    <strong>@WebMessage.AccountMessage.CONNECT_TO_STAGIO</strong>
                 </div>
                 <div class="panel-body">
                     <form role="form" method="POST">
@@ -24,7 +24,7 @@
                                             <span class="input-group-addon">
                                                 <i class="glyphicon glyphicon-user"></i>
                                             </span>
-                                            @Html.TextBoxFor(model => model.Identifier, new { @class = "form-control", @id = "Identifier", placeholder = "Courriel", type = "identifier" })
+                                            @Html.TextBoxFor(model => model.Identifier, new { @class = "form-control", @id = "Identifier", placeholder = @WebMessage.GeneralMessage.EMAIL, type = "identifier" })
                                         </div>
                                         @Html.ValidationMessageFor(model => model.Identifier, "", new { @class = "text-danger" })
                                     </div>
@@ -33,13 +33,13 @@
                                             <span class="input-group-addon">
                                                 <i class="glyphicon glyphicon-lock"></i>
                                             </span>
-                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @id = "Password", placeholder = "Mot de passe", type = "password" })
+                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @id = "Password", placeholder = @WebMessage.GeneralMessage.PASSWORD, type = "password" })
                                         </div>
                                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group">
                                         @Html.ValidationMessage("loginError", "", new { @class = "text-danger" })
-                                        <button class="btn btn-primary btn-block btn-lg" type="submit" id="login-submit">Se connecter</button>
+                                        <button class="btn btn-primary btn-block btn-lg" type="submit" id="login-submit">@WebMessage.GeneralMessage.SIGN_IN</button>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                     </form>
                 </div>
                 <div class="panel-footer ">
-                    Vous n'avez pas de compte? <a href="@Url.Action(MVC.Home.Index())"> Inscrivez-vous ici </a>
+                    @WebMessage.AccountMessage.HAVE_NO_ACCOUNT <a href="@Url.Action(MVC.Home.Index())"> @WebMessage.AccountMessage.SIGN_UP_HERE </a>
                 </div>
             </div>
         </div>
