@@ -29,15 +29,15 @@
 <ul class="nav nav-tabs">
     <li class="">
         <input type="hidden" name="refused-count" value="@refusedList.Count()">
-        <a href="#refused-pills" data-toggle="tab" aria-expanded="true">Refusées (@refusedList.Count())</a>
+        <a href="#refused-pills" data-toggle="tab" aria-expanded="true">@WebMessage.InternshipOfferMessage.REFUSED_OFFERS (@refusedList.Count())</a>
     </li>
     <li class="active">
         <input type="hidden" name="onvalidation-count" value="@toValidateList.Count()">
-        <a href="#to-validate-pills" data-toggle="tab" aria-expanded="false">À valider (@toValidateList.Count())</a>
+        <a href="#to-validate-pills" data-toggle="tab" aria-expanded="false">@WebMessage.InternshipOfferMessage.OFFERS_TO_VALIDATE (@toValidateList.Count())</a>
     </li>
     <li class="">
         <input type="hidden" name="publicated-count" value="@publicatedList.Count()">
-        <a href="#publicated-pills" data-toggle="tab" aria-expanded="false">Publiées (@publicatedList.Count())</a>
+        <a href="#publicated-pills" data-toggle="tab" aria-expanded="false">@WebMessage.InternshipOfferMessage.PUBLICATED_OFFERS (@publicatedList.Count())</a>
     </li>
 </ul>
 

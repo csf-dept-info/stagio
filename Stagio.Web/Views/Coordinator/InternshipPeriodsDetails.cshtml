@@ -1,0 +1,102 @@
+﻿@using System.Web.Mvc.Html
+@model Stagio.Web.ViewModels.Archives.Details
+
+@{
+    var studentsWithoutInternship = Model.StudentsCount - Model.StudentsWithInternship;
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.HiddenFor(model => model.Id)
+
+    <h2 id="period-details-page">@WebMessage.CoordinatorMessage.PeriodDetails.PERIOD_INTERVAL(String.Format(WebMessage.DataFormat.DATE_FORMAT, Model.InternshipPeriod.StartDate), String.Format(WebMessage.DataFormat.DATE_FORMAT, Model.InternshipPeriod.EndDate))</h2>
+    <hr />
+    <div class="form-horizontal">
+        <div class="col-md-10">
+            <div class="well">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">@WebMessage.HomeMessage.STUDENTS</div>
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StudentsCount, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @Html.DisplayFor(model => model.StudentsCount)
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StudentsWithInternship, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @Html.DisplayFor(model => model.StudentsWithInternship)
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            @Html.Label(WebMessage.InternshipPeriodMessage.STUDENTS_WITHOUT_INTERNSHIP_COUNT, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @studentsWithoutInternship
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">@WebMessage.CoordinatorMessage.PeriodDetails.EMPLOYEES_AND_COMPANIES</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmployeesCount, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @Html.DisplayFor(model => model.EmployeesCount)
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CompaniesCount, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @Html.DisplayFor(model => model.CompaniesCount)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">@WebMessage.CoordinatorMessage.PeriodDetails.OFFERS_AND_PROGRESSION</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InternshipOffersCount, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @Html.DisplayFor(model => model.InternshipOffersCount)
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InternshipApplicationsCount, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @Html.DisplayFor(model => model.InternshipApplicationsCount)
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InterviewsCount, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @Html.DisplayFor(model => model.InterviewsCount)
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CompanyOffersCount, new { @class = "control-label col-md-5" })
+                            <div class="form-control-static col-md-7">
+                                @Html.DisplayFor(model => model.CompanyOffersCount)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                @Html.ActionLink(WebMessage.GeneralMessage.BACK, null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+

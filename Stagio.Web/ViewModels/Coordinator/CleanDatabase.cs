@@ -10,7 +10,7 @@ namespace Stagio.Web.ViewModels.Coordinator
 {
     public class CleanDatabase
     {
-        [DisplayName("Mot de passe")]
+        [DisplayName(WebMessage.GeneralMessage.PASSWORD)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

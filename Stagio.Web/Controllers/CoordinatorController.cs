@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 using Stagio.DataLayer;
 using Stagio.Domain.Application;
 using Stagio.Domain.Entities;
@@ -23,7 +22,7 @@ namespace Stagio.Web.Controllers
         private readonly IEntityRepository<Student> _studentRepository;
         private readonly IFileImportService _fileService;
         private readonly IInternshipPeriodService _internshipPeriodService;
-
+        private readonly IArchivesService _archivesService; 
 
         public CoordinatorController(
             IEntityRepository<Coordinator> coordinatorRepository,
@@ -31,9 +30,10 @@ namespace Stagio.Web.Controllers
             IAccountService accountService,
             IFileImportService fileService,
             IHttpContextService httpContextService,
-            IInternshipPeriodService internshipPeriodService)
+            IInternshipPeriodService internshipPeriodService,
+            IArchivesService archivesService)
         {
-            DependencyService.VerifyDependencies(coordinatorRepository, studentRepository, accountService, fileService, httpContextService, internshipPeriodService);
+            DependencyService.VerifyDependencies(coordinatorRepository, studentRepository, accountService, fileService, httpContextService, internshipPeriodService, archivesService);
 
             _coordinatorRepository = coordinatorRepository;
             _studentRepository = studentRepository;
@@ -41,6 +41,7 @@ namespace Stagio.Web.Controllers
             _httpContextService = httpContextService;
             _fileService = fileService;
             _internshipPeriodService = internshipPeriodService;
+            _archivesService = archivesService;
         }
 
         public virtual ActionResult Index()
@@ -130,7 +131,7 @@ namespace Stagio.Web.Controllers
         {
             if (vmChoosePeriod.StartDate >= vmChoosePeriod.EndDate)
             {
-                ModelState.AddModelError("dateError", WebMessage.CoordinatorMessage.INVALID_START_DATE);
+                ModelState.AddModelError("dateError", WebMessage.CoordinatorMessage.ChoosePeriod.INVALID_START_DATE);
                 return View(MVC.Coordinator.Views.ChooseInternshipPeriod, vmChoosePeriod);
             }
 
@@ -138,7 +139,7 @@ namespace Stagio.Web.Controllers
 
             _internshipPeriodService.AddToPeriodRepository(period);
 
-            const string feedback = WebMessage.CoordinatorMessage.CHOOSE_DATE_SUCCESS;
+            const string feedback = WebMessage.CoordinatorMessage.ChoosePeriod.CHOOSE_DATE_SUCCESS;
             return RedirectToAction(MVC.Coordinator.Index()).Success(feedback);
         }
 
@@ -158,7 +159,42 @@ namespace Stagio.Web.Controllers
             {
                 return View(MVC.Coordinator.Views.ViewNames.CleanDatabase).Error(WebMessage.CoordinatorMessage.WRONG_PASSWORD_VALIDATION);
             }
-            return RedirectToAction(MVC.Ci.CleanDatabase()).Success(WebMessage.CoordinatorMessage.CLEAN_DATABASE_SUCCESS);
+            
+            _archivesService.CreateArchive(_internshipPeriodService.GetActualInternshipPeriod());
+
+            return RedirectToAction(MVC.Ci.CleanDatabase()).Success(WebMessage.CoordinatorMessage.CleanDatabase.CLEAN_DATABASE_SUCCESS);
+        }
+
+        public virtual ActionResult InternshipsPeriodsList()
+        {
+            var archivesList = _archivesService.GetArchives();
+            var periodsListVm = new PeriodsList
+            {
+                periodsList = new List<ViewModels.Archives.Index>()
+            };
+
+            foreach (var archive in archivesList)
+            {
+                var periodVm = Mapper.Map<ViewModels.Archives.Index>(archive);
+
+                periodsListVm.periodsList.Add(periodVm);
+            }
+
+            return View(MVC.Coordinator.Views.ViewNames.PeriodsList, periodsListVm);
+        }
+
+        public virtual ActionResult InternshipPeriodDetails(int id)
+        {
+            var archive = _archivesService.GetArchiveById(id);
+
+            if (archive == null)
+            {
+                return HttpNotFound();
+            }
+
+            var periodDetails = Mapper.Map<ViewModels.Archives.Details>(archive);
+
+            return View(MVC.Coordinator.Views.ViewNames.InternshipPeriodsDetails, periodDetails);
         }
 
         private void SubscribeStudentList(IEnumerable<ImportStudentViewModel> importStudents)

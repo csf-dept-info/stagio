@@ -8,16 +8,16 @@ namespace Stagio.Web.ViewModels.Student
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
      
-        [DisplayName("Nom")]
+        [DisplayName(WebMessage.UserInformation.LAST_NAME)]
         public string LastName { get; set; }
 
-        [DisplayName("Prénom")]
+        [DisplayName(WebMessage.UserInformation.FIRST_NAME)]
         public string FirstName { get; set; }
       
-        [DisplayName("Téléphone")]
+        [DisplayName(WebMessage.UserInformation.PHONE_NUMBER)]
         public string PhoneNumber { get; set; }
 
-        [DisplayName("Identifiant")]
+        [DisplayName(WebMessage.UserInformation.ID)]
         public string Identifier { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace Stagio.Web.ViewModels.Student
     public class Subscribe
     {
         [Required]
-        [DisplayName("Matricule")]
+        [DisplayName(WebMessage.UserInformation.IDENTIFIER)]
         [Integer(ErrorMessage = WebMessage.ErrorMessage.INVALID_IDENTIFIER_FORMAT)]
         public string StudentId { get; set; }
     }

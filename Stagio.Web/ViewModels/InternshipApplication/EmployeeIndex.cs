@@ -15,13 +15,13 @@ namespace Stagio.Web.ViewModels.InternshipApplication
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
         
-        [DisplayName("Étudiant")]
+        [DisplayName(WebMessage.HomeMessage.STUDENT)]
         public string StudentName { get; set; }
         
-        [DisplayName("Curriculum vitæ")]
+        [DisplayName(WebMessage.GeneralMessage.RESUME)]
         public string PathToResume { get; set; }
 
-        [DisplayName("Lettre de présentation")]
+        [DisplayName(WebMessage.GeneralMessage.COVER_LETTER)]
         public string PathToCoverLetter { get; set; }
 
         [HiddenInput(DisplayValue = false)]
@@ -35,14 +35,14 @@ namespace Stagio.Web.ViewModels.InternshipApplication
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = WebMessage.DataFormat.DATE_FORMAT)]
         public DateTime OfferPublicationDate { get; set; }
 
-        [DisplayName("Date de postulation")]
+        [DisplayName(WebMessage.InternshipApplicationMessage.APPLICATION_DATE)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = WebMessage.DataFormat.DATE_FORMAT)]
         public DateTime ApplicationDate { get; set; }
 
-        [DisplayName("Adresse email")]
+        [DisplayName(WebMessage.GeneralMessage.EMAIL)]
         public string Email { get; set; }
 
-        [DisplayName("Numéro de téléphone")]
+        [DisplayName(WebMessage.UserInformation.PHONE_NUMBER)]
         public string PhoneNumber { get; set; }
 
         [HiddenInput(DisplayValue = false)]
