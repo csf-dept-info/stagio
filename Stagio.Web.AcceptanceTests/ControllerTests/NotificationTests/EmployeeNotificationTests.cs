@@ -20,7 +20,7 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
     {
        
         [TestMethod]
-        public void intershipoffer_has_been_denied()
+        public void student_applied_to_one_of_your_offers()
         {
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.SubscribedStudent1);
@@ -34,10 +34,12 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Employee1);
 
-            const int NOTIF_ID = 3;
+            var NOTIF_TEXT = WebMessage.NotificationMessage.A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS;
 
             NotificationPartialPage.GoTo();
-            NotificationPartialPage.ClickNotif(NOTIF_ID);
+            NotificationPartialPage.ClickNotifByText(NOTIF_TEXT);
+
+            EmployeeIndexInternshipOfferPage.IsDisplayed.Should().BeTrue();
         }
     }
 }

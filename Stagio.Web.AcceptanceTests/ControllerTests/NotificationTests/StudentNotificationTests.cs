@@ -29,7 +29,7 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             CoordinatorIndexInternshipOfferPage.ValidateInternshipOffer();
 
             PageNavigator.AllUsers.Logout.Select();
-
+            
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.SubscribedStudent1);
 

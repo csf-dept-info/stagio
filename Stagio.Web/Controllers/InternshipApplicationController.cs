@@ -192,7 +192,7 @@ namespace Stagio.Web.Controllers
             var offer = _offerRepository.GetById(applicationViewModel.InternshipOfferId);
             _notificationService.CompanyNotification(offer.Company, 
                 WebMessage.NotificationMessage.A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS,
-                "InternshipApplication", "EmployeePublicatedOffersIndex");
+                "InternshipOffer", "EmployeePublicatedOffersIndex");
 
             _notificationService.RoleGroupNotification(RoleNames.Coordinator,
                 WebMessage.NotificationMessage.AStudentAppliedToAnOffer(student.FirstName + " " + student.LastName, offer.Company.Name),

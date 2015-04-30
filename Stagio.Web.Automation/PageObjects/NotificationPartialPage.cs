@@ -16,9 +16,14 @@ namespace Stagio.Web.Automation.PageObjects
             PageNavigator.AllUsers.Notification.Select();
         }
 
+
         public static void ClickNotif(int i)
         {
             Driver.Instance.FindElement(By.Id(i.ToString())).Click();
+        }
+        public static void ClickNotifByText(string text)
+        {
+            Driver.Instance.FindElement(By.PartialLinkText(text)).Click();
         }
     }
 }
