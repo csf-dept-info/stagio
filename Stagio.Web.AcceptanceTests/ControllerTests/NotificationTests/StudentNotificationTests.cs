@@ -33,7 +33,7 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.SubscribedStudent1);
 
-            const int NOTIF_ID = 1;
+            const int NOTIF_ID = 3;
 
             NotificationPartialPage.GoTo();
             NotificationPartialPage.ClickNotif(NOTIF_ID);
