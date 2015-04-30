@@ -1,21 +1,21 @@
 URL de l'application sur Jenkins: https://jenkinsext.cegep-ste-foy.qc.ca/cartel-progue
 
-URL du projet sur Pivotal Trakcer: https://www.pivotaltracker.com/n/projects/1166172
+URL du projet sur Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1166172
 
 
 Informations de connexion: 
 
-Étudiant: 	marcantoine.fortier@yopmail.com, 	apple123
+Ã‰tudiant:     	marcantoine.fortier@yopmail.com,	    apple123
 
-Employé: 	pierre.laroche@yopmail.com,		caillou123
+EmployÃ©:        pierre.laroche@yopmail.com,		        caillou123
 
-Coordonnateur:	yvon.gagne@yopmail.com,			hockey123
+Coordonnateur:	yvon.gagne@yopmail.com,		  	        hockey123
 
 
-Noms et courriels des membres de l'équipe:
+Noms et courriels des membres de l'Ã©quipe:
 
-Robin Gagnon, 		rg1530@gmail.com
+Robin Gagnon, 		      rg1530@gmail.com
 Marc-Antoine Ferland, 	maf_ferland@hotmail.com
 Marc-Antoine Fortier, 	marc22fortier@hotmail.com
-Olivier Roy, 		qwerty_roy@hotmail.com
-Francis Chandonnet, 	francis.chandonnet@hotmail.fr
+Olivier Roy, 		        qwerty_roy@hotmail.com
+Francis Chandonnet, 	  francis.chandonnet@hotmail.fr
