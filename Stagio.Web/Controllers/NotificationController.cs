@@ -34,7 +34,9 @@ namespace Stagio.Web.Controllers
             var userId = _httpContextService.GetUserId();
             var currentUser = _applicationUserRepository.GetById(userId);
 
-            var notifications = Mapper.Map<IEnumerable<ViewModels.Notification.Notification>>(currentUser.Notifications.OrderByDescending(x => x.Time));
+            var notifications = Mapper.Map<IEnumerable<ViewModels.Notification.Notification>>(currentUser.Notifications
+                .OrderByDescending(x => x.Time.Date)
+                .ThenByDescending(x => x.Time.TimeOfDay));
 
             if (notifications.Count() > NUMBER_NOTIF_MAX)
             {
@@ -43,6 +45,28 @@ namespace Stagio.Web.Controllers
             }
 
             return PartialView("_MenuPartial", notifications);
+        }
+
+        public virtual ActionResult AllNotificationIndex()
+        {
+            var userId = _httpContextService.GetUserId();
+            var currentUser = _applicationUserRepository.GetById(userId);
+
+            var notifications = Mapper.Map<IEnumerable<ViewModels.Notification.Notification>>(currentUser.Notifications
+                .OrderByDescending(x => x.Time.Date)
+                .ThenByDescending(x => x.Time.TimeOfDay));
+
+            return View("AllNotificationIndex", notifications);
+        }
+
+        public virtual ActionResult MarkAsSeen(int id)
+        {
+            var notif = _notificationRepository.GetById(id);
+            notif.Unseen = false;
+
+            _notificationRepository.Update(notif);
+
+            return AllNotificationIndex();
         }
 
         public virtual ActionResult RedirectToNotificationPage(int notifId)

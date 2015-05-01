@@ -21,7 +21,7 @@ namespace Stagio.Web.Automation.PageObjects.InternshipOfferPages
             {
                 try
                 {
-                    Driver.Instance.FindElement(By.Id("internship-offer-validation-index-page"));
+                    Driver.Instance.FindElement(By.Id(PAGE_ID));
                     return true;
                 }
                 catch (Exception)

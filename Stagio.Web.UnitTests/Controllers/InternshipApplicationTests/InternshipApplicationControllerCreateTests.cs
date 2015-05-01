@@ -27,7 +27,16 @@ namespace Stagio.Web.UnitTests.Controllers.InternshipApplicationTests
         {
             // Arrange   
             var application = _fixture.Create<InternshipApplication>();
+            var company = _fixture.Create<Company>();
+            var offer = _fixture.Create<InternshipOffer>();
+            var student = _fixture.Create<Student>();
+
+            offer.Company = company;
+
             var applicationViewModel = Mapper.Map<Create>(application);
+
+            _internshipOfferRepository.GetById(applicationViewModel.InternshipOfferId).Returns(offer);
+            _studentRepository.GetById(applicationViewModel.StudentId).Returns(student);
 
             // Action
             _internshipApplicationController.Create(applicationViewModel);
@@ -59,6 +68,15 @@ namespace Stagio.Web.UnitTests.Controllers.InternshipApplicationTests
             const string expectedViewName = "StudentApplicationIndex";
             var application = _fixture.Create<InternshipApplication>();
             var applicationViewModel = Mapper.Map<Create>(application);
+
+            var company = _fixture.Create<Company>();
+            var offer = _fixture.Create<InternshipOffer>();
+            var student = _fixture.Create<Student>();
+
+            offer.Company = company;
+
+            _internshipOfferRepository.GetById(applicationViewModel.InternshipOfferId).Returns(offer);
+            _studentRepository.GetById(applicationViewModel.StudentId).Returns(student);
 
             //Act
             var result = _internshipApplicationController.Create(applicationViewModel) as RedirectToRouteResult;

@@ -34,17 +34,4 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             NotificationPartialPage.ClickNotif(NOTIF_ID);
         }
     }
-
-    public class NotificationPartialPage
-    {
-        public static void GoTo()
-        {
-            PageNavigator.AllUsers.Notification.Select();
-        }
-
-        public static void ClickNotif(int i)
-        {
-            Driver.Instance.FindElement(By.Id(i.ToString())).Click();
-        }
-    }
 }

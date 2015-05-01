@@ -91,6 +91,9 @@
     <Compile Include="ControllerTests\InternshipOfferTests\InternshipOfferSaveDraftTests.cs" />
     <Compile Include="ControllerTests\InternshipOfferTests\InternshipOfferStudentIndexTests.cs" />
     <Compile Include="ControllerTests\InternshipOfferTests\InternshipOfferValidationIndexTests.cs" />
+    <Compile Include="ControllerTests\NotificationTests\CoordinatorNotificationTests.cs" />
+    <Compile Include="ControllerTests\NotificationTests\StudentNotificationTests.cs" />
+    <Compile Include="ControllerTests\NotificationTests\EmployeeNotificationTests.cs" />
     <Compile Include="ControllerTests\NotificationTests\NotificationIndexTests.cs" />
     <Compile Include="ControllerTests\StudentTests\StudentCreateProfileTest.cs" />
     <Compile Include="ControllerTests\StudentTests\StudentEditTests.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using Stagio.Domain.Entities;
 
 namespace Stagio.Web
 {
@@ -477,12 +478,57 @@ namespace Stagio.Web
 
         public static class NotificationMessage
         {
+            public const string NO_NOTIFICATION_MESSAGE = "Aucune notification pour l'instant.";
+
+            public static string NEW_INTERNSHIP_OFFER_PUBLICATED = "Une nouvelle offre de stage est maintenant disponible.";
+            public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED = "L'une de vos offres de stage a été publiée.";
+            public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED_HAS_BEEN_DENIED = "L'une de vos offres de stage a été refusée.";
+            public static string A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS = "Un nouvel étudiant a appliqué sur l'une de vos offres.";
+            public static string SEE_ALL_NOTIFICATIONS = "Voir toutes les notifications";
+            public static string MARK_AS_SEEN = "Marquer comme vu";
+            public const string DISPLAY_OBJECT = "Sujet";
+            public const string DISPLAY_SEEN = "Vu";
+            public const string DISPLAY_DATE = "Date";
+
+            public static string AStudentAcceptedYourInternshipOffer(string studentFirstName, string studentLastName)
+            {
+                return studentFirstName + " " + studentLastName + " a accepté l'une de vos offres de stage.";
+            }
+
+            public static string AStudentHasBeenSelected(string studentFirstName, string studentLastName)
+            {
+                return studentFirstName + " " + studentLastName + " s'est trouvé(e) un stage.";
+            }
+
             public static string NewInternshipOfferCreatedMessage(string company, string employee)
             {
                 return employee + " de " + company + "  a ajouté une nouvelle offre de stage.";
             }
 
-            public const string NO_NOTIFICATION_MESSAGE = "Aucune notification pour l'instant.";
+            public static string NewCompanyJoinedStagio(string name)
+            {
+                return name + " a rejoint Stagio.";
+            }
+
+            public static string ACompanyChoosedYouForOneOfTheirOffer(string companyName)
+            {
+                return companyName + " vous a sélectionné pour l'une de leurs offres de stage.";
+            }
+
+            public static string ACompanyChoosedStudentOneOfTheirOffer(string companyName, string studentFullName)
+            {
+                return companyName + " a sélectionné " + studentFullName + " pour l'une de leurs offres de stage.";
+            }
+
+            public static string AStudentAppliedToAnOffer(string studentName, string companyName)
+            {
+                return studentName + " a appliqué à une offre de stage de " + companyName;
+            }
+
+            public static string ANewCompanyChoosedStagio(string companyName)
+            {
+                return companyName + " a rejoint le système Stagio";
+            }
         }
 
         public static class ResponsiveTable

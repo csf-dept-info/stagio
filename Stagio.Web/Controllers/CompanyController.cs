@@ -19,17 +19,20 @@ namespace Stagio.Web.Controllers
         private readonly IEntityRepository<Company> _companyRepository;
         private readonly IEntityRepository<Employee> _employeeRepository;
         private readonly IHttpContextService _httpContextService;
+        private readonly INotificationService _notificationService;
 
         public CompanyController(
             IEntityRepository<Company> companyRepository,
             IEntityRepository<Employee> employeeRepository,
-            IHttpContextService httpContextService)
+            IHttpContextService httpContextService,
+            INotificationService notificationService)
         {
-            DependencyService.VerifyDependencies(companyRepository, employeeRepository, httpContextService);
+            DependencyService.VerifyDependencies(companyRepository, employeeRepository, httpContextService, notificationService);
             
             _companyRepository = companyRepository;
             _employeeRepository = employeeRepository;
             _httpContextService = httpContextService;
+            _notificationService = notificationService;
         }
 
         [Authorize(Roles = RoleNames.Employee)]
@@ -122,6 +125,10 @@ namespace Stagio.Web.Controllers
             var company = Mapper.Map<Company>(companyVm);
 
             _companyRepository.Add(company);
+
+            _notificationService.NewCompanyJoinedStagio(company, 
+                WebMessage.NotificationMessage.ANewCompanyChoosedStagio(company.Name), 
+                "", "");
 
             return RedirectToAction(MVC.Employee.Create(company.Id));
         }

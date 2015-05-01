@@ -144,6 +144,7 @@
     <Compile Include="Controllers\InviteCompaniesTests\CoordinatorInviteCompaniesTests.cs" />
     <Compile Include="Controllers\InviteCompaniesTests\InviteCompaniesControllerBaseClassTests.cs" />
     <Compile Include="Controllers\NotificationTests\NotificationControllerBaseTests.cs" />
+    <Compile Include="Controllers\NotificationTests\NotificationControllerAllIndexTests.cs" />
     <Compile Include="Controllers\NotificationTests\NotificationControllerIndexTests.cs" />
     <Compile Include="Controllers\NotificationTests\NotificationControllerRedirectToNotifPageTests.cs" />
     <Compile Include="Controllers\StudentTests\StudentControllerBaseClassTests.cs" />

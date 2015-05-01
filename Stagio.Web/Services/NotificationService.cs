@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using Stagio.DataLayer;
+using Stagio.Domain.Application;
 using Stagio.Domain.Entities;
 using Stagio.Web.ViewModels.Email;
 
@@ -13,12 +14,16 @@ namespace Stagio.Web.Services
         private readonly IEntityRepository<Notification> _notificationRepository;
         private readonly IEntityRepository<Coordinator> _coordinatorRepository;
         private readonly IEntityRepository<Employee> _employeeRepository;
+        private readonly IEntityRepository<ApplicationUser> _applicationUserRepository;
+        private readonly IHttpContextService _httpContext;
 
-        public NotificationService(IEntityRepository<Notification> notificationRepository, IEntityRepository<Coordinator> coordinatorRepository, IEntityRepository<Employee> employeeRepository)
+        public NotificationService(IEntityRepository<Notification> notificationRepository, IEntityRepository<Coordinator> coordinatorRepository, IEntityRepository<Employee> employeeRepository, IEntityRepository<ApplicationUser> applicationUserRepository, IHttpContextService httpContext)
         {
             _notificationRepository = notificationRepository;
             _coordinatorRepository = coordinatorRepository;
             _employeeRepository = employeeRepository;
+            _applicationUserRepository = applicationUserRepository;
+            _httpContext = httpContext;
         }
 
         public void NotifyNewInternshipOfferCreated(int internshipOfferAuthorId)
@@ -36,13 +41,70 @@ namespace Stagio.Web.Services
                     SenderId = employee.Id,
                     ReceiverId = coordinator.Id,
                     Unseen = true,
-                    Time = DateTime.Today,
+                    Time = DateTime.Now,
                     LinkAction = ACTION_NAME,
                     LinkController = CONTROLLER_NAME
                 };
                 
                 _notificationRepository.Add(notification);
             }
+        }
+
+        public void RoleGroupNotification(string roleName, string message, string linkControllerName, string linkMethodName)
+        {
+            var selectedUsers = _applicationUserRepository.GetAll().Where(x => x.Roles.FirstOrDefault().RoleName == roleName).AsEnumerable();
+
+            foreach (var user in selectedUsers)
+            {
+                UserNotification(user.Id, message, linkControllerName, linkMethodName);
+            }
+        }
+
+        public void CompanyNotification(Company company, string message, string linkControllerName, string linkMethodName)
+        {
+            var employees = company.Employees;
+
+            foreach (var employee in employees)
+            {
+                UserNotification(employee.Id, message, linkControllerName, linkMethodName);
+            }
+        }
+
+        public void NewCompanyJoinedStagio(Company company,string message, string linkControllerName, string linkMethodName)
+        {
+            var allCoordinators = _coordinatorRepository.GetAll();
+
+            foreach (var coordinator in allCoordinators)
+            {
+                var notification = new Notification()
+                {
+                    Object = message,
+                    SenderId = coordinator.Id,
+                    ReceiverId = coordinator.Id,
+                    Unseen = true,
+                    Time = DateTime.Now,
+                    LinkAction = linkMethodName,
+                    LinkController = linkControllerName
+                };
+
+                _notificationRepository.Add(notification);
+            }
+        }
+
+        private void UserNotification(int userId, string message, string linkControllerName, string linkMethodName)
+        {
+            var notification = new Notification()
+            {
+                Object = message,
+                SenderId = _httpContext.GetUserId(),
+                ReceiverId = userId,
+                Unseen = true,
+                Time = DateTime.Now,
+                LinkAction = linkMethodName,
+                LinkController = linkControllerName
+            };
+
+            _notificationRepository.Add(notification);
         }
     }
 }
