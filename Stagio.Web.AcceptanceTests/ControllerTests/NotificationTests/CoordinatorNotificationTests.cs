@@ -30,7 +30,6 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             CreateInternshipOfferPage.GoTo();
             CreateInternshipOfferPage.FillCreationFormWith(TestData.InternshipOfferPublicated1);
             CreateInternshipOfferPage.SubmitOffer();
-            EmployeeIndexInternshipOfferPage.GoTo();
 
             PageNavigator.AllUsers.Logout.Select();
 
