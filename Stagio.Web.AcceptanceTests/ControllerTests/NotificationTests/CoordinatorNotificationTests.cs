@@ -37,10 +37,12 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Coordinator1);
 
-            const int NOTIF_ID = 1;
+            const int NOTIF_ID = 3;
 
             NotificationPartialPage.GoTo();
             NotificationPartialPage.ClickNotif(NOTIF_ID);
+
+            CoordinatorIndexInternshipOfferPage.IsDisplayed.Should().BeTrue();
         }
 
         [TestMethod]
@@ -58,10 +60,12 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Coordinator1);
 
-            const int NOTIF_ID = 1;
+            const int NOTIF_ID = 4;
 
             NotificationPartialPage.GoTo();
             NotificationPartialPage.ClickNotif(NOTIF_ID);
+
+            CoordinatorProgressionIndexInternshipApplicationPage.IsDisplayed.Should().BeTrue();
         }
 
         [TestMethod]
@@ -76,7 +80,7 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Coordinator1);
 
-            const int NOTIF_ID = 1;
+            const int NOTIF_ID = 3;
 
             NotificationPartialPage.GoTo();
             NotificationPartialPage.ClickNotif(NOTIF_ID);

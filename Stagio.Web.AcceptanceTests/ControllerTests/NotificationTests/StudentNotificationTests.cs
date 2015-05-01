@@ -18,7 +18,7 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
     public class StudentIndexTests : GlobalBaseTest
     {
         [TestMethod]
-        public void employee_can_visualize_internship_offers_associated_to_his_company()
+        public void new_internshipoffer_is_publicated()
         {
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.Coordinator1);
@@ -33,10 +33,12 @@ namespace Stagio.Web.AcceptanceTests.ControllerTests.NotificationTests
             LoginPage.GoTo();
             LoginPage.LoginAs(TestData.SubscribedStudent1);
 
-            const int NOTIF_ID = 3;
+            var notifText = WebMessage.NotificationMessage.NEW_INTERNSHIP_OFFER_PUBLICATED;
 
             NotificationPartialPage.GoTo();
-            NotificationPartialPage.ClickNotif(NOTIF_ID);
+            NotificationPartialPage.ClickNotifByText(notifText);
+
+            StudentIndexInternshipOfferPage.IsDisplayed.Should().BeTrue();
         }
     }
 }
