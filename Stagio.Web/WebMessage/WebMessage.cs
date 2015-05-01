@@ -484,7 +484,7 @@ namespace Stagio.Web
             public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED = "L'une de vos offres de stage a été publiée.";
             public static string ONE_OF_YOUR_OFFER_HAS_BEEN_PUBLICATED_HAS_BEEN_DENIED = "L'une de vos offres de stage a été refusée.";
             public static string A_STUDENT_HAS_APPLIED_ON_ONE_OF_YOUR_OFFERS = "Un nouvel étudiant a appliqué sur l'une de vos offres.";
-            public static string SEE_ALL_NOTIFICATIONS = "Voir toute les notifications";
+            public static string SEE_ALL_NOTIFICATIONS = "Voir toutes les notifications";
             public static string MARK_AS_SEEN = "Marquer comme vu";
             public const string DISPLAY_OBJECT = "Sujet";
             public const string DISPLAY_SEEN = "Vu";
@@ -492,12 +492,12 @@ namespace Stagio.Web
 
             public static string AStudentAcceptedYourInternshipOffer(string studentFirstName, string studentLastName)
             {
-                return studentFirstName + " " + studentLastName + " a accepté l'une de vos offre de stage.";
+                return studentFirstName + " " + studentLastName + " a accepté l'une de vos offres de stage.";
             }
 
             public static string AStudentHasBeenSelected(string studentFirstName, string studentLastName)
             {
-                return studentFirstName + " " + studentLastName + " s'est trouvé un stage.";
+                return studentFirstName + " " + studentLastName + " s'est trouvé(e) un stage.";
             }
 
             public static string NewInternshipOfferCreatedMessage(string company, string employee)
@@ -507,17 +507,17 @@ namespace Stagio.Web
 
             public static string NewCompanyJoinedStagio(string name)
             {
-                return name + " à rejoint Stagio.";
+                return name + " a rejoint Stagio.";
             }
 
             public static string ACompanyChoosedYouForOneOfTheirOffer(string companyName)
             {
-                return companyName + " vous a selectionné pour l'une de leurs offres de stage.";
+                return companyName + " vous a sélectionné pour l'une de leurs offres de stage.";
             }
 
             public static string ACompanyChoosedStudentOneOfTheirOffer(string companyName, string studentFullName)
             {
-                return companyName + " a selectionné " + studentFullName + " pour l'une de leurs offres de stage.";
+                return companyName + " a sélectionné " + studentFullName + " pour l'une de leurs offres de stage.";
             }
 
             public static string AStudentAppliedToAnOffer(string studentName, string companyName)
