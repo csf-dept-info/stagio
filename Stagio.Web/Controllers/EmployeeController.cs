@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
+using Microsoft.Ajax.Utilities;
 using Stagio.DataLayer;
 using Stagio.Domain.Application;
 using Stagio.Domain.Entities;
@@ -123,6 +124,11 @@ namespace Stagio.Web.Controllers
 
             bool emailIsAlreadyUsed = _accountService.UserIdentifierExist(_employeeViewModel.Identifier);
             bool newEmailIsTheSame = _employeeViewModel.Identifier == employee.Identifier;
+
+            if(_employeeViewModel.Identifier.IsNullOrWhiteSpace())
+            {
+                ModelState.AddModelError("Email", WebMessage.GlobalMessage.EMPTY_EMAIL);
+            }                                                
 
             if (emailIsAlreadyUsed && !newEmailIsTheSame)
             {

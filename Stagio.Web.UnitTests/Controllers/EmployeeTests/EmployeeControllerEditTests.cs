@@ -196,5 +196,24 @@ namespace Stagio.Web.UnitTests.Controllers.EmployeeTests
             //Assert
             passwordError.Should().BeTrue();
         }
+
+        [TestMethod]
+        public void edit_post_for_password_should_return_error_message_if_email_is_empty()
+        {
+            //Arrange
+            var employee = _fixture.Create<Employee>();
+            _httpContext.GetUserId().Returns(employee.Id);
+
+            var viewModel = Mapper.Map<Employee, ViewModels.Employee.Edit>(employee);
+            _employeeRepository.GetById(employee.Id).Returns(employee);
+
+            //Act
+            viewModel.Identifier = " ";
+            var result = _employeeController.EditProfile(viewModel) as ViewResult;
+            int errorCount = result.ViewData.ModelState.Count;
+
+            //Assert
+            errorCount.Should().NotBe(0);
+        }
     }
 }

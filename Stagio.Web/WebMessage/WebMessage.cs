@@ -431,6 +431,7 @@ namespace Stagio.Web
 
         public static class GlobalMessage
         {
+            public const string EMPTY_EMAIL = "Une adresse courriel valide doit être spécifié";
             public const string NOT_APPLICABLE = "N/A";
             public const string EMAIL_ALREADY_USED = "Cette adresse courriel est déjà utilisée par un autre utilisateur.";
             public const string PROFILE_EDIT_SUCCESS = "Votre profil a été modifié avec succès.";
